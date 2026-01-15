@@ -1,0 +1,36 @@
+
+/* Island Navbar */
+.island-nav-wrapper {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+.island-navbar {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 999px;
+    padding: 10px 26px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+    border: 1px solid rgba(255,255,255,0.25);
+}
+
+.nav-link, .navbar-brand {
+    color: white !important;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: #00ffe1 !important;
+}
+
+/* Mobile pill look */
+@media (max-width: 768px) {
+    .island-navbar {
+        padding: 10px 18px;
+        border-radius: 24px;
+    }
+}
