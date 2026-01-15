@@ -1,16 +1,20 @@
+/***********************
+ * TYPEWRITER EFFECT
+ ***********************/
 const words = [
   "Coder",
   "Web Developer",
   "Tinker",
   "Embedded Systems Enthusiast",
   "Biker",
-  "MotorSports fan",
-  "Hobbist",
+  "MotorSports Fan",
+  "Hobbyist"
 ];
 
 let wordIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
+
 const typingSpeed = 130;
 const deletingSpeed = 50;
 const delayBetweenWords = 140;
@@ -18,17 +22,19 @@ const delayBetweenWords = 140;
 const typingElement = document.getElementById("typing");
 
 function typeEffect() {
+  if (!typingElement) return;
+
   const currentWord = words[wordIndex];
 
   if (!isDeleting) {
-    typingElement.textContent = currentWord.substring(0, charIndex + 1);
+    typingElement.textContent = currentWord.slice(0, charIndex + 1);
     charIndex++;
 
     if (charIndex === currentWord.length) {
       setTimeout(() => (isDeleting = true), delayBetweenWords);
     }
   } else {
-    typingElement.textContent = currentWord.substring(0, charIndex - 1);
+    typingElement.textContent = currentWord.slice(0, charIndex - 1);
     charIndex--;
 
     if (charIndex === 0) {
@@ -42,21 +48,50 @@ function typeEffect() {
 
 typeEffect();
 
+/***************************
+ * BACKGROUND VIDEO PLAYER
+ ***************************/
 const video = document.getElementById("bgVideo");
 
-// Section start and end (in seconds)
-const startTime = 0;
-const endTime = 62;
+if (video) {
+  const playlist = [
+    { src: "assets/pcrunning.mp4",     start: 0, end: 5 },
+    { src: "assets/coding_website.mp4", start: 0, end: 5},
+    { src: "assets/eletronics.mp4",    start: 0, end: 5 },
+    { src: "assets/drifting.mp4",       start: 0, end: 5},
+    { src: "assets/army.mp4",           start: 0, end: 4}
+  ];
 
-// Start video at 0s
-video.currentTime = startTime;
-video.play();
+  let currentIndex = 0;
 
-// Listen for time updates
-video.addEventListener("timeupdate", () => {
-  if (video.currentTime >= endTime) {
-    video.pause(); // stop at 42s
-    video.currentTime = startTime; // go back to 0s
-    video.play(); // optional: loop
+  function playCurrentVideo() {
+    const v = playlist[currentIndex];
+
+    video.pause();
+    video.removeAttribute("src");
+    video.load();
+
+    video.src = v.src;
+
+    const onLoaded = () => {
+      video.currentTime = v.start;
+      video.play().catch(() => {});
+      video.removeEventListener("loadedmetadata", onLoaded);
+    };
+
+    video.addEventListener("loadedmetadata", onLoaded);
   }
-});
+
+  video.addEventListener("timeupdate", () => {
+    if (video.currentTime >= playlist[currentIndex].end) {
+      currentIndex = (currentIndex + 1) % playlist.length;
+      playCurrentVideo();
+    }
+  });
+
+  video.addEventListener("error", () => {
+    console.error("Video failed to load:", video.src);
+  });
+
+  playCurrentVideo();
+}
