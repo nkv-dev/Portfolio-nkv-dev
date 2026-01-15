@@ -46,7 +46,7 @@ const video = document.getElementById("bgVideo");
 
 // Section start and end (in seconds)
 const startTime = 0;
-const endTime = 42;
+const endTime = 62;
 
 // Start video at 0s
 video.currentTime = startTime;
