@@ -2,14 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Typing Effect Video Portfolio</title>
+  <title>Typing Video Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
-    /* Reset + Base */
     body {
       margin: 0;
       color: #fff;
@@ -25,18 +24,17 @@
       overflow: hidden;
     }
 
-    /* Background Video (only in hero) */
+    /* Background Video */
     .bg-video {
       position: absolute;
-      top: 0;
-      left: 0;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
       z-index: -2;
     }
 
-    /* Dark overlay for readability */
+    /* Overlay */
     .hero-section::before {
       content: "";
       position: absolute;
@@ -93,7 +91,7 @@
   <section class="hero-section">
 
     <!-- Background Video -->
-    <video class="bg-video" autoplay muted loop playsinline>
+    <video id="bgVideo" class="bg-video" autoplay muted playsinline>
       <source src="assets/videoplayback.mp4" type="video/mp4">
     </video>
 
@@ -120,17 +118,15 @@
 
   </section>
 
-  <!-- ABOUT SECTION -->
+  <!-- ABOUT -->
   <section class="section">
     <div class="container">
       <h2>About Me</h2>
-      <p>
-        This is the next section. When you scroll here, the background video is gone.
-      </p>
+      <p>Scroll down — the background video is gone now.</p>
     </div>
   </section>
 
-  <!-- PROJECTS SECTION -->
+  <!-- PROJECTS -->
   <section class="section">
     <div class="container">
       <h2>Projects</h2>
@@ -138,7 +134,7 @@
     </div>
   </section>
 
-  <!-- CONTACT SECTION -->
+  <!-- CONTACT -->
   <section class="section">
     <div class="container">
       <h2>Contact</h2>
@@ -146,34 +142,68 @@
     </div>
   </section>
 
-  <!-- Typing Effect Script -->
+
+  <!-- TYPING + VIDEO CONTROL SCRIPT -->
   <script>
-    const words = ["Developer", "Designer", "Creator", "Engineer"];
-    let i = 0, j = 0, isDeleting = false;
+    const words = [
+      "Coder",
+      "Web Developer",
+      "Tinker",
+      "Embedded Systems Enthusiast",
+      "Biker",
+      "MotorSports fan",
+      "Hobbist",
+    ];
+
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typingSpeed = 130;
+    const deletingSpeed = 50;
+    const delayBetweenWords = 140;
+
     const typingElement = document.getElementById("typing");
 
     function typeEffect() {
-      const currentWord = words[i];
+      const currentWord = words[wordIndex];
 
       if (!isDeleting) {
-        typingElement.textContent = currentWord.substring(0, j + 1);
-        j++;
-        if (j === currentWord.length) {
-          isDeleting = true;
+        typingElement.textContent = currentWord.substring(0, charIndex + 1);
+        charIndex++;
+
+        if (charIndex === currentWord.length) {
+          setTimeout(() => (isDeleting = true), delayBetweenWords);
         }
       } else {
-        typingElement.textContent = currentWord.substring(0, j - 1);
-        j--;
-        if (j === 0) {
+        typingElement.textContent = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+
+        if (charIndex === 0) {
           isDeleting = false;
-          i = (i + 1) % words.length;
+          wordIndex = (wordIndex + 1) % words.length;
         }
       }
 
-      setTimeout(typeEffect, isDeleting ? 80 : 120);
+      setTimeout(typeEffect, isDeleting ? deletingSpeed : typingSpeed);
     }
 
     typeEffect();
+
+
+    /* Video loop from 0s to 42s */
+    const video = document.getElementById("bgVideo");
+    const startTime = 0;
+    const endTime = 42;
+
+    video.currentTime = startTime;
+    video.play();
+
+    video.addEventListener("timeupdate", () => {
+      if (video.currentTime >= endTime) {
+        video.currentTime = startTime;
+        video.play();
+      }
+    });
   </script>
 
 </body>
