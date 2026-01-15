@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>About Me</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    /* ================= GLOBAL ================= */
+    body {
+      background: radial-gradient(circle at top, #111, #000);
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .about-section {
+      min-height: 100vh;
+      padding: 72px 0;
+    }
+
+    /* ================= TITLES ================= */
+    .section-tag {
+      font-size: 12px;
+      color: #ff4d4d;
+      letter-spacing: 2px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 2.4rem;
+      font-weight: 600;
+    }
+
+    .section-subtitle {
+      color: #aaa;
+      max-width: 600px;
+      margin: 12px auto 0;
+    }
+
+    /* ================= LAYOUT ================= */
+    .about-layout {
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+    }
+
+    /* ================= STATIC CARDS ================= */
+    .profile-card,
+    .content-card {
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      transition: none; /* important */
+    }
+
+    .profile-card {
+      width: 280px;
+      padding: 28px;
+      border-radius: 26px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .content-card {
+      flex-grow: 1;
+      padding: 40px;
+      border-radius: 30px;
+    }
+
+    /* ================= AVATAR ================= */
+    .avatar-wrapper img {
+      width: 112px;
+      height: 112px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #ff4d4d;
+    }
+
+    .role-text {
+      color: #bbb;
+      font-size: 14px;
+    }
+
+    .content-title {
+      margin: 12px 0 16px;
+    }
+
+    .content-text {
+      color: #ccc;
+      line-height: 1.7;
+    }
+
+    /* ================= INTERACTIVE BASE ================= */
+    .ios-interactive {
+      cursor: pointer;
+      transition:
+        transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+        background 0.25s ease;
+    }
+
+    /* Hover lift (desktop only) */
+    @media (hover: hover) and (pointer: fine) {
+      .ios-interactive:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+        background: rgba(255, 255, 255, 0.08);
+      }
+    }
+
+    /* Press-down (mobile + desktop) */
+    .ios-interactive:active {
+      transform: scale(0.96);
+      transition-duration: 120ms;
+    }
+
+    /* ================= INFO BOX ================= */
+    .info-box {
+      flex: 1 1 220px;
+      padding: 18px 20px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .info-label {
+      font-size: 11px;
+      color: #ff4d4d;
+      letter-spacing: 1px;
+    }
+
+    /* ================= BUTTON ================= */
+    .btn-ios {
+      height: 44px; /* iOS tap target */
+      border-radius: 12px;
+    }
+
+    /* ================= SOCIAL ICONS ================= */
+    .social-icons i {
+      font-size: 18px;
+      opacity: 0.75;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+
+    /* ================= RESPONSIVE ================= */
+    @media (max-width: 992px) {
+      .about-layout {
+        flex-direction: column;
+      }
+
+      .profile-card,
+      .content-card {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .content-card {
+        padding: 26px;
+      }
+
+      .info-box {
+        flex: 1 1 100%;
+      }
+    }
+
+    /* Overlay */
+#eduOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.35s ease;
+  z-index: 999;
+}
+
+/* Panel */
+#eduPanel {
+  position: fixed;
+  top: 0;
+  right: -420px;
+  width: 420px;
+  height: 100vh;
+  background: #0b0b0b;
+  color: #fff;
+  z-index: 1000;
+  padding: 24px;
+  transition: right 0.45s cubic-bezier(.4,0,.2,1);
+  box-shadow: -20px 0 40px rgba(0,0,0,0.6);
+}
+
+/* Active State */
+#eduPanel.active {
+  right: 0;
+}
+
+#eduOverlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Header */
+.edu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-btn {
+  font-size: 28px;
+  cursor: pointer;
+  opacity: 0.7;
+}
+.close-btn:hover { opacity: 1; }
+
+/* Content */
+.edu-content {
+  margin-top: 30px;
+}
+
+.edu-item {
+  margin-bottom: 28px;
+  border-left: 2px solid #1aff8c;
+  padding-left: 16px;
+}
+
+.edu-item .year {
+  color: #1aff8c;
+  font-size: 14px;
+}
+
+.edu-item h4 {
+  margin: 6px 0;
+}
+
+.college {
+  color: #38bdf8;
+  font-size: 14px;
+}
+
+.meta {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+  </style>
+</head>
+<body>
+
+<section class="about-section">
+  <div class="container">
+
+    <!-- TITLE -->
+    <div class="text-center mb-5">
+      <span class="section-tag">ABOUT ME</span>
+      <h2 class="section-title">About Me</h2>
+      <p class="section-subtitle">
+        Curious software engineering student building modern and efficient digital experiences.
+      </p>
+    </div>
+
+    <!-- LAYOUT -->
+    <div class="about-layout">
+
+      <!-- PROFILE CARD -->
+      <div class="profile-card">
+        <div class="avatar-wrapper mb-3">
+          <img src="assets/avatar.jpg" alt="Avatar">
+        </div>
+
+        <h5 class="mb-1">Nitesh Kumar Verma</h5>
+        <p class="role-text mb-3">Software Engineering Student</p>
+
+        <!-- Download CV -->
+        <a href="#"
+           class="btn btn-danger w-100 mb-3 btn-ios ios-interactive">
+          Download CV
+        </a>
+
+        <!-- Social -->
+        <div class="d-flex justify-content-center gap-3 social-icons">
+          <i class="bi bi-github ios-interactive"></i>
+          <i class="bi bi-linkedin ios-interactive"></i>
+          <i class="bi bi-twitter-x ios-interactive"></i>
+        </div>
+      </div>
+
+      <!-- CONTENT CARD -->
+      <div class="content-card">
+        <span class="section-tag">ABOUT</span>
+        <h3 class="content-title">
+          Transforming Ideas into Digital Reality
+        </h3>
+
+        <p class="content-text">
+          I’m a software engineering student passionate about web development,
+          embedded systems, Linux, and system-level programming.
+          I enjoy understanding how things work under the hood and creating
+          clean, scalable solutions.
+        </p>
+
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <div class="info-box ios-interactive" id="studyBtn">
+            <span class="info-label">STUDY</span>
+            <p>Software Engineering</p>
+          </div>
+
+          <div class="info-box ios-interactive">
+            <span class="info-label">INTERESTS</span>
+            <p>Web · Embedded · Linux</p>
+          </div>
+
+          <div class="info-box ios-interactive">
+            <span class="info-label">GOAL</span>
+            <p>Build impactful products</p>
+          </div>
+
+          <div class="info-box ios-interactive">
+            <span class="info-label">STATUS</span>
+            <p>Open to Work</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Overlay -->
+<div id="eduOverlay"></div>
+
+<!-- Education Panel -->
+<div id="eduPanel">
+  <div class="edu-header">
+    <h3>01. Education_Path</h3>
+    <span class="close-btn" onclick="closeEdu()">×</span>
+  </div>
+
+  <div class="edu-content">
+    <!-- YOUR CONTENT -->
+    <div class="edu-item current">
+      <span class="year">Current</span>
+      <h4>Bachelor of Computer Applications</h4>
+      <p class="college">MS Ramaiah College of Arts Science & Commerce</p>
+      <p class="meta">CGPA – 9.3 | Final Year | Started 2023</p>
+    </div>
+
+    <div class="edu-item">
+      <span class="year">2023</span>
+      <h4>CEBA</h4>
+      <p class="college">St. Claret PU College</p>
+      <p class="meta">Percentage – 83</p>
+    </div>
+
+    <div class="edu-item">
+      <span class="year">2021</span>
+      <h4>10th</h4>
+      <p class="college">Harward International School</p>
+      <p class="meta">Percentage – 85</p>
+    </div>
+  </div>
+</div>
+<!-- --------------------------script-----------------for------------overlay--------------- -->
+<script>
+ 
+const studyBtn = document.getElementById("studyBtn");
+const eduPanel = document.getElementById("eduPanel");
+const eduOverlay = document.getElementById("eduOverlay");
+
+studyBtn.addEventListener("click", () => {
+  eduPanel.classList.add("active");
+  eduOverlay.classList.add("active");
+});
+
+function closeEdu() {
+  eduPanel.classList.remove("active");
+  eduOverlay.classList.remove("active");
+}
+
+// Close on overlay click
+eduOverlay.addEventListener("click", closeEdu);
+
+// Close on ESC
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") closeEdu();
+});
+</script>
+
+</body>
+</html>
