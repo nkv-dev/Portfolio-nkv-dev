@@ -288,20 +288,12 @@
 #intOverlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(4px);
   opacity: 0;
   pointer-events: none;
-  transition: .3s;
-}
-
-#intPanel {
-  position: fixed;
-  right: -420px;
-  top: 0;
-  width: 400px;
-  height: 100vh;
-  background: #111;
-  transition: .4s ease;
+  transition: 0.35s ease;
+  z-index: 999;
 }
 
 #intOverlay.active {
@@ -309,7 +301,60 @@
   pointer-events: auto;
 }
 
+#intPanel {
+  position: fixed;
+  top: 0;
+  right: -420px;
+  width: 420px;
+  height: 100vh;
+  background: #0b0b0b;
+  color: #fff;
+  z-index: 1000;
+  padding: 24px;
+  transition: right 0.45s cubic-bezier(.4,0,.2,1);
+  box-shadow: -20px 0 40px rgba(0,0,0,0.6);
+}
+
 #intPanel.active {
   right: 0;
+}
+
+#intPanel .edu-content {
+  position: relative;
+  margin-top: 30px;
+  padding-left: 42px;
+}
+
+#intPanel .edu-content::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: rgba(255,255,255,0.18);
+}
+
+#intPanel .edu-item::before {
+  content: "";
+  position: absolute;
+  left: -29px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  background: #ff3b3b;
+  border-radius: 50%;
+  box-shadow:
+    0 0 6px rgba(255, 59, 59, 0.9),
+    0 0 16px rgba(255, 59, 59, 0.6),
+    0 0 32px rgba(255, 59, 59, 0.35);
+}
+
+#intPanel .edu-item.current::before {
+  background: #1aff8c;
+  box-shadow:
+    0 0 6px rgba(26, 255, 140, 1),
+    0 0 18px rgba(26, 255, 140, 0.8),
+    0 0 36px rgba(26, 255, 140, 0.5);
 }
 
