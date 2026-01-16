@@ -29,7 +29,7 @@ const CONTACT_CONFIG = {
   availability: {
     status: 'Open to opportunities',
     responseTime: 'Usually within 24-48 hours',
-    color: '#1aff8c' // Green for available, red for busy
+    color: 'var(--tech-primary)' // Red for available theme
   }
 };
 

@@ -5,8 +5,12 @@
   --tech-secondary: #ff6666;    /* Lighter red */
   --tech-accent: #ff3333;       /* Darker red */
   --tech-glow: rgba(255, 77, 77, 0.3);  /* Red glow effect */
-  --tech-success: #1aff8c;      /* Keep green for success states */
+  --tech-success: #ff6666;      /* Light red for success states */
   --tech-warning: #ffa500;      /* Orange for warnings */
+  --tech-glow-primary: #ff4d4d;           /* Main red glow */
+  --tech-glow-secondary: rgba(255, 77, 77, 0.8);  /* Red shadow */
+  --tech-glow-subtle: rgba(255, 77, 77, 0.3);    /* Subtle red */
+  --tech-glow-bright: rgba(255, 102, 102, 0.8); /* Light red */
   --tech-bg-primary: #000000;    /* Pure black */
   --tech-bg-secondary: #111111;   /* Dark gray */
   --tech-card: rgba(255, 77, 77, 0.06);  /* Red-tinted card bg */

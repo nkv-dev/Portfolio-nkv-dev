@@ -149,8 +149,8 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: #1aff8c;
-  box-shadow: 0 0 8px rgba(26, 255, 140, 0.8);
+  background: var(--tech-primary);
+  box-shadow: 0 0 8px var(--tech-glow-secondary);
   animation: pulse 2s infinite;
 }
 
@@ -401,9 +401,9 @@
 }
 
 .form-message.success {
-  background: rgba(26, 255, 140, 0.1);
-  border: 1px solid rgba(26, 255, 140, 0.3);
-  color: #1aff8c;
+  background: var(--tech-glow-subtle);
+  border: 1px solid var(--tech-border);
+  color: var(--tech-primary);
   display: flex;
 }
 

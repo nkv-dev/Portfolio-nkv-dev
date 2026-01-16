@@ -32,11 +32,11 @@ function showCopyFeedback(element) {
   
   // Change to checkmark
   copyIcon.className = 'bi bi-check2';
-  copyIcon.style.color = '#1aff8c';
+  copyIcon.style.color = 'var(--tech-primary)';
   
   // Animate the container
-  element.style.background = 'rgba(26, 255, 140, 0.1)';
-  element.style.borderColor = 'rgba(26, 255, 140, 0.3)';
+  element.style.background = 'var(--tech-glow-subtle)';
+  element.style.borderColor = 'var(--tech-border)';
   
   // Reset after 2 seconds
   setTimeout(() => {
@@ -56,9 +56,9 @@ function animateAvailabilityStatus() {
   
   // Simulate status changes (optional - can be removed for static status)
   const statuses = [
-    { text: 'Open to opportunities', color: '#1aff8c' },
+    { text: 'Open to opportunities', color: 'var(--tech-primary)' },
     { text: 'Available for freelance', color: 'var(--tech-primary)' },
-    { text: 'Responding within 24h', color: '#1aff8c' }
+    { text: 'Responding within 24h', color: 'var(--tech-primary)' }
   ];
   
   let currentIndex = 0;

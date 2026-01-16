@@ -506,7 +506,7 @@ document.addEventListener('DOMContentLoaded', function() {
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            background: ${type === 'error' ? '#ff4444' : type === 'success' ? '#44ff44' : 'var(--tech-primary)'};
+            background: ${type === 'error' ? '#ff4444' : type === 'success' ? 'var(--tech-success)' : 'var(--tech-primary)'};
             color: ${type === 'error' || type === 'success' ? '#000' : '#fff'};
             padding: 12px 20px;
             border-radius: 25px;
