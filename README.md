@@ -6,7 +6,7 @@ A modern, responsive portfolio website built with HTML5, CSS3, and vanilla JavaS
 
 - **Hero Section** with video background and typing effect
 - **About Section** with interactive panels for education and interests
-- **Projects Section** with dynamic loading and filtering
+- **Projects Section** with dynamic loading and advanced bubble physics
 - **Contact Section** with copy-to-email functionality and social links
 - **Professional Footer** with quick navigation and back-to-top button
 - **Smooth Navigation** with active section highlighting
@@ -21,6 +21,7 @@ Portfolio/
 ├── index.html              # Main HTML file
 ├── style.css               # Global styles
 ├── script.js               # Main JavaScript (typewriter effect, video)
+├── performance.js          # Performance optimizations
 ├── contact/
 │   ├── contact.css         # Contact section styles
 │   ├── contact.js          # Contact functionality
@@ -36,8 +37,15 @@ Portfolio/
 │   └── about.js            # About section functionality
 ├── projects/
 │   ├── projects.css        # Projects section styles
-│   └── projects.js         # Projects functionality
-└── performance.js          # Performance optimizations
+│   ├── projects.js         # Projects functionality
+│   └── bubble-physics.js  # Advanced bubble physics engine
+└── assets/
+    ├── avatar.jpg          # Profile picture
+    ├── pcrunning.mp4       # Background videos
+    ├── eletronics.mp4
+    ├── drifting.mp4
+    ├── coding_website.mp4
+    └── army.mp4
 ```
 
 ## ⚙️ Configuration
@@ -69,7 +77,7 @@ const CONTACT_CONFIG = {
 
 ### Customize Colors
 
-Edit the CSS variables in `style.css` to change the color scheme:
+Edit the CSS variables in `style.css` to change color scheme:
 
 ```css
 :root {
@@ -124,7 +132,7 @@ Each section is modular - you can:
 - Swipe gestures for mobile menu
 - Optimized video playback for mobile
 - Responsive design for all screen sizes
-- Haptic feedback simulation (where supported)
+- Optimized bubble performance for mobile devices
 
 ## ⚡ Performance Features
 
@@ -133,24 +141,16 @@ Each section is modular - you can:
 - Optimized scroll performance
 - Service Worker support for caching
 - Core Web Vitals monitoring
+- Adaptive bubble performance based on device
 
-## 🔧 Development
+## 🫧 Bubble Physics Engine
 
-### Local Development
-
-1. Clone the repository
-2. Start a local server:
-   ```bash
-   python3 -m http.server 8000
-   ```
-3. Open `http://localhost:8000` in your browser
-
-### Build for Production
-
-1. Update all configuration files with your information
-2. Optimize images and videos
-3. Enable service worker in `performance.js`
-4. Deploy to your hosting service
+The projects section features an advanced bubble physics engine with:
+- 30 interactive tech bubbles on desktop, 12 on mobile
+- Collision detection and chase/repel behaviors
+- Hardware-accelerated smooth animations
+- Touch-friendly interactions on mobile
+- Performance optimization for various devices
 
 ## 🌐 Browser Support
 
@@ -170,9 +170,39 @@ Each section is modular - you can:
 - Focus management
 - Reduced motion support
 
+## 🔧 Development
+
+### Local Development
+
+1. Clone repository
+2. Start a local server:
+   ```bash
+   python3 -m http.server 8000
+   ```
+3. Open `http://localhost:8000` in your browser
+
+### Build for Production
+
+1. Update all configuration files with your information
+2. Optimize images and videos
+3. Enable service worker in `performance.js`
+4. Deploy to your hosting service
+
+## 🌐 Deployment
+
+### Static Hosting Ready
+
+This portfolio is optimized for static hosting services:
+- GitHub Pages
+- Netlify
+- Cloudflare Pages
+- Vercel
+
+No build process required - deploy files as-is.
+
 ## 📄 License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is open source and available under the MIT License.
 
 ## 🤝 Contributing
 
@@ -180,4 +210,4 @@ Feel free to submit issues and enhancement requests!
 
 ---
 
-**Built with ❤️ by Nitesh Kumar Verma**
+Built with passion and modern web technologies by Nitesh Kumar Verma

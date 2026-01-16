@@ -1,2 +1,36 @@
-assets/videoplayback.mp4
-assets/videoplayback.mp4
+# System files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node modules (if added later)
+node_modules/
+
+# Build outputs (if added later)
+dist/
+build/
+
+# Logs
+*.log
+logs/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Cache
+.cache/
+.parcel-cache/
+
+# Coverage reports
+coverage/
+
+# Temporary files
+tmp/
+temp/
