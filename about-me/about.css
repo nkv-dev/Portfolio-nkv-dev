@@ -283,3 +283,33 @@
   font-size: 13px;
   opacity: 0.8;
 }
+
+/* ==========interestoverlay================= */
+#intOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: .3s;
+}
+
+#intPanel {
+  position: fixed;
+  right: -420px;
+  top: 0;
+  width: 400px;
+  height: 100vh;
+  background: #111;
+  transition: .4s ease;
+}
+
+#intOverlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#intPanel.active {
+  right: 0;
+}
+

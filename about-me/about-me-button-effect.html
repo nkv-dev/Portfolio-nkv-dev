@@ -70,7 +70,7 @@
             <p>Software Engineering</p>
           </div>
 
-          <div class="info-box ios-interactive">
+          <div class="info-box ios-interactive" id="interestBtn">
             <span class="info-label">INTERESTS</span>
             <p>Web · Embedded · IOT and more</p>
           </div>
@@ -129,6 +129,52 @@
   </div>
 </div>
 
+<!-- ================= INTEREST OVERLAY ================= -->
+<div id="intOverlay"></div>
+
+<!-- ================= INTEREST PANEL ================= -->
+<div id="intPanel">
+
+  <div class="edu-header">
+    <h3>Interests</h3>
+    <span class="close-btn" onclick="closeInterest()">×</span>
+  </div>
+
+  <div class="edu-content">
+
+    <div class="edu-item current">
+      <span class="year">Primary</span>
+      <h4>Web Development</h4>
+      <p class="college">Frontend & Backend</p>
+      <p class="meta">HTML · CSS · JavaScript · Bootstrap · React</p>
+    </div>
+
+    <div class="edu-item">
+      <span class="year">Systems</span>
+      <h4>Embedded Systems</h4>
+      <p class="college">Microcontrollers & Hardware</p>
+      <p class="meta">Arduino · ESP32 · Sensors · IOT</p>
+    </div>
+
+    <div class="edu-item">
+      <span class="year">Core</span>
+      <h4>Linux & System Programming</h4>
+      <p class="college">Low-level & Performance</p>
+      <p class="meta">Linux · C/C++ · Bash · OS Internals</p>
+    </div>
+
+    <div class="edu-item">
+      <span class="year">Creative</span>
+      <h4>Content Creation</h4>
+      <p class="college">Tech & Learning</p>
+      <p class="meta">YouTube · Teaching · Documentation</p>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
 <!-- ================= SCRIPT ================= -->
 <script>
   const studyBtn = document.getElementById("studyBtn");
@@ -150,6 +196,31 @@
   document.addEventListener("keydown", e => {
     if (e.key === "Escape") closeEdu();
   });
+
+
+
+const interestBtn = document.getElementById("interestBtn");
+const intPanel = document.getElementById("intPanel");
+const intOverlay = document.getElementById("intOverlay");
+
+interestBtn.addEventListener("click", () => {
+  intPanel.classList.add("active");
+  intOverlay.classList.add("active");
+});
+
+function closeInterest() {
+  intPanel.classList.remove("active");
+  intOverlay.classList.remove("active");
+}
+
+// Close on overlay click
+intOverlay.addEventListener("click", closeInterest);
+
+// Close on ESC key
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") closeInterest();
+});
+
 </script>
 
 </body>
