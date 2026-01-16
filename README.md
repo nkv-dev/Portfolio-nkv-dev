@@ -14,45 +14,47 @@ A modern, responsive portfolio website built with HTML5, CSS3, and vanilla JavaS
 - **Performance Optimized** with lazy loading and GPU acceleration
 - **Accessibility Compliant** with keyboard navigation and screen reader support
 
-## 📁 Project Structure
+## 📁 Professional File Structure
 
 ```
 Portfolio/
-├── index.html              # Main HTML file
-├── style.css               # Global styles
-├── script.js               # Main JavaScript (typewriter effect, video)
-├── performance.js          # Performance optimizations
-├── contact/
-│   ├── contact.css         # Contact section styles
-│   ├── contact.js          # Contact functionality
-│   └── config.js           # Contact configuration
-├── footer/
-│   ├── footer.css          # Footer styles
-│   └── footer.js           # Footer functionality
-├── nav/
-│   ├── nav.css             # Navigation styles
-│   └── nav.js              # Navigation functionality
-├── about-me/
-│   ├── about.css           # About section styles
-│   └── about.js            # About section functionality
-├── projects/
-│   ├── projects.css        # Projects section styles
-│   ├── projects.js         # Projects functionality
-│   └── bubble-physics.js  # Advanced bubble physics engine
-└── assets/
-    ├── avatar.jpg          # Profile picture
-    ├── pcrunning.mp4       # Background videos
-    ├── eletronics.mp4
-    ├── drifting.mp4
-    ├── coding_website.mp4
-    └── army.mp4
+├── 📄 index.html                  # Main portfolio entry point
+├── 📁 src/                       # Source code directory
+│   ├── 📁 styles/                  # All CSS stylesheets
+│   │   ├── main.css           # Global styles
+│   │   ├── nav.css             # Navigation styles
+│   │   ├── about.css           # About section styles
+│   │   ├── projects.css        # Projects section styles
+│   │   ├── contact.css         # Contact section styles
+│   │   └── footer.css          # Footer section styles
+│   ├── 📁 scripts/                 # All JavaScript modules
+│   │   ├── main.js            # Core functionality (typewriter, video)
+│   │   ├── nav.js             # Navigation functionality
+│   │   ├── about.js           # About section functionality
+│   │   ├── projects.js         # Projects functionality
+│   │   ├── contact.js          # Contact functionality
+│   │   ├── footer.js           # Footer functionality
+│   │   ├── performance.js     # Performance optimizations
+│   │   └── bubble-physics.js  # Advanced bubble physics engine
+│   └── 📁 components/              # Component templates (future)
+├── 📁 assets/                       # Media files
+│   ├── 📁 images/                # Image assets
+│   │   └── avatar.jpg          # Profile picture
+│   └── 📁 videos/                # Background videos
+│       ├── pcrunning.mp4       # Video 1
+│       ├── eletronics.mp4       # Video 2
+│       ├── drifting.mp4         # Video 3
+│       ├── coding_website.mp4    # Video 4
+│       └── army.mp4            # Video 5
+├── 📋 README.md                       # Project documentation
+└── 🚫 .gitignore                      # Ignore patterns
 ```
 
 ## ⚙️ Configuration
 
 ### Update Contact Information
 
-Edit `contact/config.js` to update your personal information:
+Edit `src/scripts/contact/config.js` to update your personal information:
 
 ```javascript
 const CONTACT_CONFIG = {
@@ -77,7 +79,7 @@ const CONTACT_CONFIG = {
 
 ### Customize Colors
 
-Edit the CSS variables in `style.css` to change color scheme:
+Edit CSS variables in `src/styles/main.css` to change color scheme:
 
 ```css
 :root {
@@ -91,7 +93,7 @@ Edit the CSS variables in `style.css` to change color scheme:
 
 ### Update Hero Section
 
-Edit `script.js` to customize the typing effect words:
+Edit `src/scripts/main.js` to customize the typing effect words:
 
 ```javascript
 const words = [
@@ -106,25 +108,29 @@ const words = [
 
 ### Add Profile Picture
 
-Replace `assets/avatar.jpg` with your profile picture.
+Replace `assets/images/avatar.jpg` with your profile picture.
 
 ### Update Video Background
 
-Add your video files to the `assets/` folder and update the playlist in `script.js`:
+Add your video files to the `assets/videos/` folder and update the playlist in `src/scripts/main.js`:
 
 ```javascript
 const playlist = [
-  { src: "assets/your-video.mp4", start: 0, end: 5 },
-  { src: "assets/another-video.mp4", start: 0, end: 5 }
+  { src: "assets/videos/your-video.mp4", start: 0, end: 5 },
+  { src: "assets/videos/another-video.mp4", start: 0, end: 5 }
 ];
 ```
 
-### Modify Sections
+## 🫧 Bubble Physics Engine
 
-Each section is modular - you can:
-- Add/remove sections from `index.html`
-- Customize styles in respective CSS files
-- Update functionality in respective JS files
+The projects section features an advanced bubble physics engine with:
+- 30 interactive tech bubbles on desktop, 12 on mobile
+- Collision detection and chase/repel behaviors
+- Hardware-accelerated smooth animations
+- Touch-friendly interactions on mobile
+- Performance optimization for various devices
+- Sub-pixel positioning for fluid movement
+- Visual feedback with particle effects
 
 ## 📱 Mobile Features
 
@@ -142,15 +148,6 @@ Each section is modular - you can:
 - Service Worker support for caching
 - Core Web Vitals monitoring
 - Adaptive bubble performance based on device
-
-## 🫧 Bubble Physics Engine
-
-The projects section features an advanced bubble physics engine with:
-- 30 interactive tech bubbles on desktop, 12 on mobile
-- Collision detection and chase/repel behaviors
-- Hardware-accelerated smooth animations
-- Touch-friendly interactions on mobile
-- Performance optimization for various devices
 
 ## 🌐 Browser Support
 
@@ -185,7 +182,7 @@ The projects section features an advanced bubble physics engine with:
 
 1. Update all configuration files with your information
 2. Optimize images and videos
-3. Enable service worker in `performance.js`
+3. Enable service worker in `src/scripts/performance.js`
 4. Deploy to your hosting service
 
 ## 🌐 Deployment
@@ -200,13 +197,15 @@ This portfolio is optimized for static hosting services:
 
 No build process required - deploy files as-is.
 
-## 📄 License
+### Development Workflow Benefits
 
-This project is open source and available under the MIT License.
-
-## 🤝 Contributing
-
-Feel free to submit issues and enhancement requests!
+**src/ directory structure provides:**
+- 🎯 Clear separation of source and assets
+- 🔧 Easy debugging and maintenance
+- 📦 Ready for build tools if needed
+- 🚀 Modern development practices
+- 👥 Team collaboration friendly
+- 📱 Mobile-first development approach
 
 ---
 
