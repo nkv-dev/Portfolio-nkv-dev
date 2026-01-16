@@ -27,6 +27,14 @@
     color: #00ffe1 !important;
 }
 
+/* Navbar blur when overlay is active */
+.island-navbar.blur-navbar {
+    opacity: 0.5;
+    filter: blur(5px);
+    pointer-events: none;
+    transition: opacity 0.35s ease, filter 0.35s ease;
+}
+
 /* Mobile pill look */
 @media (max-width: 768px) {
     .island-navbar {
