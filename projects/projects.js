@@ -187,16 +187,27 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Load more projects
+    // Load more projects (optimized with document fragment)
     function loadMoreProjects() {
         const remainingProjects = projectsData.length - currentlyDisplayed;
         const toLoad = Math.min(3, remainingProjects);
         
-        // Add new projects
+        // Use document fragment for better performance
+        const fragment = document.createDocumentFragment();
+        const tempContainer = document.createElement('div');
+        
         for (let i = currentlyDisplayed; i < currentlyDisplayed + toLoad; i++) {
             const projectCard = createProjectCard(projectsData[i]);
-            projectsContainer.insertAdjacentHTML('beforeend', projectCard);
+            tempContainer.innerHTML += projectCard;
         }
+        
+        // Add all new cards to fragment
+        while (tempContainer.firstChild) {
+            fragment.appendChild(tempContainer.firstChild);
+        }
+        
+        // Add fragment to container in one operation
+        projectsContainer.appendChild(fragment);
         
         currentlyDisplayed += toLoad;
         
@@ -206,6 +217,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 loadMoreBtn.style.display = 'none';
             }
         }
+        
+        // Observe new projects for lazy loading
+        observeProjects();
         
         // Re-initialize animations for new cards
         initializeAnimations();
@@ -238,10 +252,321 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Intersection Observer for lazy loading
+    const projectObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                projectObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        root: null,
+        rootMargin: '50px',
+        threshold: 0.1
+    });
+
+    // Add visible class to projects for animation
+    function observeProjects() {
+        const projectCards = document.querySelectorAll('.project-card:not(.visible)');
+        projectCards.forEach(card => {
+            projectObserver.observe(card);
+        });
+    }
+
+    // Swipe gesture handling
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let touchStartY = 0;
+    let touchEndY = 0;
+    
+    function handleTouchStart(e) {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+    }
+    
+    function handleTouchEnd(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        touchEndY = e.changedTouches[0].screenY;
+        handleSwipe();
+    }
+    
+    function handleSwipe() {
+        const swipeThreshold = 80;
+        const verticalThreshold = 50;
+        const diffX = touchStartX - touchEndX;
+        const diffY = touchStartY - touchEndY;
+        
+        // Ensure swipe is primarily horizontal
+        if (Math.abs(diffX) > Math.abs(diffY)) {
+            if (Math.abs(diffX) > swipeThreshold) {
+                if (diffX > 0) {
+                    // Swipe left - could trigger next project or category
+                    showSwipeFeedback('left');
+                } else {
+                    // Swipe right - could trigger previous project or category
+                    showSwipeFeedback('right');
+                }
+            }
+        }
+    }
+    
+    function showSwipeFeedback(direction) {
+        // Create temporary swipe indicator
+        const indicator = document.createElement('div');
+        indicator.className = 'swipe-indicator';
+        indicator.textContent = direction === 'left' ? '←' : '→';
+        indicator.style.cssText = `
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: #00ffd5;
+            z-index: 9999;
+            pointer-events: none;
+            opacity: 0.8;
+            animation: swipeFade 0.5s ease-out forwards;
+        `;
+        
+        document.body.appendChild(indicator);
+        
+        // Remove indicator after animation
+        setTimeout(() => {
+            if (indicator.parentNode) {
+                indicator.parentNode.removeChild(indicator);
+            }
+        }, 500);
+    }
+    
+    // Pull-to-refresh functionality
+    let pullStartY = 0;
+    let currentPullY = 0;
+    let isPulling = false;
+    let pullThreshold = 100;
+    
+    function handlePullStart(e) {
+        if (window.scrollY === 0) {
+            pullStartY = e.touches[0].screenY;
+            isPulling = true;
+        }
+    }
+    
+    function handlePullMove(e) {
+        if (!isPulling) return;
+        
+        currentPullY = e.touches[0].screenY;
+        const pullDistance = currentPullY - pullStartY;
+        
+        if (pullDistance > 0 && pullDistance < 200) {
+            e.preventDefault();
+            document.body.style.transform = `translateY(${pullDistance * 0.5}px)`;
+        }
+    }
+    
+    function handlePullEnd(e) {
+        if (!isPulling) return;
+        
+        isPulling = false;
+        const pullDistance = currentPullY - pullStartY;
+        
+        document.body.style.transform = '';
+        document.body.style.transition = 'transform 0.3s ease';
+        
+        if (pullDistance > pullThreshold) {
+            triggerRefresh();
+        }
+        
+        setTimeout(() => {
+            document.body.style.transition = '';
+        }, 300);
+    }
+    
+    function triggerRefresh() {
+        // Simulate refresh
+        if (loadMoreBtn) {
+            loadMoreBtn.style.opacity = '0.6';
+            loadMoreBtn.textContent = 'Refreshing...';
+            
+            setTimeout(() => {
+                // Reload projects
+                currentlyDisplayed = initialProjects;
+                renderProjects();
+                observeProjects();
+                initializeAnimations();
+                
+                if (loadMoreBtn) {
+                    loadMoreBtn.style.opacity = '1';
+                    loadMoreBtn.textContent = 'Load More Projects';
+                }
+            }, 1000);
+        }
+    }
+    
+    // Add swipe functionality
+    function initSwipeGestures() {
+        if (projectsContainer) {
+            projectsContainer.addEventListener('touchstart', handleTouchStart, { passive: true });
+            projectsContainer.addEventListener('touchend', handleTouchEnd, { passive: true });
+        }
+        
+        // Add pull-to-refresh
+        document.addEventListener('touchstart', handlePullStart, { passive: true });
+        document.addEventListener('touchmove', handlePullMove, { passive: false });
+        document.addEventListener('touchend', handlePullEnd, { passive: true });
+    }
+    
+    // Add swipe animation CSS
+    function addSwipeAnimationCSS() {
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes swipeFade {
+                0% {
+                    opacity: 0;
+                    transform: translate(-50%, -50%) scale(0.8);
+                }
+                50% {
+                    opacity: 0.8;
+                    transform: translate(-50%, -50%) scale(1.1);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translate(-50%, -50%) scale(0.9);
+                }
+            }
+            
+            /* Touch feedback for better UX */
+            .project-card, .tech-badge, .github-link, .load-more-btn {
+                -webkit-user-select: none;
+                user-select: none;
+                -webkit-touch-callout: none;
+            }
+            
+            /* Prevent text selection on mobile */
+            body {
+                -webkit-user-select: none;
+                user-select: none;
+            }
+            
+            /* Allow text selection for readable content */
+            .project-description, .problem-text, .features-list li {
+                -webkit-user-select: text;
+                user-select: text;
+            }
+            
+            /* Enhanced mobile scrolling */
+            .projects-grid {
+                scroll-behavior: smooth;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            /* Loading states */
+            .loading {
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .loading::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(0, 255, 213, 0.2), transparent);
+                animation: shimmer 1.5s infinite;
+            }
+            
+            @keyframes shimmer {
+                0% { left: -100%; }
+                100% { left: 100%; }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+    
+    // Mobile error handling
+    function handleMobileErrors() {
+        // Handle network errors gracefully
+        window.addEventListener('online', () => {
+            showNotification('Connection restored', 'success');
+        });
+        
+        window.addEventListener('offline', () => {
+            showNotification('No internet connection', 'error');
+        });
+    }
+    
+    function showNotification(message, type = 'info') {
+        const notification = document.createElement('div');
+        notification.className = `mobile-notification ${type}`;
+        notification.textContent = message;
+        notification.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: ${type === 'error' ? '#ff4444' : type === 'success' ? '#44ff44' : '#00ffd5'};
+            color: ${type === 'error' || type === 'success' ? '#000' : '#fff'};
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            z-index: 10000;
+            animation: slideUp 0.3s ease-out;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        `;
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.style.animation = 'slideDown 0.3s ease-out forwards';
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 300);
+        }, 3000);
+    }
+    
+    // Add notification animations
+    function addNotificationCSS() {
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideUp {
+                from {
+                    transform: translateX(-50%) translateY(100px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(-50%) translateY(0);
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes slideDown {
+                from {
+                    transform: translateX(-50%) translateY(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(-50%) translateY(100px);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
     // Initialize projects section
     function initProjects() {
         renderProjects();
+        observeProjects();
         initializeAnimations();
+        initSwipeGestures();
+        addSwipeAnimationCSS();
+        addNotificationCSS();
+        handleMobileErrors();
         
         // Add load more event listener
         if (loadMoreBtn) {

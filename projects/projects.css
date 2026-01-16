@@ -45,6 +45,8 @@
   opacity: 0;
   transform: translateY(30px);
   animation: fadeInUp 0.6s ease forwards;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 255, 213, 0.1);
 }
 
 .project-card:nth-child(1) { animation-delay: 0.1s; }
@@ -53,6 +55,11 @@
 .project-card:nth-child(4) { animation-delay: 0.4s; }
 .project-card:nth-child(5) { animation-delay: 0.5s; }
 .project-card:nth-child(6) { animation-delay: 0.6s; }
+
+.project-card:active {
+  transform: translateY(-2px) scale(0.98);
+  transition: transform 0.1s ease;
+}
 
 @keyframes fadeInUp {
   to {
@@ -178,10 +185,29 @@
 .tech-badge {
   background: #2a2a2a;
   color: #ddd;
-  padding: 4px 10px;
+  padding: 8px 14px;
   border-radius: 15px;
   font-size: 0.75rem;
   border: 1px solid #444;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 255, 213, 0.1);
+}
+
+.tech-badge:hover {
+  background: #333;
+  color: #00ffd5;
+  transform: scale(1.05);
+}
+
+.tech-badge:active {
+  transform: scale(0.95);
+  background: #00ffd5;
+  color: #000;
 }
 
 /* Project Footer */
@@ -203,7 +229,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 16px;
+  padding: 12px 20px;
   background: #333;
   color: #fff;
   text-decoration: none;
@@ -211,6 +237,8 @@
   font-size: 0.85rem;
   transition: all 0.3s ease;
   border: 1px solid #444;
+  min-height: 44px;
+  -webkit-tap-highlight-color: rgba(0, 255, 213, 0.1);
 }
 
 .github-link:hover {
@@ -218,6 +246,11 @@
   color: #000;
   transform: scale(1.05);
   border-color: #00ffd5;
+}
+
+.github-link:active {
+  transform: scale(0.95);
+  transition: transform 0.1s ease;
 }
 
 .github-link i {
@@ -228,10 +261,81 @@
 .load-more-container {
   text-align: center;
   margin-top: 40px;
+  padding: 0 15px;
+}
+
+/* Pull-to-refresh indicator */
+.pull-to-refresh {
+  position: relative;
+  padding-top: 20px;
+  margin-top: -20px;
+  height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.pull-to-refresh.active {
+  height: 60px;
+  padding-top: 40px;
+}
+
+.pull-to-refresh-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00ffd5;
+  font-size: 0.9rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.pull-to-refresh.active .pull-to-refresh-indicator {
+  opacity: 1;
+}
+
+.pull-to-refresh-indicator i {
+  animation: spin 1s linear infinite;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Loading states */
+.loading-skeleton {
+  background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Enhanced mobile scrolling */
+.projects-grid {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+.project-card {
+  scroll-snap-align: start;
+}
+
+/* Mobile focus improvements */
+@media (max-width: 768px) {
+  .github-link:focus,
+  .load-more-btn:focus {
+    outline: 3px solid #00ffd5;
+    outline-offset: 2px;
+  }
 }
 
 .load-more-btn {
-  padding: 12px 30px;
+  padding: 15px 35px;
   background: transparent;
   color: #00ffd5;
   border: 2px solid #00ffd5;
@@ -242,6 +346,9 @@
   transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 1px;
+  min-height: 50px;
+  min-width: 200px;
+  -webkit-tap-highlight-color: rgba(0, 255, 213, 0.1);
 }
 
 .load-more-btn:hover {
@@ -251,11 +358,17 @@
   box-shadow: 0 5px 15px rgba(0, 255, 213, 0.3);
 }
 
+.load-more-btn:active {
+  transform: translateY(0) scale(0.98);
+  transition: transform 0.1s ease;
+}
+
 .load-more-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
   border-color: #666;
   color: #666;
+  transform: none;
 }
 
 /* Hidden projects initially */
@@ -263,7 +376,7 @@
   display: none;
 }
 
-/* Responsive Design */
+/* Enhanced Responsive Design */
 @media (max-width: 992px) {
   .projects-grid {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -275,10 +388,19 @@
   }
 }
 
+/* Additional intermediate breakpoint */
+@media (max-width: 850px) {
+  .projects-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+  }
+}
+
 @media (max-width: 768px) {
   .projects-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 25px;
+    scroll-snap-type: y mandatory;
   }
   
   #projects .section-title {
@@ -286,60 +408,181 @@
   }
   
   #projects .section-subtitle {
-    font-size: 1rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
   }
   
   .project-header {
-    padding: 20px 20px 12px 20px;
+    padding: 25px 20px 15px 20px;
   }
   
   .project-content {
-    padding: 0 20px 18px 20px;
+    padding: 0 20px 20px 20px;
   }
   
   .project-footer {
-    padding: 15px 20px;
+    padding: 20px 20px;
   }
   
   .project-title {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+  }
+  
+  /* Enhanced readability */
+  .project-description {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #ddd;
+  }
+  
+  .problem-text, .features-list li {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #bbb;
+  }
+  
+  .features-list li {
+    padding-left: 20px;
+    margin-bottom: 8px;
+  }
+  
+  /* Better visual hierarchy */
+  .problem-label, .features-label, .tech-label {
+    font-size: 1rem;
+    margin-top: 20px;
+    margin-bottom: 12px;
+  }
+  
+  /* Tech badges optimization */
+  .tech-badge {
+    font-size: 0.8rem;
+    padding: 10px 16px;
+  }
+  
+  /* Prevent horizontal scrolling */
+  .projects-grid {
+    overflow-x: hidden;
+  }
+}
+
+@media (max-width: 650px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .project-description {
+    font-size: 1rem;
+  }
+  
+  .problem-text, .features-list li {
+    font-size: 0.9rem;
   }
 }
 
 @media (max-width: 480px) {
   #projects .text-center {
-    margin-bottom: 40px;
+    margin-bottom: 35px;
   }
   
   #projects .section-title {
     font-size: 1.8rem;
   }
   
+  #projects .section-subtitle {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  
   .projects-grid {
-    gap: 15px;
+    gap: 20px;
   }
   
   .project-header {
-    padding: 15px 15px 10px 15px;
+    padding: 20px 15px 12px 15px;
   }
   
   .project-content {
-    padding: 0 15px 15px 15px;
+    padding: 0 15px 18px 15px;
   }
   
   .project-footer {
-    padding: 12px 15px;
+    padding: 18px 15px;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
   }
   
   .github-link {
     width: 100%;
     justify-content: center;
+    padding: 15px 20px;
+    font-size: 0.9rem;
   }
   
   .load-more-btn {
-    padding: 10px 25px;
-    font-size: 0.9rem;
+    padding: 15px 30px;
+    font-size: 0.95rem;
+    min-height: 50px;
+  }
+  
+  /* Enhanced mobile spacing */
+  .project-title {
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+  }
+  
+  .project-category {
+    font-size: 0.7rem;
+    padding: 4px 10px;
+    margin-bottom: 18px;
+  }
+  
+  .project-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 18px;
+  }
+  
+  /* Better mobile spacing for sections */
+  .project-problem, .project-features, .project-tech {
+    margin-bottom: 22px;
+  }
+}
+
+/* Landscape mobile handling */
+@media (max-height: 500px) and (orientation: landscape) {
+  .section {
+    padding: 40px 15px;
+  }
+  
+  .projects-grid {
+    gap: 15px;
+  }
+  
+  .project-card {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  
+  #projects .text-center {
+    margin-bottom: 25px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .project-card {
+    animation: none;
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+  
+  .tech-badge, .github-link, .load-more-btn {
+    transition: none;
+  }
+  
+  .project-card:hover, .tech-badge:hover, .github-link:hover {
+    transform: none;
   }
 }
