@@ -5,44 +5,99 @@ class ChaosBubbleEngine {
     this.bubbles = [];
     this.isRunning = false;
     
-    // Physics parameters
-    this.maxSpeed = 4; // Reduced for smoother movement
-    this.chaseRadius = 200; // Distance to start chasing
-    this.attackRadius = 80; // Distance to start attacking
-    this.repulsionRadius = 60; // Distance to repel violently
-    this.friction = 0.98; // Higher friction for smoother deceleration
+    // Mobile detection
+    this.isMobile = window.innerWidth <= 768;
+    this.isLowEnd = this.detectLowEndDevice();
     
-    // Aggression levels
-    this.baseAggression = 0.001; // Reduced for smoother movement
-    this.chaseAggression = 0.04; // Reduced aggression
-    this.attackAggression = 0.08; // Reduced attack force
+    // Adaptive physics parameters based on device
+    this.setupPhysicsParameters();
     
     // Animation settings
-    this.fps = 60;
+    this.fps = this.isMobile ? 30 : 60; // Lower FPS on mobile
     this.frameInterval = 1000 / this.fps;
     this.lastFrameTime = 0;
     
-    // Uniform bubble size
-    this.bubbleSize = 50;
-    
-    // Performance optimization for more bubbles
-    this.maxChaosBubbles = 8; // Max bubbles affected by chaos injection
+    // Performance optimization
+    this.maxChaosBubbles = this.isMobile ? 3 : 8;
+    this.maxBubblesToShow = this.isMobile ? 12 : 30;
     
     this.init();
+  }
+
+  detectLowEndDevice() {
+    // Simple heuristics to detect low-end devices
+    const isOldBrowser = /Android [1-4]/.test(navigator.userAgent);
+    const isSlowConnection = navigator.connection && 
+      (navigator.connection.saveData || 
+       navigator.connection.effectiveType === 'slow-2g' || 
+       navigator.connection.effectiveType === '2g');
+    const isLowMemory = navigator.deviceMemory && navigator.deviceMemory < 4;
+    
+    return isOldBrowser || isSlowConnection || isLowMemory;
+  }
+
+  setupPhysicsParameters() {
+    if (this.isMobile) {
+      // Mobile optimized settings
+      this.maxSpeed = 2.5;
+      this.chaseRadius = 150;
+      this.attackRadius = 60;
+      this.repulsionRadius = 45;
+      this.friction = 0.96;
+      this.baseAggression = 0.0008;
+      this.chaseAggression = 0.025;
+      this.attackAggression = 0.05;
+      this.bubbleSize = 40; // Smaller on mobile
+    } else if (this.isLowEnd) {
+      // Low-end desktop settings
+      this.maxSpeed = 3;
+      this.chaseRadius = 180;
+      this.attackRadius = 70;
+      this.repulsionRadius = 50;
+      this.friction = 0.97;
+      this.baseAggression = 0.001;
+      this.chaseAggression = 0.03;
+      this.attackAggression = 0.06;
+      this.bubbleSize = 45;
+    } else {
+      // Desktop high-end settings
+      this.maxSpeed = 4;
+      this.chaseRadius = 200;
+      this.attackRadius = 80;
+      this.repulsionRadius = 60;
+      this.friction = 0.98;
+      this.baseAggression = 0.001;
+      this.chaseAggression = 0.04;
+      this.attackAggression = 0.08;
+      this.bubbleSize = 50;
+    }
   }
 
   init() {
     // Find all bubble elements
     const bubbleElements = document.querySelectorAll('.bubble');
     
-    bubbleElements.forEach((element, index) => {
-      // Random starting position
-      const x = Math.random() * (window.innerWidth - 50);
-      const y = Math.random() * (window.innerHeight - 50);
+    // Show only limited bubbles on mobile for performance
+    const bubblesToShow = Math.min(bubbleElements.length, this.maxBubblesToShow);
+    
+    for (let index = 0; index < bubblesToShow; index++) {
+      const element = bubbleElements[index];
       
-      // Random starting velocity
-      const vx = (Math.random() - 0.5) * 4;
-      const vy = (Math.random() - 0.5) * 4;
+      // Hide extra bubbles on mobile
+      if (this.isMobile && index >= this.maxBubblesToShow) {
+        element.style.display = 'none';
+        continue;
+      }
+      
+      // Random starting position (avoid edges on mobile)
+      const margin = this.isMobile ? 20 : 10;
+      const x = margin + Math.random() * (window.innerWidth - this.bubbleSize - margin * 2);
+      const y = margin + Math.random() * (window.innerHeight - this.bubbleSize - margin * 2);
+      
+      // Random starting velocity (reduced on mobile)
+      const velocityMultiplier = this.isMobile ? 1.5 : 4;
+      const vx = (Math.random() - 0.5) * velocityMultiplier;
+      const vy = (Math.random() - 0.5) * velocityMultiplier;
       
       // Create bubble object
       const bubble = {
@@ -64,19 +119,38 @@ class ChaosBubbleEngine {
       
       this.bubbles.push(bubble);
       
-      // Position bubble initially with hardware acceleration
+      // Position bubble initially
       element.style.transform = `translate3d(${x}px, ${y}px, 0)`;
       element.style.width = `${this.bubbleSize}px`;
       element.style.height = `${this.bubbleSize}px`;
       
-      // Add hover effect
+      // Add touch and hover effects
+      this.addInteractionEvents(element, bubble);
+    }
+    
+    // Start chaos with mobile-friendly timing
+    this.start();
+  }
+
+  addInteractionEvents(element, bubble) {
+    // Mobile touch events
+    if (this.isMobile) {
+      element.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        this.createExplosion(bubble);
+      }, { passive: false });
+      
+      element.addEventListener('touchmove', (e) => {
+        e.preventDefault(); // Prevent scrolling during interaction
+      }, { passive: false });
+      
+      element.style.touchAction = 'none'; // Optimize for touch
+    } else {
+      // Desktop hover events
       element.addEventListener('mouseenter', () => {
         this.createExplosion(bubble);
       });
-    });
-    
-    // Start the chaos
-    this.start();
+    }
   }
 
   getRandomColor() {
@@ -96,10 +170,11 @@ class ChaosBubbleEngine {
     this.isRunning = true;
     this.animate();
     
-    // Add random chaos injection
+    // Add random chaos injection (less frequent on mobile)
+    const chaosInterval = this.isMobile ? 4000 : 3000;
     setInterval(() => {
       this.injectChaos();
-    }, 3000);
+    }, chaosInterval);
   }
 
   animate(currentTime) {
@@ -159,8 +234,13 @@ class ChaosBubbleEngine {
   }
 
   checkInteractions() {
-    // Optimized collision detection for more bubbles
     const len = this.bubbles.length;
+    
+    // Skip frames on mobile for performance
+    if (this.isMobile && Math.random() > 0.5) {
+      return; // Skip 50% of collision checks on mobile
+    }
+    
     for (let i = 0; i < len; i++) {
       const bubble1 = this.bubbles[i];
       
@@ -177,8 +257,9 @@ class ChaosBubbleEngine {
           bubble1.isAttacking = true;
           bubble2.isAttacking = true;
           
-          // Add attack effects (reduced frequency for performance)
-          if (Date.now() - bubble1.lastAttackTime > 300) {
+          // Add attack effects (reduced frequency on mobile)
+          const minDelay = this.isMobile ? 500 : 300;
+          if (Date.now() - bubble1.lastAttackTime > minDelay) {
             this.createAttackEffect(bubble1, bubble2);
             bubble1.lastAttackTime = Date.now();
           }
@@ -188,8 +269,10 @@ class ChaosBubbleEngine {
           bubble1.isChasing = true;
           bubble2.isChasing = true;
         } else if (distance < this.chaseRadius) {
-          // CURIOUS MOVEMENT
-          this.applyCuriosity(bubble1, bubble2, distance);
+          // CURIOUS MOVEMENT (reduced on mobile)
+          if (!this.isMobile || Math.random() > 0.3) {
+            this.applyCuriosity(bubble1, bubble2, distance);
+          }
         }
       }
     }
@@ -283,17 +366,21 @@ class ChaosBubbleEngine {
   }
 
   createAttackEffect(bubble1, bubble2) {
+    // Reduce particles on mobile for performance
+    const particleCount = this.isMobile ? 4 : 8;
+    const particleSize = this.isMobile ? '3px' : '4px';
+    
     // Create collision particles (no screen shake)
     const midX = (bubble1.x + bubble2.x) / 2 + this.bubbleSize / 2;
     const midY = (bubble1.y + bubble2.y) / 2 + this.bubbleSize / 2;
     
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < particleCount; i++) {
       const particle = document.createElement('div');
       particle.className = 'collision-particle';
       particle.style.cssText = `
         position: fixed;
-        width: 4px;
-        height: 4px;
+        width: ${particleSize};
+        height: ${particleSize};
         background: ${bubble1.color};
         border-radius: 50%;
         left: ${midX}px;
@@ -329,8 +416,9 @@ class ChaosBubbleEngine {
   }
 
   createExplosion(bubble) {
-    // Mouse hover explosion
-    const numParticles = 12;
+    // Mobile-optimized explosion
+    const numParticles = this.isMobile ? 6 : 12;
+    const particleSize = this.isMobile ? '4px' : '6px';
     const centerX = bubble.x + this.bubbleSize / 2;
     const centerY = bubble.y + this.bubbleSize / 2;
     
@@ -341,8 +429,8 @@ class ChaosBubbleEngine {
       particle.className = 'explosion-particle';
       particle.style.cssText = `
         position: fixed;
-        width: 6px;
-        height: 6px;
+        width: ${particleSize};
+        height: ${particleSize};
         background: ${bubble.color};
         border-radius: 50%;
         left: ${centerX}px;
@@ -356,9 +444,10 @@ class ChaosBubbleEngine {
       setTimeout(() => particle.remove(), 800);
     }
     
-    // Push bubble away from mouse
-    bubble.vx += (Math.random() - 0.5) * 15;
-    bubble.vy += (Math.random() - 0.5) * 15;
+    // Push bubble away from touch/mouse (reduced force on mobile)
+    const pushForce = this.isMobile ? 8 : 15;
+    bubble.vx += (Math.random() - 0.5) * pushForce;
+    bubble.vy += (Math.random() - 0.5) * pushForce;
   }
 
   render() {

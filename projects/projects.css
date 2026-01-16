@@ -646,6 +646,37 @@
   /* Ensure smooth sub-pixel rendering */
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
+  /* Touch optimization */
+  -webkit-tap-highlight-color: transparent;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Mobile-specific bubble optimizations */
+@media (max-width: 768px) {
+  .bubble {
+    width: 40px !important;
+    height: 40px !important;
+    /* Reduce visual effects on mobile */
+    transition-duration: 0.2s !important;
+    /* Prevent scrolling issues */
+    position: absolute !important;
+    pointer-events: auto !important;
+  }
+  
+  .bubble i {
+    font-size: 16px !important; /* Smaller icons on mobile */
+  }
+}
+
+/* Hide extra bubbles on mobile */
+@media (max-width: 768px) {
+  .bubble:nth-child(n+13) {
+    display: none !important;
+  }
 }
 
 /* Reduced motion support */
