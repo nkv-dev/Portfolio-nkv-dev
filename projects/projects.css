@@ -72,8 +72,8 @@
 
 .project-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 255, 213, 0.2);
-  border-color: var(--tech-primary);
+  box-shadow: 0 10px 30px rgba(239, 68, 68, 0.3);
+  border-color: #ef4444;
 }
 
 /* Project Card Header */
@@ -203,7 +203,7 @@
 
 .tech-badge:hover {
   background: #333;
-  color: var(--tech-primary);
+  color: #ef4444;
   transform: scale(1.05);
 }
 
@@ -247,10 +247,10 @@
 }
 
 .github-link:hover {
-  background: var(--tech-primary);
-  color: #000;
+  background: #ef4444;
+  color: #fff;
   transform: scale(1.05);
-  border-color: var(--tech-primary);
+  border-color: #ef4444;
 }
 
 .github-link:active {
@@ -342,8 +342,8 @@
 .load-more-btn {
   padding: 15px 35px;
   background: transparent;
-  color: var(--tech-primary);
-  border: 2px solid var(--tech-primary);
+  color: #ef4444;
+  border: 2px solid #ef4444;
   border-radius: 25px;
   font-size: 1rem;
   font-weight: 600;
@@ -353,14 +353,14 @@
   letter-spacing: 1px;
   min-height: 50px;
   min-width: 200px;
-  -webkit-tap-highlight-color: rgba(0, 255, 213, 0.1);
+  -webkit-tap-highlight-color: rgba(239, 68, 68, 0.1);
 }
 
 .load-more-btn:hover {
-  background: var(--tech-primary);
-  color: #000;
+  background: #ef4444;
+  color: #fff;
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 255, 213, 0.3);
+  box-shadow: 0 5px 15px rgba(239, 68, 68, 0.4);
 }
 
 .load-more-btn:active {
