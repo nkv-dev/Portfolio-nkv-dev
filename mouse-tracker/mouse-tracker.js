@@ -52,8 +52,7 @@ class MouseTracker {
 
     // Elements with magnetic effect
     this.magneticElements = document.querySelectorAll(
-      '.github-link, .social-link, .load-more-btn, ' +
-      '.submit-btn, .footer-social-link, .nav-link'
+      '.github-link, .social-link, .footer-social-link'
     );
   }
 
