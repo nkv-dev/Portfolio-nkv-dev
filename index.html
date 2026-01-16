@@ -9,6 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="nav/nav.css">
+  <link rel="stylesheet" href="about-me/about.css">
 </head>
 
 <body>
@@ -67,11 +68,166 @@
 
   <!-- ABOUT -->
   <section class="section" id="about">
-    <div class="container">
-      <h2>About Me</h2>
-      <p>Scroll down — the background video is gone now.</p>
+  <!-- ================= ABOUT SECTION ================= -->
+  <div class="container">
+
+    <!-- ===== TITLE ===== -->
+    <div class="text-center mb-5">
+      <span class="section-tag">ABOUT ME</span>
+      <h2 class="section-title">About Me</h2>
+      <p class="section-subtitle">
+        Curious software engineering student building modern and efficient digital experiences.
+      </p>
     </div>
-  </section>
+
+    <!-- ===== MAIN LAYOUT ===== -->
+    <div class="about-layout">
+
+      <!-- ===== PROFILE CARD ===== -->
+      <div class="profile-card">
+
+        <div class="avatar-wrapper mb-3">
+          <img src="assets/avatar.jpg" alt="Avatar">
+        </div>
+
+        <h5 class="mb-1">Nitesh Kumar Verma</h5>
+        <p class="role-text mb-3">Software Engineering Student</p>
+
+        <a href="#" class="btn btn-danger w-100 mb-3 btn-ios ios-interactive">
+          Download CV
+        </a>
+
+        <div class="d-flex justify-content-center gap-3 social-icons">
+          <i class="bi bi-github ios-interactive"></i>
+          <i class="bi bi-linkedin ios-interactive"></i>
+          <i class="bi bi-twitter-x ios-interactive"></i>
+        </div>
+      </div>
+
+      <!-- ===== CONTENT CARD ===== -->
+      <div class="content-card">
+
+        <span class="section-tag">ABOUT</span>
+        <h3 class="content-title">Transforming Ideas into Digital Reality</h3>
+
+        <p class="content-text">
+          I’m a software engineering student passionate about web development,
+          embedded systems, Linux, and system-level programming.
+          I enjoy understanding how things work under the hood and creating
+          clean, scalable solutions.
+        </p>
+
+        <div class="d-flex flex-wrap gap-3 mt-4">
+
+          <div class="info-box ios-interactive" id="studyBtn">
+            <span class="info-label">STUDY</span>
+            <p>Software Engineering</p>
+          </div>
+
+          <div class="info-box ios-interactive" id="interestBtn">
+            <span class="info-label">INTERESTS</span>
+            <p>Web · Embedded · IOT and more</p>
+          </div>
+
+          <div class="info-box ios-interactive">
+            <span class="info-label">GOAL</span>
+            <p>Build impactful products</p>
+          </div>
+
+          <div class="info-box ios-interactive">
+            <span class="info-label">STATUS</span>
+            <p>Open to Work</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= EDUCATION OVERLAY ================= -->
+<div id="eduOverlay"></div>
+
+<!-- ================= EDUCATION PANEL ================= -->
+<div id="eduPanel">
+
+  <div class="edu-header">
+    <h3>Education</h3>
+    <span class="close-btn" onclick="closeEdu()">×</span>
+  </div>
+
+  <div class="edu-content">
+
+    <div class="edu-item current">
+      <span class="year">Current</span>
+      <h4>Bachelor of Computer Applications</h4>
+      <p class="college">MS Ramaiah College of Arts Science & Commerce</p>
+      <p class="meta">CGPA – 9.3 | Final Year | Started 2023</p>
+    </div>
+
+    <div class="edu-item">
+      <span class="year">2023</span>
+      <h4>CEBA</h4>
+      <p class="college">St. Claret PU College</p>
+      <p class="meta">Percentage – 83</p>
+    </div>
+
+    <div class="edu-item">
+      <span class="year">2021</span>
+      <h4>10th</h4>
+      <p class="college">Harward International School</p>
+      <p class="meta">Percentage – 85</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ================= INTEREST OVERLAY ================= -->
+<div id="intOverlay"></div>
+
+<!-- ================= INTEREST PANEL ================= -->
+<div id="intPanel">
+
+  <div class="edu-header">
+    <h3>Interests</h3>
+    <span class="close-btn" onclick="closeInterest()">×</span>
+  </div>
+
+  <div class="edu-content">
+
+    <div class="edu-item current">
+      <span class="year">Primary</span>
+      <h4>Web Development</h4>
+      <p class="college">Frontend & Backend</p>
+      <p class="meta">HTML · CSS · JavaScript · Bootstrap · React</p>
+    </div>
+
+    <div class="edu-item">
+      <span class="year">Systems</span>
+      <h4>Embedded Systems</h4>
+      <p class="college">Microcontrollers & Hardware</p>
+      <p class="meta">Arduino · ESP32 · Sensors · IOT</p>
+    </div>
+
+    <div class="edu-item">
+      <span class="year">Core</span>
+      <h4>Linux & System Programming</h4>
+      <p class="college">Low-level & Performance</p>
+      <p class="meta">Linux · C/C++ · Bash · OS Internals</p>
+    </div>
+
+    <div class="edu-item">
+      <span class="year">Creative</span>
+      <h4>Content Creation</h4>
+      <p class="college">Tech & Learning</p>
+      <p class="meta">YouTube · Teaching · Documentation</p>
+    </div>
+
+  </div>
+</div>
+
+</div>
 
   <!-- PROJECTS -->
   <section class="section" id="projects">
@@ -88,7 +244,10 @@
       <p>Get in touch with me.</p>
     </div>
   </section>
+
+
   <script src="script.js"></script>
+  <script src="about-me/about.js"></script>
 </body>
 
 </html>
