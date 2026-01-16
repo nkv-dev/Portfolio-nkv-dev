@@ -54,7 +54,13 @@ typeEffect();
 const video = document.getElementById("bgVideo");
 
 if (video) {
-  const playlist = [
+  // Check for mobile and reduce video quality/data usage
+  const isMobile = window.innerWidth <= 768;
+  
+  const playlist = isMobile ? [
+    { src: "assets/coding_website.mp4", start: 0, end: 3 },
+    { src: "assets/pcrunning.mp4",     start: 0, end: 3 }
+  ] : [
     { src: "assets/pcrunning.mp4",     start: 0, end: 5 },
     { src: "assets/coding_website.mp4", start: 0, end: 5},
     { src: "assets/eletronics.mp4",    start: 0, end: 5 },
@@ -75,6 +81,10 @@ if (video) {
 
     const onLoaded = () => {
       video.currentTime = v.start;
+      // Add mobile-specific video settings
+      if (isMobile) {
+        video.playbackRate = 0.8; // Slightly slower on mobile
+      }
       video.play().catch(() => {});
       video.removeEventListener("loadedmetadata", onLoaded);
     };
