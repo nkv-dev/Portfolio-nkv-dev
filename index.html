@@ -18,6 +18,8 @@
   <link rel="stylesheet" href="nav/nav.css">
   <link rel="stylesheet" href="about-me/about.css">
   <link rel="stylesheet" href="projects/projects.css">
+  <link rel="stylesheet" href="contact/contact.css">
+  <link rel="stylesheet" href="footer/footer.css">
 </head>
 
 <body>
@@ -266,19 +268,186 @@
   <!-- CONTACT -->
   <section class="section" id="contact">
     <div class="container">
-      <h2>Contact</h2>
-      <p>Get in touch with me.</p>
+      <!-- Section Header -->
+      <div class="text-center mb-5">
+        <span class="section-tag">CONTACT</span>
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">
+          Feel free to reach out for collaborations, opportunities, or just to say hello!
+        </p>
+      </div>
+
+      <!-- Contact Container -->
+      <div class="contact-container">
+        
+        <!-- Contact Info Panel -->
+        <div class="contact-info">
+          <div class="contact-header">
+            <h3>Let's Connect</h3>
+            <p>I'm always interested in hearing about new projects and opportunities.</p>
+          </div>
+
+          <!-- Email Section -->
+          <div class="email-section">
+            <span class="email-label">Email</span>
+            <div class="email-container" onclick="copyEmail()">
+              <span class="email-address" id="personalEmail">nitesh@example.com</span>
+              <i class="bi bi-clipboard copy-icon"></i>
+            </div>
+          </div>
+
+          <!-- Availability Status -->
+          <div class="status-section">
+            <span class="status-label">Availability</span>
+            <div class="status-container">
+              <div class="status-dot" id="statusDot"></div>
+              <span class="status-text" id="statusText">Open to opportunities</span>
+            </div>
+          </div>
+
+          <!-- Social Links -->
+          <div class="social-section">
+            <span class="social-label">Connect</span>
+            <div class="social-links" id="socialLinks">
+              <a href="https://github.com" target="_blank" class="social-link" title="GitHub" data-social="github">
+                <i class="bi bi-github"></i>
+              </a>
+              <a href="https://linkedin.com" target="_blank" class="social-link" title="LinkedIn" data-social="linkedin">
+                <i class="bi bi-linkedin"></i>
+              </a>
+              <a href="https://twitter.com" target="_blank" class="social-link" title="Twitter" data-social="twitter">
+                <i class="bi bi-twitter-x"></i>
+              </a>
+              <a href="mailto:nitesh@example.com" class="social-link" title="Email" data-social="email">
+                <i class="bi bi-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Info Panel -->
+        <div class="contact-info">
+          <div class="contact-header">
+            <h3>Quick Info</h3>
+            <p>Here's how you can reach me for different purposes.</p>
+          </div>
+
+          <!-- Professional Inquiries -->
+          <div class="email-section">
+            <span class="email-label">Professional</span>
+            <div class="email-container" onclick="copyEmail()">
+              <span class="email-address" id="professionalEmail">work.nitesh@example.com</span>
+              <i class="bi bi-briefcase copy-icon"></i>
+            </div>
+          </div>
+
+          <!-- Academic Inquiries -->
+          <div class="email-section">
+            <span class="email-label">Academic</span>
+            <div class="email-container" onclick="copyEmail()">
+              <span class="email-address" id="academicEmail">student.nitesh@example.com</span>
+              <i class="bi bi-mortarboard copy-icon"></i>
+            </div>
+          </div>
+
+          <!-- Response Time -->
+          <div class="status-section">
+            <span class="status-label">Response Time</span>
+            <div class="status-container">
+              <div class="status-dot"></div>
+              <span class="status-text" id="responseTime">Usually within 24-48 hours</span>
+            </div>
+          </div>
+
+          <!-- Location -->
+          <div class="status-section">
+            <span class="status-label">Location</span>
+            <div class="status-container">
+              <i class="bi bi-geo-alt" style="color: #00ffd5; margin-right: 8px;"></i>
+              <span class="status-text" id="location">Bangalore, India</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        
+        <!-- Footer Brand -->
+        <div class="footer-brand">
+          <h3 class="footer-title">Nitesh Kumar Verma</h3>
+          <p class="footer-subtitle">Software Engineering Student</p>
+          <p class="footer-description">
+            Building modern web experiences and exploring the intersection of software and hardware.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-links">
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-nav">
+            <li><a href="#hero" class="footer-link">Home</a></li>
+            <li><a href="#about" class="footer-link">About</a></li>
+            <li><a href="#projects" class="footer-link">Projects</a></li>
+            <li><a href="#contact" class="footer-link">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Social Links -->
+        <div class="footer-social">
+          <h4 class="footer-heading">Connect</h4>
+          <div class="footer-social-links">
+            <a href="https://github.com" target="_blank" class="footer-social-link" title="GitHub">
+              <i class="bi bi-github"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" class="footer-social-link" title="LinkedIn">
+              <i class="bi bi-linkedin"></i>
+            </a>
+            <a href="https://twitter.com" target="_blank" class="footer-social-link" title="Twitter">
+              <i class="bi bi-twitter-x"></i>
+            </a>
+            <a href="mailto:nitesh@example.com" class="footer-social-link" title="Email">
+              <i class="bi bi-envelope"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <p class="copyright">
+            © 2024 Nitesh Kumar Verma. All rights reserved.
+          </p>
+          <div class="footer-bottom-links">
+            <a href="#" class="footer-bottom-link">Privacy Policy</a>
+            <a href="#" class="footer-bottom-link">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+      <i class="bi bi-arrow-up"></i>
+    </button>
+  </footer>
 
   <!-- Bootstrap JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
   
+  <script src="contact/config.js"></script>
   <script src="nav/nav.js"></script>
   <script src="script.js"></script>
   <script src="about-me/about.js"></script>
   <script src="projects/projects.js"></script>
+  <script src="contact/contact.js"></script>
+  <script src="footer/footer.js"></script>
+  <script src="performance.js"></script>
 </body>
 
 </html>
