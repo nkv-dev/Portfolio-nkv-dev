@@ -126,6 +126,34 @@
     .btn-ios {
       height: 44px; /* iOS tap target */
       border-radius: 12px;
+      min-width: 44px; /* Ensure minimum touch target */
+    }
+
+    /* Enhanced touch targets for mobile */
+    @media (max-width: 768px) {
+      .btn, .btn-ios {
+        min-height: 48px; /* Android touch target */
+        padding: 12px 24px;
+      }
+      
+      .social-icons i {
+        width: 44px;
+        height: 44px;
+        font-size: 20px;
+      }
+      
+      .info-box {
+        min-height: 48px;
+        padding: 20px;
+      }
+      
+      .close-btn {
+        min-width: 44px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     }
 
     /* ================= SOCIAL ICONS ================= */
@@ -144,21 +172,88 @@
     @media (max-width: 992px) {
       .about-layout {
         flex-direction: column;
+        gap: 24px;
       }
 
       .profile-card,
       .content-card {
         width: 100%;
       }
+      
+      .profile-card {
+        max-width: 400px;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .section-subtitle {
+        font-size: 0.9rem;
+      }
+      
+      .profile-card {
+        padding: 24px;
+      }
+      
+      .content-card {
+        padding: 32px;
+      }
+      
+      .content-title {
+        font-size: 1.5rem;
+      }
+      
+      .content-text {
+        font-size: 0.95rem;
+      }
     }
 
     @media (max-width: 576px) {
+      .about-section {
+        padding: 60px 0;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .section-subtitle {
+        font-size: 0.85rem;
+      }
+      
+      .profile-card {
+        padding: 20px;
+      }
+      
       .content-card {
-        padding: 26px;
+        padding: 24px;
+      }
+      
+      .content-title {
+        font-size: 1.3rem;
+      }
+      
+      .content-text {
+        font-size: 0.9rem;
       }
 
       .info-box {
         flex: 1 1 100%;
+        padding: 16px;
+      }
+      
+      .avatar-wrapper img {
+        width: 96px;
+        height: 96px;
+      }
+      
+      .btn-ios {
+        height: 48px;
+        font-size: 0.9rem;
       }
     }
 
@@ -196,6 +291,43 @@
 
 #eduPanel.active {
   right: 0;
+}
+
+/* Mobile overlay panels */
+@media (max-width: 768px) {
+  #eduPanel, #intPanel {
+    width: 85%;
+    max-width: 350px;
+    right: -100%;
+  }
+  
+  #eduPanel.active, #intPanel.active {
+    right: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  #eduPanel, #intPanel {
+    width: 90%;
+    padding: 20px;
+  }
+  
+  .edu-header h3 {
+    font-size: 1.3rem;
+  }
+  
+  .close-btn {
+    font-size: 24px;
+  }
+  
+  .edu-content {
+    padding-left: 32px;
+    margin-top: 20px;
+  }
+  
+  .edu-item {
+    margin-bottom: 24px;
+  }
 }
 
 /* ================= Header ================= */
