@@ -322,7 +322,7 @@ document.addEventListener('DOMContentLoaded', function() {
             left: 50%;
             transform: translate(-50%, -50%);
             font-size: 3rem;
-            color: #00ffd5;
+            color: var(--tech-primary);
             z-index: 9999;
             pointer-events: none;
             opacity: 0.8;
@@ -506,7 +506,7 @@ document.addEventListener('DOMContentLoaded', function() {
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            background: ${type === 'error' ? '#ff4444' : type === 'success' ? '#44ff44' : '#00ffd5'};
+            background: ${type === 'error' ? '#ff4444' : type === 'success' ? '#44ff44' : 'var(--tech-primary)'};
             color: ${type === 'error' || type === 'success' ? '#000' : '#fff'};
             padding: 12px 20px;
             border-radius: 25px;

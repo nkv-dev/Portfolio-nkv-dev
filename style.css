@@ -1,3 +1,20 @@
+/* ================= RED THEME VARIABLES ================= */
+:root {
+  /* Primary Red Theme Colors */
+  --tech-primary: #ff4d4d;     /* Neon red (main accent) */
+  --tech-secondary: #ff6666;    /* Lighter red */
+  --tech-accent: #ff3333;       /* Darker red */
+  --tech-glow: rgba(255, 77, 77, 0.3);  /* Red glow effect */
+  --tech-success: #1aff8c;      /* Keep green for success states */
+  --tech-warning: #ffa500;      /* Orange for warnings */
+  --tech-bg-primary: #000000;    /* Pure black */
+  --tech-bg-secondary: #111111;   /* Dark gray */
+  --tech-card: rgba(255, 77, 77, 0.06);  /* Red-tinted card bg */
+  --tech-border: rgba(255, 77, 77, 0.12); /* Red-tinted borders */
+  --tech-focus: rgba(255, 77, 77, 0.5);  /* Red focus outline */
+  --tech-hover: rgba(255, 77, 77, 0.1);   /* Red hover background */
+}
+
 /* * HERO SECTION */ 
     body {
       margin: 0;
@@ -107,7 +124,7 @@
 
     /* Typing text */
     .typing {
-      color: #00ffd5;
+      color: var(--tech-primary);
       font-weight: 600;
     }
 
@@ -116,7 +133,7 @@
       display: inline-block;
       width: 2px;
       height: 1.2em;
-      background-color: #00ffd5;
+      background-color: var(--tech-primary);
       margin-left: 5px;
       animation: blink 1s infinite;
     }
@@ -130,7 +147,7 @@
     .ios-interactive {
       transition: all 0.3s ease;
       cursor: pointer;
-      -webkit-tap-highlight-color: rgba(0, 255, 213, 0.1);
+      -webkit-tap-highlight-color: var(--tech-hover);
     }
 
     .ios-interactive:hover {
@@ -160,11 +177,11 @@
       
       /* Better mobile focus states */
       button, a, .ios-interactive {
-        -webkit-tap-highlight-color: rgba(0, 255, 213, 0.1);
+        -webkit-tap-highlight-color: var(--tech-hover);
       }
       
       button:focus, a:focus {
-        outline: 2px solid #00ffd5;
+        outline: 2px solid var(--tech-primary);
         outline-offset: 2px;
       }
     }
@@ -212,7 +229,7 @@
     
     /* Better focus states for accessibility */
     *:focus {
-      outline: 2px solid #00ffd5;
+      outline: 2px solid var(--tech-primary);
       outline-offset: 2px;
     }
     
@@ -221,7 +238,7 @@
     }
     
     *:focus-visible {
-      outline: 2px solid #00ffd5;
+      outline: 2px solid var(--tech-primary);
       outline-offset: 2px;
     }
     
@@ -239,7 +256,7 @@
       width: 20px;
       height: 20px;
       margin: -10px 0 0 -10px;
-      border: 2px solid #00ffd5;
+      border: 2px solid var(--tech-primary);
       border-top-color: transparent;
       border-radius: 50%;
       animation: spin 0.8s linear infinite;

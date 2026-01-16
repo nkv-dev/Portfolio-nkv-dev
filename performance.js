@@ -170,8 +170,8 @@ function inlineCriticalCSS() {
         body { margin: 0; color: #fff; font-family: 'Segoe UI', sans-serif; overflow-x: hidden; background: #000; }
         .hero-section { position: relative; height: 100vh; overflow: hidden; }
         .island-nav-wrapper { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; }
-        .typing { color: #00ffd5; font-weight: 600; }
-        .cursor { display: inline-block; width: 2px; height: 1.2em; background-color: #00ffd5; margin-left: 5px; animation: blink 1s infinite; }
+        .typing { color: var(--tech-primary); font-weight: 600; }
+        .cursor { display: inline-block; width: 2px; height: 1.2em; background-color: var(--tech-primary); margin-left: 5px; animation: blink 1s infinite; }
         @keyframes blink { 0%, 50%, 100% { opacity: 1; } 25%, 75% { opacity: 0; } }
     `;
     

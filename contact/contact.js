@@ -57,7 +57,7 @@ function animateAvailabilityStatus() {
   // Simulate status changes (optional - can be removed for static status)
   const statuses = [
     { text: 'Open to opportunities', color: '#1aff8c' },
-    { text: 'Available for freelance', color: '#00ffd5' },
+    { text: 'Available for freelance', color: 'var(--tech-primary)' },
     { text: 'Responding within 24h', color: '#1aff8c' }
   ];
   

@@ -188,7 +188,7 @@ const rippleStyles = `
   }
   
   .footer-link.active {
-    color: #00ffd5;
+    color: var(--tech-primary);
     font-weight: 500;
   }
   

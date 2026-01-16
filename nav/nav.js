@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         .nav-link.active {
-            color: #00ffd5 !important;
+            color: var(--tech-primary) !important;
             font-weight: 600;
             position: relative;
         }
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
             transform: translateX(-50%);
             width: 20px;
             height: 2px;
-            background: linear-gradient(90deg, #00ffd5, #00b8ff);
+            background: linear-gradient(90deg, var(--tech-primary), var(--tech-secondary));
             border-radius: 1px;
         }
         
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
             top: 0;
             left: 0;
             height: 3px;
-            background: linear-gradient(90deg, #00ffd5, #00b8ff);
+            background: linear-gradient(90deg, var(--tech-primary), var(--tech-secondary));
             z-index: 9999;
             transition: width 0.1s ease;
         }
@@ -282,7 +282,7 @@ document.addEventListener('keydown', function(e) {
     if (e.key === 'Tab') {
         // Ensure proper focus management
         const navbar = document.querySelector('.island-navbar');
-        navbar.style.outline = '2px solid #00ffd5';
+        navbar.style.outline = '2px solid var(--tech-primary)';
         navbar.style.outlineOffset = '2px';
         
         // Remove outline after keyboard navigation is complete

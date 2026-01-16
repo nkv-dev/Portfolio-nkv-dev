@@ -6,7 +6,7 @@
 }
 
 #projects .section-tag {
-  color: #00ffd5;
+  color: var(--tech-primary);
   font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 2px;
@@ -71,7 +71,7 @@
 .project-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(0, 255, 213, 0.2);
-  border-color: #00ffd5;
+  border-color: var(--tech-primary);
 }
 
 /* Project Card Header */
@@ -89,7 +89,7 @@
 .project-category {
   display: inline-block;
   padding: 5px 12px;
-  background: #00ffd5;
+  background: var(--tech-primary);
   color: #000;
   border-radius: 20px;
   font-size: 0.75rem;
@@ -120,7 +120,7 @@
 }
 
 .problem-label {
-  color: #00ffd5;
+  color: var(--tech-primary);
   font-weight: 600;
   font-size: 0.9rem;
   margin-bottom: 5px;
@@ -137,7 +137,7 @@
 }
 
 .features-label {
-  color: #00ffd5;
+  color: var(--tech-primary);
   font-weight: 600;
   font-size: 0.9rem;
   margin-bottom: 8px;
@@ -159,7 +159,7 @@
 
 .features-list li:before {
   content: "▸";
-  color: #00ffd5;
+  color: var(--tech-primary);
   position: absolute;
   left: 0;
 }
@@ -170,7 +170,7 @@
 }
 
 .tech-label {
-  color: #00ffd5;
+  color: var(--tech-primary);
   font-weight: 600;
   font-size: 0.9rem;
   margin-bottom: 8px;
@@ -200,13 +200,13 @@
 
 .tech-badge:hover {
   background: #333;
-  color: #00ffd5;
+  color: var(--tech-primary);
   transform: scale(1.05);
 }
 
 .tech-badge:active {
   transform: scale(0.95);
-  background: #00ffd5;
+  background: var(--tech-primary);
   color: #000;
 }
 
@@ -242,10 +242,10 @@
 }
 
 .github-link:hover {
-  background: #00ffd5;
+  background: var(--tech-primary);
   color: #000;
   transform: scale(1.05);
-  border-color: #00ffd5;
+  border-color: var(--tech-primary);
 }
 
 .github-link:active {
@@ -283,7 +283,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #00ffd5;
+  color: var(--tech-primary);
   font-size: 0.9rem;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -329,7 +329,7 @@
 @media (max-width: 768px) {
   .github-link:focus,
   .load-more-btn:focus {
-    outline: 3px solid #00ffd5;
+    outline: 3px solid var(--tech-primary);
     outline-offset: 2px;
   }
 }
@@ -337,8 +337,8 @@
 .load-more-btn {
   padding: 15px 35px;
   background: transparent;
-  color: #00ffd5;
-  border: 2px solid #00ffd5;
+  color: var(--tech-primary);
+  border: 2px solid var(--tech-primary);
   border-radius: 25px;
   font-size: 1rem;
   font-weight: 600;
@@ -352,7 +352,7 @@
 }
 
 .load-more-btn:hover {
-  background: #00ffd5;
+  background: var(--tech-primary);
   color: #000;
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(0, 255, 213, 0.3);

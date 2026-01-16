@@ -6,7 +6,7 @@
 }
 
 #contact .section-tag {
-  color: #00ffd5;
+  color: var(--tech-primary);
   font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 2px;
@@ -105,7 +105,7 @@
 
 .email-address {
   flex: 1;
-  color: #00ffd5;
+  color: var(--tech-primary);
   font-size: 1rem;
   font-weight: 500;
   text-decoration: none;
@@ -118,7 +118,7 @@
 }
 
 .email-container:hover .copy-icon {
-  color: #00ffd5;
+  color: var(--tech-primary);
 }
 
 /* Availability Status */
@@ -212,7 +212,7 @@
 }
 
 .social-link:hover {
-  background: #00ffd5;
+  background: var(--tech-primary);
   color: #000;
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(0, 255, 213, 0.3);
@@ -281,7 +281,7 @@
 .form-input:focus,
 .form-textarea:focus {
   outline: none;
-  border-color: #00ffd5;
+  border-color: var(--tech-primary);
   background: rgba(255, 255, 255, 0.08);
   box-shadow: 0 0 0 3px rgba(0, 255, 213, 0.1);
 }
@@ -339,7 +339,7 @@
 .submit-btn {
   width: 100%;
   padding: 18px 30px;
-  background: linear-gradient(135deg, #00ffd5, #00b8ff);
+  background: linear-gradient(135deg, var(--tech-primary), var(--tech-secondary));
   color: #000;
   border: none;
   border-radius: 12px;
@@ -531,7 +531,7 @@
 .email-container:focus-visible,
 .social-link:focus-visible,
 .submit-btn:focus-visible {
-  outline: 2px solid #00ffd5;
+  outline: 2px solid var(--tech-primary);
   outline-offset: 2px;
 }
 
@@ -548,6 +548,6 @@
   }
   
   .submit-btn {
-    border: 2px solid #00ffd5;
+    border: 2px solid var(--tech-primary);
   }
 }
