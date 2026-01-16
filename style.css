@@ -125,3 +125,17 @@
       0%, 50%, 100% { opacity: 1; }
       25%, 75% { opacity: 0; }
     }
+
+    /* iOS Interactive Effect */
+    .ios-interactive {
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .ios-interactive:hover {
+      transform: scale(1.05);
+    }
+
+    .ios-interactive:active {
+      transform: scale(0.95);
+    }

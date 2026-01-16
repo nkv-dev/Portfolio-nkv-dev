@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="nav/nav.css">
   <link rel="stylesheet" href="about-me/about.css">
+  <link rel="stylesheet" href="projects/projects.css">
 </head>
 
 <body>
@@ -234,8 +235,26 @@
   <!-- PROJECTS -->
   <section class="section" id="projects">
     <div class="container">
-      <h2>Projects</h2>
-      <p>Here are some of my projects...</p>
+      <!-- Section Header -->
+      <div class="text-center">
+        <span class="section-tag">PROJECTS</span>
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">
+          A collection of my work spanning web development, hardware projects, and software tools.
+        </p>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="projects-grid" id="projectsContainer">
+        <!-- Projects will be dynamically loaded here -->
+      </div>
+
+      <!-- Load More Button -->
+      <div class="load-more-container">
+        <button class="load-more-btn" id="loadMoreBtn">
+          Load More Projects
+        </button>
+      </div>
     </div>
   </section>
 
@@ -254,6 +273,7 @@
   <script src="nav/nav.js"></script>
   <script src="script.js"></script>
   <script src="about-me/about.js"></script>
+  <script src="projects/projects.js"></script>
 </body>
 
 </html>

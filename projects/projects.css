@@ -1,0 +1,345 @@
+/* ================= PROJECTS SECTION ================= */
+
+/* Section Header */
+#projects .text-center {
+  margin-bottom: 60px;
+}
+
+#projects .section-tag {
+  color: #00ffd5;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+#projects .section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 15px 0 20px 0;
+  color: #fff;
+}
+
+#projects .section-subtitle {
+  font-size: 1.1rem;
+  color: #aaa;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Project Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+/* Project Card */
+.project-card {
+  background: #1a1a1a;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #333;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.project-card:nth-child(1) { animation-delay: 0.1s; }
+.project-card:nth-child(2) { animation-delay: 0.2s; }
+.project-card:nth-child(3) { animation-delay: 0.3s; }
+.project-card:nth-child(4) { animation-delay: 0.4s; }
+.project-card:nth-child(5) { animation-delay: 0.5s; }
+.project-card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 255, 213, 0.2);
+  border-color: #00ffd5;
+}
+
+/* Project Card Header */
+.project-header {
+  padding: 25px 25px 15px 25px;
+}
+
+.project-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.project-category {
+  display: inline-block;
+  padding: 5px 12px;
+  background: #00ffd5;
+  color: #000;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+}
+
+.project-category.web { background: #4CAF50; color: #fff; }
+.project-category.hardware { background: #FF9800; color: #fff; }
+.project-category.software { background: #2196F3; color: #fff; }
+
+.project-description {
+  color: #ccc;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* Project Content */
+.project-content {
+  padding: 0 25px 20px 25px;
+}
+
+.project-problem {
+  margin-bottom: 15px;
+}
+
+.problem-label {
+  color: #00ffd5;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.problem-text {
+  color: #aaa;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.project-features {
+  margin-bottom: 20px;
+}
+
+.features-label {
+  color: #00ffd5;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.features-list li {
+  color: #bbb;
+  font-size: 0.85rem;
+  margin-bottom: 5px;
+  padding-left: 15px;
+  position: relative;
+}
+
+.features-list li:before {
+  content: "▸";
+  color: #00ffd5;
+  position: absolute;
+  left: 0;
+}
+
+/* Tech Stack */
+.project-tech {
+  margin-bottom: 20px;
+}
+
+.tech-label {
+  color: #00ffd5;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.tech-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tech-badge {
+  background: #2a2a2a;
+  color: #ddd;
+  padding: 4px 10px;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  border: 1px solid #444;
+}
+
+/* Project Footer */
+.project-footer {
+  padding: 20px 25px;
+  background: #222;
+  border-top: 1px solid #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-date {
+  color: #888;
+  font-size: 0.8rem;
+}
+
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: #333;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  border: 1px solid #444;
+}
+
+.github-link:hover {
+  background: #00ffd5;
+  color: #000;
+  transform: scale(1.05);
+  border-color: #00ffd5;
+}
+
+.github-link i {
+  font-size: 1rem;
+}
+
+/* Load More Button */
+.load-more-container {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.load-more-btn {
+  padding: 12px 30px;
+  background: transparent;
+  color: #00ffd5;
+  border: 2px solid #00ffd5;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.load-more-btn:hover {
+  background: #00ffd5;
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 255, 213, 0.3);
+}
+
+.load-more-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-color: #666;
+  color: #666;
+}
+
+/* Hidden projects initially */
+.project-card.hidden {
+  display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .projects-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+  }
+  
+  #projects .section-title {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  #projects .section-title {
+    font-size: 2rem;
+  }
+  
+  #projects .section-subtitle {
+    font-size: 1rem;
+  }
+  
+  .project-header {
+    padding: 20px 20px 12px 20px;
+  }
+  
+  .project-content {
+    padding: 0 20px 18px 20px;
+  }
+  
+  .project-footer {
+    padding: 15px 20px;
+  }
+  
+  .project-title {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #projects .text-center {
+    margin-bottom: 40px;
+  }
+  
+  #projects .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .projects-grid {
+    gap: 15px;
+  }
+  
+  .project-header {
+    padding: 15px 15px 10px 15px;
+  }
+  
+  .project-content {
+    padding: 0 15px 15px 15px;
+  }
+  
+  .project-footer {
+    padding: 12px 15px;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .github-link {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .load-more-btn {
+    padding: 10px 25px;
+    font-size: 0.9rem;
+  }
+}
