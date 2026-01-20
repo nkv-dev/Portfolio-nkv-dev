@@ -1,11 +1,9 @@
-{
-  "name": "nitesh-portfolio",
-  "compatibility_date": "2026-01-20",
-  "assets": {
-    "directory": "."
-  },
-  "build": {
-    "command": "",
-    "cwd": "."
-  }
-}
+name = "nitesh-portfolio"
+compatibility_date = "2026-01-20"
+
+[assets]
+directory = "."
+
+[build]
+command = ""
+cwd = "."
