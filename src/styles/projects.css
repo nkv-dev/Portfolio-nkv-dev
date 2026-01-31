@@ -138,12 +138,12 @@
 /* Individual Status Colors with explicit text colors */
 .status-active { background: #4CAF50; color: #fff; }
 .status-completed { background: #2196F3; color: #fff; }
-.status-beta { background: #FFC107; color: #000; }
-.status-planned { background: #9C27B0; color: #fff; }
-.status-onhold { background: #9E9E9E; color: #fff; }
-.status-maintenance { background: #FF9800; color: #fff; }
-.status-archived { background: #607D8B; color: #fff; }
-.status-deprecated { background: #F44336; color: #fff; }
+.status-beta { background: #FF8F00; color: #fff; }
+.status-planned { background: #7B1FA2; color: #fff; }
+.status-onhold { background: #616161; color: #fff; }
+.status-maintenance { background: #EF6C00; color: #fff; }
+.status-archived { background: #455A64; color: #fff; }
+.status-deprecated { background: #D32F2F; color: #fff; }
 
 
 
