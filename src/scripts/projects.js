@@ -1,5 +1,5 @@
 // Projects Section Functionality
-document.addEventListener('DOMContentLoaded', function() {
+(function() {
     // Sample project data
     const projectsData = [
         {
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 color: "#2196F3"
             }
         },
-{
+        {
             id: 4,
             title: "Lazerlight Security System",
             category: "hardware",
@@ -643,7 +643,11 @@ features: [
     }
     
     // Initialize when DOM is loaded
-    initProjects();
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initProjects);
+    } else {
+        initProjects();
+    }
     
     // Expose functions for potential external use
     window.projectsModule = {
@@ -651,4 +655,4 @@ features: [
         renderProjects,
         projectsData
     };
-});
+})();
