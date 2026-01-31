@@ -258,8 +258,75 @@
   transition: transform 0.1s ease;
 }
 
+/* Live Link Button */
+.live-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: var(--tech-primary);
+  color: #000;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 1px solid var(--tech-glow-bright);
+  min-height: 44px;
+  -webkit-tap-highlight-color: rgba(0, 255, 213, 0.1);
+}
+
+.live-link:hover {
+  background: var(--tech-secondary);
+  transform: scale(1.05);
+  border-color: var(--tech-primary);
+  box-shadow: 0 4px 12px rgba(0, 255, 213, 0.3);
+}
+
+.live-link:active {
+  transform: scale(0.95);
+  transition: transform 0.1s ease;
+}
+
+.live-link i {
+  font-size: 1rem;
+}
+
+/* Enhanced GitHub Link for Live Button Support */
+.project-links {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.github-link {
+  padding: 12px 16px;
+}
+
 .github-link i {
   font-size: 1rem;
+}
+
+/* Mobile Responsive Footer */
+@media (max-width: 768px) {
+  .project-footer {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .project-links {
+    width: 100%;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .live-link,
+  .github-link {
+    width: 100%;
+    justify-content: center;
+    min-height: 48px;
+  }
 }
 
 /* Load More Button */

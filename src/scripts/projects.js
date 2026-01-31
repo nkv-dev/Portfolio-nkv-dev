@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ],
             techStack: ["Node.js", "Express.js", "Render Platform", "Cryptographic Libraries", "HTML5", "CSS3", "JavaScript", "npm"],
             githubUrl: "https://github.com/nkv-dev/password-entropy",
+            liveUrl: "https://nkvdevtool.onrender.com/",
             date: "2026-01"
         },
         {
@@ -160,10 +161,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 <div class="project-footer">
                     <span class="project-date">${project.date}</span>
-                    <a href="${project.githubUrl}" target="_blank" class="github-link">
-                        <i class="bi bi-github"></i>
-                        View Code
-                    </a>
+                    <div class="project-links">
+                        ${project.liveUrl ? `
+                            <a href="${project.liveUrl}" target="_blank" class="live-link">
+                                <i class="bi bi-globe"></i>
+                                View Live
+                            </a>` : ''}
+                        <a href="${project.githubUrl}" target="_blank" class="github-link">
+                            <i class="bi bi-github"></i>
+                            View Code
+                        </a>
+                    </div>
                 </div>
             </div>
         `;
