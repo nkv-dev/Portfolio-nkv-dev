@@ -57,22 +57,24 @@ document.addEventListener('DOMContentLoaded', function() {
             liveUrl: "https://nkvdevtool.onrender.com/",
             date: "2026-01"
         },
-        {
+{
             id: 4,
-            title: "Weather Dashboard",
-            category: "web",
-            description: "Real-time weather dashboard with forecasts, historical data, and interactive maps.",
-            problem: "Weather apps were too complex or lacked specific data visualization.",
-            solution: "Built dashboard with customizable widgets and historical trends.",
+            title: "Lazerlight Security System",
+            category: "hardware",
+            description: "Arduino laser security system with Bluetooth HC-05 for college final year project.",
+            problem: "Needed security system for college project with laser control and Bluetooth alerts.",
+            solution: "Built multi-sensor security system with Arduino, Bluetooth communication, and terminal interface.",
             features: [
-                "Real-time weather data with forecasts",
-                "Interactive weather maps with historical data",
-                "Customizable widgets with alerts system",
-                "Historical trend analysis visualization"
+                "Arduino-based laser control system with photo-resistor detection",
+                "Bluetooth HC-05 module for wireless communication and alerts",
+                "One-month development timeline using millis() timing",
+                "College final year project for B.Sc. HND, OND submission",
+                "Terminal alert system via Bluetooth to mobile devices",
+                "Multi-sensor integration with security automation"
             ],
-            techStack: ["React", "Chart.js", "OpenWeather API", "Mapbox"],
-            githubUrl: "https://github.com/username/weather-dashboard",
-            date: "2023-07"
+            techStack: ["Arduino", "Bluetooth HC-05", "Laser Module", "Photo-Resistor", "LED", "UART Communication", "C++"],
+            githubUrl: "https://github.com/nkv-dev/Lazerlight_security_system_arduino",
+            date: "2022-09"
         },
         {
             id: 5,
