@@ -62,16 +62,15 @@ document.addEventListener('DOMContentLoaded', function() {
             title: "Lazerlight Security System",
             category: "hardware",
             description: "12th CBSE science exhibition project featuring laser security system with Bluetooth alerts.",
-            problem: "Needed interactive science demonstration project for 12th grade CBSE exhibition.",
-            solution: "Built Arduino-based security system with laser control and mobile device integration.",
-            features: [
-                "Arduino-based laser security system with photo-resistor detection",
-                "Bluetooth HC-05 module for wireless communication and alerts",
-                "12th CBSE science exhibition demonstration project",
-                "Mobile device integration for remote monitoring and alerts",
-                "Interactive science fair project with live laser demonstrations"
+            problem: "Needed working laser demonstration system for 12th grade CBSE science exhibition.",
+            solution: "Built interactive laser security system with working demonstrations and audience engagement.",
+features: [
+                "Arduino-based LED laser control system with working demonstrations",
+                "Bluetooth HC-05 module for wireless control and monitoring",
+                "12th CBSE science exhibition project with interactive laser security",
+                "Mobile device integration for remote system operation"
             ],
-            techStack: ["Arduino-compatible", "Bluetooth HC-05", "Laser Module", "Photo-Resistor", "LED", "UART Communication", "C++"],
+            techStack: ["Arduino", "Bluetooth HC-05", "Laser Module", "LED", "C++"],
             githubUrl: "https://github.com/nkv-dev/Lazerlight_security_system_arduio",
             date: "2022-11"
         },
