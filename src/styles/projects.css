@@ -116,8 +116,6 @@
 
 .project-status {
   gap: 6px;
-  transition: all 0.3s ease;
-  cursor: help;
   min-height: 32px;
 }
 
@@ -147,11 +145,7 @@
 .status-archived { background: #607D8B; color: #fff; }
 .status-deprecated { background: #F44336; color: #fff; }
 
-/* Status Hover Effects */
-.project-status:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
+
 
 /* Mobile: Consistent scaling for both badges */
 @media (max-width: 768px) {
