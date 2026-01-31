@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
             title: "Lazerlight Security System",
             category: "hardware",
             description: "12th CBSE science exhibition project featuring laser security system with Bluetooth alerts.",
-            problem: "Needed working laser demonstration system for 12th grade CBSE science exhibition.",
+            problem: "Needed interactive science demonstration project for 12th grade CBSE exhibition.",
             solution: "Built interactive laser security system with working demonstrations and audience engagement.",
 features: [
                 "Arduino-based LED laser control system with working demonstrations",
