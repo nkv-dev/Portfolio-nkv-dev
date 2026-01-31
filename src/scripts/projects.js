@@ -61,15 +61,15 @@ document.addEventListener('DOMContentLoaded', function() {
             id: 4,
             title: "Lazerlight Security System",
             category: "hardware",
-            description: "Arduino laser security system built for CEBA B.Sc. HND final year project.",
-            problem: "Needed security system for college project with laser control and Bluetooth alerts.",
-            solution: "Built multi-sensor security system with Arduino, Bluetooth communication, and terminal interface.",
+            description: "12th CBSE science exhibition project featuring laser security system with Bluetooth alerts.",
+            problem: "Needed interactive science demonstration project for 12th grade CBSE exhibition.",
+            solution: "Built Arduino-based security system with laser control and mobile device integration.",
             features: [
-                "Arduino-based laser control system with photo-resistor detection",
+                "Arduino-based laser security system with photo-resistor detection",
                 "Bluetooth HC-05 module for wireless communication and alerts",
-                "CEBA B.Sc. HND final year project submission",
-                "Terminal alert system via Bluetooth to mobile devices",
-                "Multi-sensor integration with security automation"
+                "12th CBSE science exhibition demonstration project",
+                "Mobile device integration for remote monitoring and alerts",
+                "Interactive science fair project with live laser demonstrations"
             ],
             techStack: ["Arduino", "Bluetooth HC-05", "Laser Module", "Photo-Resistor", "LED", "UART Communication", "C++"],
             githubUrl: "https://github.com/nkv-dev/Lazerlight_security_system_arduino",
