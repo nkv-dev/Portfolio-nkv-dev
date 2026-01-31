@@ -127,6 +127,9 @@
       height: 44px; /* iOS tap target */
       border-radius: 12px;
       min-width: 44px; /* Ensure minimum touch target */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
     }
 
     /* Enhanced touch targets for mobile */

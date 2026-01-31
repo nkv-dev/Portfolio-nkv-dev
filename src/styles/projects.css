@@ -244,6 +244,9 @@
   border: 1px solid #444;
   min-height: 44px;
   -webkit-tap-highlight-color: rgba(0, 255, 213, 0.1);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 .github-link:hover {
@@ -274,13 +277,15 @@
   border: 1px solid var(--tech-glow-bright);
   min-height: 44px;
   -webkit-tap-highlight-color: rgba(0, 255, 213, 0.1);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 .live-link:hover {
   background: var(--tech-secondary);
   transform: scale(1.05);
   border-color: var(--tech-primary);
-  box-shadow: 0 4px 12px rgba(0, 255, 213, 0.3);
 }
 
 .live-link:active {
@@ -421,6 +426,9 @@
   min-height: 50px;
   min-width: 200px;
   -webkit-tap-highlight-color: rgba(239, 68, 68, 0.1);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 .load-more-btn:hover {
