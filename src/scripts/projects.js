@@ -42,17 +42,18 @@ document.addEventListener('DOMContentLoaded', function() {
             id: 3,
             title: "Password Entropy Tool",
             category: "software",
-            description: "Web-based password strength analyzer with entropy calculation and secure generator.",
-            problem: "Needed accurate tool to assess password randomness and crack resistance.",
-            solution: "Built real-time analyzer with crack time estimation and security recommendations.",
+            description: "Deployed web tool for password entropy analysis with secure generation.",
+            problem: "Needed production-ready password security tool with live deployment.",
+            solution: "Built real-time analyzer with Render hosting and performance optimizations.",
             features: [
                 "Real-time entropy calculation using multiple scoring algorithms",
                 "Password strength scoring with visual indicators (0-100+ range)",
                 "Brute force time estimation under different attack scenarios", 
                 "Secure password generator with target entropy levels",
+                "Render hosting with production optimizations",
                 "Dark/light theme toggle with responsive design"
             ],
-            techStack: ["Node.js", "Express.js", "Cryptographic Libraries", "HTML5", "CSS3", "JavaScript", "npm"],
+            techStack: ["Node.js", "Express.js", "Render Platform", "Cryptographic Libraries", "HTML5", "CSS3", "JavaScript", "npm"],
             githubUrl: "https://github.com/nkv-dev/password-entropy",
             date: "2026-01"
         },
