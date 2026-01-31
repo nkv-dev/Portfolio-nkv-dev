@@ -71,8 +71,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Mobile device integration for remote monitoring and alerts",
                 "Interactive science fair project with live laser demonstrations"
             ],
-            techStack: ["Arduino", "Bluetooth HC-05", "Laser Module", "Photo-Resistor", "LED", "UART Communication", "C++"],
-            githubUrl: "https://github.com/nkv-dev/Lazerlight_security_system_arduino",
+            techStack: ["Arduino-compatible", "Bluetooth HC-05", "Laser Module", "Photo-Resistor", "LED", "UART Communication", "C++"],
+            githubUrl: "https://github.com/nkv-dev/Lazerlight_security_system_arduio",
             date: "2022-11"
         },
         {
