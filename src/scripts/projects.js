@@ -42,16 +42,15 @@ document.addEventListener('DOMContentLoaded', function() {
             id: 3,
             title: "Password Entropy Tool",
             category: "software",
-            description: "Password security analyzer with entropy calculation and secure generator.",
+            description: "Password security analyzer with entropy calculation and generator.",
             problem: "Needed production-ready password security tool with live deployment.",
-            solution: "Built real-time analyzer with Render hosting and optimizations.",
+            solution: "Built analyzer with Render hosting and performance optimizations.",
             features: [
-                "Real-time entropy calculation using multiple scoring algorithms",
-                "Password strength scoring with visual indicators (0-100+ range)",
-                "Brute force time estimation under different attack scenarios", 
+                "Real-time entropy calculation using scoring algorithms",
+                "Password strength scoring with visual indicators",
+                "Brute force time estimation under different attacks", 
                 "Secure password generator with target entropy levels",
-                "Render hosting with production optimizations",
-                "Dark/light theme toggle with responsive design"
+                "Render hosting with production optimizations"
             ],
             techStack: ["Node.js", "Express.js", "Docker", "ZXCVBN.js", "Render Platform", "HTML5", "CSS3", "JavaScript"],
             githubUrl: "https://github.com/nkv-dev/password-entropy",
@@ -63,13 +62,13 @@ document.addEventListener('DOMContentLoaded', function() {
             title: "Weather Dashboard",
             category: "web",
             description: "Real-time weather dashboard with forecasts, historical data, and interactive maps.",
-            problem: "Weather apps were too complex or lacked the specific data visualization needed.",
-            solution: "Built dashboard with customizable widgets, historical trends, and weather alert system.",
+            problem: "Weather apps were too complex or lacked specific data visualization.",
+            solution: "Built dashboard with customizable widgets and historical trends.",
             features: [
-                "Real-time weather data",
-                "Interactive weather maps",
-                "Historical trend analysis",
-                "Custom weather alerts"
+                "Real-time weather data with forecasts",
+                "Interactive weather maps with historical data",
+                "Customizable widgets with alerts system",
+                "Historical trend analysis visualization"
             ],
             techStack: ["React", "Chart.js", "OpenWeather API", "Mapbox"],
             githubUrl: "https://github.com/username/weather-dashboard",
