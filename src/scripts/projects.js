@@ -42,9 +42,9 @@ document.addEventListener('DOMContentLoaded', function() {
             id: 3,
             title: "Password Entropy Tool",
             category: "software",
-            description: "Deployed web tool for password entropy analysis with secure generation.",
+            description: "Password security analyzer with entropy calculation and secure generator.",
             problem: "Needed production-ready password security tool with live deployment.",
-            solution: "Built real-time analyzer with Render hosting and performance optimizations.",
+            solution: "Built real-time analyzer with Render hosting and optimizations.",
             features: [
                 "Real-time entropy calculation using multiple scoring algorithms",
                 "Password strength scoring with visual indicators (0-100+ range)",
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Render hosting with production optimizations",
                 "Dark/light theme toggle with responsive design"
             ],
-            techStack: ["Node.js", "Express.js", "Render Platform", "Cryptographic Libraries", "HTML5", "CSS3", "JavaScript", "npm"],
+            techStack: ["Node.js", "Express.js", "Docker", "ZXCVBN.js", "Render Platform", "HTML5", "CSS3", "JavaScript"],
             githubUrl: "https://github.com/nkv-dev/password-entropy",
             liveUrl: "https://nkvdevtool.onrender.com/",
             date: "2026-01"
