@@ -40,20 +40,21 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             id: 3,
-            title: "Task Management CLI",
+            title: "Password Entropy Tool",
             category: "software",
-            description: "Command-line tool for task management with priorities, deadlines, and project organization.",
-            problem: "Needed lightweight, fast task manager that works offline and integrates with development workflow.",
-            solution: "Built CLI tool with keyboard shortcuts, data persistence, and customizable workflows.",
+            description: "Web-based password strength analyzer with entropy calculation and secure generator.",
+            problem: "Needed accurate tool to assess password randomness and crack resistance.",
+            solution: "Built real-time analyzer with crack time estimation and security recommendations.",
             features: [
-                "Keyboard-driven interface",
-                "Local data persistence",
-                "Project categorization",
-                "Multiple export formats"
+                "Real-time entropy calculation using multiple scoring algorithms",
+                "Password strength scoring with visual indicators (0-100+ range)",
+                "Brute force time estimation under different attack scenarios", 
+                "Secure password generator with target entropy levels",
+                "Dark/light theme toggle with responsive design"
             ],
-            techStack: ["Python", "Click", "SQLite", "Rich"],
-            githubUrl: "https://github.com/username/task-cli",
-            date: "2023-09"
+            techStack: ["Node.js", "Express.js", "Cryptographic Libraries", "HTML5", "CSS3", "JavaScript", "npm"],
+            githubUrl: "https://github.com/nkv-dev/password-entropy",
+            date: "2026-01"
         },
         {
             id: 4,
