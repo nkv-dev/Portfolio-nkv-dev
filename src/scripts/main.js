@@ -59,20 +59,13 @@ if (video) {
   const isDataSaver = navigator.connection && navigator.connection.saveData;
   
   // Available videos: pc.mp4, drifting.mp4, army.mp4, coding_website.mp4, eletronics.mp4
-  const playlist = isMobile || isDataSaver ? [
-    // Optimized for mobile - shorter clips to save data
-    { src: "assets/pc.mp4", start: 0, end: 5 },
-    { src: "assets/drifting.mp4", start: 0, end: 4 },
-    { src: "assets/coding_website.mp4", start: 0, end: 4 },
-    { src: "assets/eletronics.mp4", start: 0, end: 4 },
-    { src: "assets/army.mp4", start: 0, end: 3 }
-  ] : [
-    // Full desktop experience - longer clips
-    { src: "assets/pc.mp4", start: 0, end: 8 },
-    { src: "assets/drifting.mp4", start: 0, end: 6 },
-    { src: "assets/coding_website.mp4", start: 0, end: 6 },
-    { src: "assets/eletronics.mp4", start: 0, end: 6 },
-    { src: "assets/army.mp4", start: 0, end: 5 }
+  // Shorter clips for continuous seamless looping (2-3 seconds each)
+  const playlist = [
+    { src: "assets/pc.mp4", start: 0, end: 3 },
+    { src: "assets/drifting.mp4", start: 0, end: 2 },
+    { src: "assets/coding_website.mp4", start: 0, end: 2 },
+    { src: "assets/eletronics.mp4", start: 0, end: 2 },
+    { src: "assets/army.mp4", start: 0, end: 2 }
   ];
 
   let currentIndex = 0;
@@ -84,9 +77,8 @@ if (video) {
     
     const v = playlist[currentIndex];
 
-    // Fade out current video
-    video.style.transition = 'opacity 0.3s ease';
-    video.style.opacity = '0.7';
+    // Quick transition - no fade for continuous feel
+    video.style.opacity = '0.95';
 
     setTimeout(() => {
       video.pause();
@@ -96,29 +88,33 @@ if (video) {
 
       const onLoaded = () => {
         video.currentTime = v.start;
-        video.style.opacity = '0';
+        video.style.opacity = '1';
         
-        // Mobile optimizations
-        if (isMobile) {
-          video.playbackRate = 0.9;
-          video.setAttribute('playsinline', '');
-        }
-        
+        // Ensure continuous playback
         video.play().then(() => {
-          // Fade in after play starts
-          setTimeout(() => {
-            video.style.opacity = '1';
-            isTransitioning = false;
-          }, 100);
-        }).catch(() => {
           isTransitioning = false;
+        }).catch((err) => {
+          console.warn('Video play failed:', err);
+          isTransitioning = false;
+          // Try next video immediately
+          currentIndex = (currentIndex + 1) % playlist.length;
+          setTimeout(playCurrentVideo, 100);
         });
         
         video.removeEventListener("loadedmetadata", onLoaded);
       };
 
       video.addEventListener("loadedmetadata", onLoaded);
-    }, 300);
+      
+      // Timeout fallback if loadedmetadata doesn't fire
+      setTimeout(() => {
+        if (isTransitioning) {
+          isTransitioning = false;
+          currentIndex = (currentIndex + 1) % playlist.length;
+          playCurrentVideo();
+        }
+      }, 3000);
+    }, 50);
   }
 
   video.addEventListener("timeupdate", () => {
@@ -140,14 +136,18 @@ if (video) {
     }
   });
 
-  // Handle visibility changes (pause when tab hidden)
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      video.pause();
-    } else {
+  // Ensure continuous playback - restart if paused unexpectedly
+  video.addEventListener('pause', () => {
+    if (!isTransitioning && video.currentTime < playlist[currentIndex].end - 0.5) {
       video.play().catch(() => {});
     }
   });
+
+  // Auto-play on page load and ensure it stays playing
+  video.setAttribute('autoplay', '');
+  video.setAttribute('loop', '');
+  video.muted = true;
+  video.playsInline = true;
 
   playCurrentVideo();
 }
