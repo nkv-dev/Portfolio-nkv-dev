@@ -88,22 +88,92 @@
   margin-bottom: 10px;
 }
 
-.project-category {
-  display: inline-block;
+.project-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+/* Shared base styles for both category and status badges */
+.project-category,
+.project-status {
+  display: inline-flex;
+  align-items: center;
   padding: 5px 12px;
-  background: var(--tech-primary);
-  color: #000;
   border-radius: 20px;
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 15px;
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+
+.project-category {
+  background: var(--tech-primary);
+  color: #000;
+}
+
+.project-status {
+  gap: 6px;
+  min-height: 32px;
 }
 
 .project-category.web { background: #4CAF50; color: #fff; }
 .project-category.hardware { background: #FF9800; color: #fff; }
 .project-category.software { background: #2196F3; color: #fff; }
+
+.status-icon {
+  font-size: 0.8rem;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.status-text {
+  font-size: 0.75rem; /* Match parent badge font size */
+  color: #fff;
+  line-height: 1;
+}
+
+/* Individual Status Colors with explicit text colors */
+.status-active { background: #4CAF50; color: #fff; }
+.status-completed { background: #2196F3; color: #fff; }
+.status-beta { background: #FF8F00; color: #fff; }
+.status-planned { background: #7B1FA2; color: #fff; }
+.status-onhold { background: #616161; color: #fff; }
+.status-maintenance { background: #EF6C00; color: #fff; }
+.status-archived { background: #455A64; color: #fff; }
+.status-deprecated { background: #D32F2F; color: #fff; }
+
+
+
+/* Mobile: Consistent scaling for both badges */
+@media (max-width: 768px) {
+  .project-badges {
+    gap: 6px;
+  }
+  
+  .project-category,
+  .project-status {
+    padding: 4px 10px;
+    font-size: 0.7rem;
+    min-height: 28px;
+    letter-spacing: 0.3px;
+  }
+  
+  .project-status {
+    gap: 0; /* Remove gap since icon is hidden */
+  }
+  
+  .status-icon {
+    display: none; /* Hide icon on mobile */
+  }
+  
+  .status-text {
+    font-size: 0.7rem; /* Match parent badge size */
+    line-height: 1;
+  }
+}
 
 .project-description {
   color: #ccc;
