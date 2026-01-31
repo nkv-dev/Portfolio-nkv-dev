@@ -181,6 +181,9 @@ document.addEventListener('DOMContentLoaded', function() {
     function renderProjects() {
         if (!projectsContainer) return;
         
+        console.log('Projects Data:', projectsData);
+        console.log('Currently Displayed:', currentlyDisplayed);
+        
         let html = '';
         
         for (let i = 0; i < Math.min(currentlyDisplayed, projectsData.length); i++) {
