@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             id: 3,
             title: "Password Entropy Tool",
-            category: "software",
+            category: ["software", "web"],
             description: "Password security analyzer with entropy calculation and generator.",
             problem: "Needed production-ready password security tool with live deployment.",
             solution: "Built analyzer with Render hosting and performance optimizations.",
