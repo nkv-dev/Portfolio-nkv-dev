@@ -22,20 +22,21 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             id: 2,
-            title: "Home Automation System",
+            title: "USB Keyboard to Macro Keyboard Converter",
             category: "hardware",
-            description: "IoT-based home automation system with ESP32 for remote appliance control and monitoring.",
-            problem: "Manual home appliance control was inefficient and inaccessible when away from home.",
-            solution: "Built IoT system with mobile app control, scheduling, and sensor-based automation.",
+            description: "Arduino-based converter that transforms USB keyboard into programmable macro keyboard.",
+            problem: "Needed hardware-level shortcuts for Linux desktop and development workflows.",
+            solution: "Built Arduino converter with custom firmware for Linux-optimized productivity macros.",
             features: [
-                "Mobile app control interface",
-                "Voice command integration", 
-                "Automated scheduling system",
-                "Energy consumption monitoring"
+                "USB keyboard input via Arduino USB Host Shield",
+                "Linux desktop integration with GNOME shortcuts (F1-F6)",
+                "Developer tools with VSCode productivity macros (F7-F12)",
+                "Non-blocking execution using millis() timing system",
+                "Ubuntu window management and terminal optimizations"
             ],
-            techStack: ["ESP32", "Arduino", "C++", "MQTT", "Blynk"],
-            githubUrl: "https://github.com/username/home-automation",
-            date: "2023-11"
+            techStack: ["Arduino Leonardo", "USB Host Shield", "USBHost Library", "Keyboard.h Library", "C++"],
+            githubUrl: "https://github.com/nkv-dev/USB-to-USB-key-converter-",
+            date: "2026-01"
         },
         {
             id: 3,
