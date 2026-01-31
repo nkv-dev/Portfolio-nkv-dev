@@ -6,18 +6,24 @@ document.addEventListener('DOMContentLoaded', function() {
             id: 1,
             title: "Portfolio Website",
             category: "web",
-            description: "A modern, responsive portfolio website showcasing personal projects and skills with smooth animations and interactions.",
-            problem: "Needed a professional online presence to showcase work to potential employers and clients.",
-            solution: "Built a responsive website with modern design, smooth animations, and modular architecture.",
+            description: "A modern, high-performance portfolio website showcasing technical skills across web development, embedded systems, and software engineering with advanced animations and user experience design.",
+            problem: "Required a comprehensive portfolio that demonstrates advanced frontend capabilities, modern web development practices, and technical proficiency across multiple domains while providing exceptional user experience.",
+            solution: "Developed a feature-rich portfolio leveraging advanced JavaScript animations, bubble physics engine, mobile touch interactions, performance optimizations, and deployment-ready architecture using modern web standards.",
             features: [
-                "Responsive design for all devices",
-                "Smooth scroll animations",
-                "Interactive project showcase",
-                "Contact form integration"
+                "Advanced bubble physics engine with interactive tech bubbles",
+                "Mobile-first responsive design with touch gestures & swipe support", 
+                "Performance optimizations (lazy loading, GPU acceleration, Core Web Vitals)",
+                "Semantic HTML5 structure with WCAG 2.1 AA accessibility compliance",
+                "Dark theme with neon red accent design system",
+                "Cloudflare Pages hosting with global CDN deployment",
+                "Modular JavaScript architecture with separated concerns",
+                "Video background system with playlist management",
+                "Typewriter effect for dynamic hero section",
+                "Pull-to-refresh and mobile gesture interactions"
             ],
-            techStack: ["HTML5", "CSS3", "JavaScript", "Bootstrap 5"],
-            githubUrl: "https://github.com/username/portfolio",
-            date: "2024-01"
+            techStack: ["HTML5", "CSS3", "JavaScript (ES6+)", "Bootstrap 5", "DevIcon CDN", "CSS Grid & Flexbox"],
+            githubUrl: "https://github.com/nkv-dev/Portfolio-nkv-dev",
+            date: "2026-01"
         },
         {
             id: 2,
