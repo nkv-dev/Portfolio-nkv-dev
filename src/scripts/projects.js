@@ -18,7 +18,14 @@ document.addEventListener('DOMContentLoaded', function() {
             ],
             techStack: ["HTML5", "CSS3", "JavaScript (ES6+)", "Bootstrap 5", "DevIcon CDN"],
             githubUrl: "https://github.com/nkv-dev/Portfolio-nkv-dev",
-            date: "2026-01"
+            date: "2026-01",
+            status: {
+                type: "active",
+                icon: "🟢",
+                text: "Active",
+                fullText: "Active Development",
+                color: "#4CAF50"
+            }
         },
         {
             id: 2,
@@ -36,7 +43,14 @@ document.addEventListener('DOMContentLoaded', function() {
             ],
             techStack: ["Arduino Leonardo", "USB Host Shield", "USBHost Library", "Keyboard.h Library", "C++"],
             githubUrl: "https://github.com/nkv-dev/USB-to-USB-key-converter-",
-            date: "2026-01"
+            date: "2026-01",
+            status: {
+                type: "completed",
+                icon: "🔵",
+                text: "Complete",
+                fullText: "Completed",
+                color: "#2196F3"
+            }
         },
         {
             id: 3,
@@ -55,7 +69,14 @@ document.addEventListener('DOMContentLoaded', function() {
             techStack: ["Node.js", "Express.js", "Docker", "ZXCVBN.js", "Render Platform", "HTML5", "CSS3", "JavaScript"],
             githubUrl: "https://github.com/nkv-dev/password-entropy",
             liveUrl: "https://nkvdevtool.onrender.com/",
-            date: "2026-01"
+            date: "2026-01",
+            status: {
+                type: "completed",
+                icon: "🔵",
+                text: "Complete",
+                fullText: "In Production",
+                color: "#2196F3"
+            }
         },
 {
             id: 4,
@@ -72,7 +93,14 @@ features: [
             ],
             techStack: ["Arduino", "Bluetooth HC-05", "Laser Module", "LED", "C++"],
             githubUrl: "https://github.com/nkv-dev/Lazerlight_security_system_arduio",
-            date: "2022-11"
+            date: "2022-11",
+            status: {
+                type: "archived",
+                icon: "📦",
+                text: "Archived",
+                fullText: "Archived Project",
+                color: "#607D8B"
+            }
         },
         {
             id: 5,
@@ -89,7 +117,14 @@ features: [
             ],
             techStack: ["Arduino", "ESP8266", "Sensors", "Blynk"],
             githubUrl: "https://github.com/username/plant-monitor",
-            date: "2023-05"
+            date: "2023-05",
+            status: {
+                type: "planned",
+                icon: "🟣",
+                text: "Planned",
+                fullText: "Planned Project",
+                color: "#9C27B0"
+            }
         },
         {
             id: 6,
@@ -106,7 +141,14 @@ features: [
             ],
             techStack: ["Python", "Tkinter", "OS Module", "Regex"],
             githubUrl: "https://github.com/username/file-organizer",
-            date: "2023-03"
+            date: "2023-03",
+            status: {
+                type: "maintenance",
+                icon: "🔧",
+                text: "Maintenance",
+                fullText: "Maintenance Mode",
+                color: "#FF9800"
+            }
         }
     ];
 
@@ -121,6 +163,7 @@ features: [
     // Create project card HTML
     function createProjectCard(project) {
         const categoryClass = project.category.toLowerCase();
+        const statusClass = `status-${project.status.type}`;
         const techBadges = project.techStack.map(tech => 
             `<span class="tech-badge">${tech}</span>`
         ).join('');
@@ -129,11 +172,22 @@ features: [
             `<li>${feature}</li>`
         ).join('');
         
+        // Create status badge HTML
+        const statusBadge = `
+            <span class="project-status ${statusClass}" title="${project.status.fullText}">
+                <span class="status-icon">${project.status.icon}</span>
+                <span class="status-text">${project.status.fullText}</span>
+            </span>
+        `;
+        
         return `
             <div class="project-card" data-category="${categoryClass}">
                 <div class="project-header">
                     <h3 class="project-title">${project.title}</h3>
-                    <span class="project-category ${categoryClass}">${project.category}</span>
+                    <div class="project-badges">
+                        <span class="project-category ${categoryClass}">${project.category}</span>
+                        ${statusBadge}
+                    </div>
                     <p class="project-description">${project.description}</p>
                 </div>
                 
