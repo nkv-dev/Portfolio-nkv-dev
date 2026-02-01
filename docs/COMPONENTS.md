@@ -540,7 +540,7 @@ Professional footer with navigation, social links, and back-to-top functionality
     </div>
     
     <div class="footer-bottom">
-      <p>© 2024 Nitesh Kumar Verma</p>
+      <p>© 2026 Nitesh Kumar Verma</p>
     </div>
   </div>
   

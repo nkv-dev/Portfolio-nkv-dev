@@ -163,5 +163,5 @@ See [Privacy Policy](PRIVACY.md) for details.
 
 ---
 
-**Last Updated**: February 2024  
+**Last Updated**: February 2026  
 **Policy Version**: 1.0
