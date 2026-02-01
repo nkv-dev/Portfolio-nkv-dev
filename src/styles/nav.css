@@ -64,8 +64,45 @@
     top: 0;
 }
 
+/* Desktop Navbar - Always visible horizontal layout */
+.navbar-collapse {
+    display: flex !important;
+}
+
+.navbar-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav-item {
+    display: flex;
+}
+
+/* Desktop hamburger hidden */
+.navbar-toggler {
+    display: none;
+}
+
 /* Mobile styles - simplified and optimized */
 @media (max-width: 768px) {
+    /* Override desktop styles for mobile */
+    .navbar-collapse {
+        display: none;
+    }
+    
+    .navbar-collapse.show {
+        display: block;
+    }
+    
+    .navbar-toggler {
+        display: flex;
+    }
+    
     .island-nav-wrapper {
         top: 15px;
         left: 20px;
