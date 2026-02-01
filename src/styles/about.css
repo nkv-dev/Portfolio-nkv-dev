@@ -160,6 +160,16 @@
     }
 
     /* ================= SOCIAL ICONS ================= */
+    .social-icons a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: var(--tech-primary, #ef4444);
+    }
+
     .social-icons i {
       font-size: 18px;
       opacity: 0.75;
