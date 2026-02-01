@@ -1,138 +1,123 @@
-
-/* Island Navbar */
+/* Island Navbar - Optimized */
 .island-nav-wrapper {
     position: fixed;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1000;
+    width: auto;
 }
 
 .island-navbar {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: rgba(20, 20, 20, 0.85);
     border-radius: 999px;
     padding: 10px 26px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.25);
-    border: 1px solid rgba(255,255,255,0.25);
+    border: 1px solid rgba(255,255,255,0.15);
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
-    will-change: auto;
+    will-change: transform;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .nav-link, .navbar-brand {
-    color: white !important;
+    color: white;
     font-weight: 500;
 }
 
 .nav-link:hover {
-    color: var(--tech-primary) !important;
+    color: var(--tech-primary);
 }
 
-/* Navbar blur when overlay is active */
-.island-navbar.blur-navbar {
-    opacity: 0.5;
-    filter: blur(5px);
-    pointer-events: none;
-    transition: opacity 0.35s ease, filter 0.35s ease;
+/* Active link state */
+.nav-link.active {
+    color: var(--tech-primary);
+    font-weight: 600;
 }
 
-/* Navbar blur when mobile menu is active */
-@media (max-width: 768px) {
-    .navbar-collapse.show ~ .navbar-toggler {
-        opacity: 0.7;
-    }
+/* Skip link for accessibility */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--tech-primary);
+    color: #000;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 1001;
+    border-radius: 0 0 4px 0;
+    font-weight: 600;
 }
 
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
+.skip-link:focus {
+    top: 0;
 }
 
-/* Mobile pill look */
+/* Mobile styles - simplified and optimized */
 @media (max-width: 768px) {
     .island-nav-wrapper {
         top: 15px;
-        left: 20px !important;
-        right: 20px !important;
-        transform: none !important;
-        width: calc(100% - 40px) !important;
+        left: 20px;
+        right: 20px;
+        transform: none;
+        width: calc(100% - 40px);
     }
     
     .island-navbar {
-        padding: 12px 20px !important;
-        border-radius: 24px !important;
-        width: 100% !important;
-        min-height: 60px !important; /* Ensure navbar has height */
-        display: flex !important;
-        justify-content: space-between !important;
-        align-items: center !important;
+        padding: 12px 20px;
+        border-radius: 24px;
+        width: 100%;
+        min-height: 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         position: relative;
     }
     
     .navbar-brand {
-        font-size: 1.1rem !important;
-        white-space: nowrap; /* Prevent brand name from wrapping */
+        font-size: 1.1rem;
+        white-space: nowrap;
     }
     
+    /* Hamburger button with Bootstrap icon */
     .navbar-toggler {
-        font-size: 1.2rem !important;
-        padding: 8px 12px !important;
-        border: none !important;
-        background: rgba(255,255,255,0.1) !important;
-        border-radius: 8px !important;
-        min-height: 40px !important;
-        min-width: 40px !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        color: white !important;
-        opacity: 1 !important;
-        transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-        transform: scale(1) !important;
-        cursor: pointer !important;
-        -webkit-tap-highlight-color: transparent !important;
-        position: relative !important;
-        overflow: hidden !important;
+        font-size: 1.2rem;
+        padding: 8px 12px;
+        border: none;
+        background: rgba(255,255,255,0.1);
+        border-radius: 8px;
+        min-height: 40px;
+        min-width: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        transition: transform 0.2s ease, background 0.2s ease;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .navbar-toggler:hover {
+        background: rgba(255,255,255,0.15);
     }
     
     .navbar-toggler:active {
-        transform: scale(0.95) !important;
-        background: rgba(255,255,255,0.2) !important;
-        transition: transform 0.1s ease-out !important;
+        transform: scale(0.95);
+        background: rgba(255,255,255,0.2);
     }
     
     .navbar-toggler:focus {
-        outline: none !important;
-        box-shadow: 0 0 0 2px rgba(255,255,255,0.3) !important;
+        outline: 2px solid rgba(255,255,255,0.3);
+        outline-offset: 2px;
     }
     
-    /* iOS-style ripple effect */
-    .navbar-toggler::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 0;
-        height: 0;
-        border-radius: 50%;
-        background: rgba(255,255,255,0.3);
-        transform: translate(-50%, -50%);
-        transition: width 0.3s ease, height 0.3s ease;
-        pointer-events: none;
-    }
-    
-    .navbar-toggler:active::before {
-        width: 100%;
-        height: 100%;
-    }
-    
-.navbar-nav {
+    /* Mobile menu dropdown */
+    .navbar-nav {
         text-align: center;
         padding: 15px 0;
-        background: #000;
+        background: rgba(20, 20, 20, 0.98);
         border-radius: 16px;
         margin-top: 10px;
         position: absolute;
@@ -141,184 +126,131 @@
         right: 0;
         opacity: 0;
         visibility: hidden;
-        transform: translateY(-20px) scale(0.95);
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
         box-shadow: 0 10px 40px rgba(0,0,0,0.3);
         border: 1px solid rgba(255,255,255,0.1);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
+        z-index: 999;
     }
     
     .nav-link {
-        padding: 15px 0 !important;
-        font-size: 1rem !important;
-        display: block !important;
-        color: white !important;
+        padding: 15px 20px;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        color: white;
         border-bottom: 1px solid rgba(255,255,255,0.1);
-        transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-        transform: translateX(0) !important;
-        position: relative !important;
-        overflow: hidden !important;
-        -webkit-tap-highlight-color: transparent !important;
+        transition: color 0.2s ease, background 0.2s ease;
+        position: relative;
+        margin: 0;
     }
     
     .nav-link:last-child {
-        border-bottom: none !important;
+        border-bottom: none;
     }
     
-    .nav-link:hover {
-        background: rgba(255,255,255,0.1) !important;
-        transform: translateX(5px) !important;
+    .nav-link:hover,
+    .nav-link:focus {
+        color: var(--tech-primary);
+        background: rgba(255,255,255,0.05);
     }
     
     .nav-link:active {
-        transform: translateX(3px) scale(0.98) !important;
-        background: rgba(255,255,255,0.15) !important;
-        transition: all 0.1s ease-out !important;
+        background: rgba(255,255,255,0.1);
     }
     
-    /* iOS-style subtle slide indicator */
-    .nav-link::before {
+    /* Active indicator for mobile */
+    .nav-link.active::before {
         content: '';
         position: absolute;
         left: 0;
         top: 50%;
         transform: translateY(-50%);
         width: 3px;
-        height: 0;
-        background: linear-gradient(45deg, var(--tech-primary), var(--tech-secondary));
+        height: 50%;
+        background: linear-gradient(180deg, var(--tech-primary), var(--tech-secondary));
         border-radius: 0 2px 2px 0;
-        transition: height 0.3s ease;
     }
     
-    .nav-link:hover::before {
-        height: 70%;
-    }
-    
-    /* Ripple effect for nav links */
-    .nav-link::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 0;
-        height: 0;
-        border-radius: 50%;
-        background: rgba(255,255,255,0.2);
-        transform: translate(-50%, -50%);
-        transition: width 0.4s ease, height 0.4s ease;
-        pointer-events: none;
-    }
-    
-    .nav-link:active::after {
-        width: 100%;
-        height: 100%;
-    }
-    
-/* Show menu when active */
+    /* Show menu when active */
     .navbar-collapse.show .navbar-nav {
         opacity: 1;
         visibility: visible;
-        transform: translateY(0) scale(1);
-        animation: menuBounceIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transform: translateY(0);
     }
     
-    @keyframes menuBounceIn {
-        0% {
-            transform: translateY(-20px) scale(0.95);
-            opacity: 0;
-        }
-        50% {
-            transform: translateY(5px) scale(1.02);
-            opacity: 1;
-        }
-        100% {
-            transform: translateY(0) scale(1);
-            opacity: 1;
-        }
-    }
-    
-    /* iOS-style menu item stagger animation */
+    /* Stagger animation for menu items */
     .navbar-collapse.show .nav-item {
-        animation: slideInStagger 0.3s ease-out forwards;
         opacity: 0;
-        transform: translateX(-20px);
+        animation: slideIn 0.3s ease forwards;
     }
     
     .navbar-collapse.show .nav-item:nth-child(1) { animation-delay: 0.05s; }
     .navbar-collapse.show .nav-item:nth-child(2) { animation-delay: 0.1s; }
     .navbar-collapse.show .nav-item:nth-child(3) { animation-delay: 0.15s; }
     .navbar-collapse.show .nav-item:nth-child(4) { animation-delay: 0.2s; }
+    .navbar-collapse.show .nav-item:nth-child(5) { animation-delay: 0.25s; }
     
-    @keyframes slideInStagger {
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
         to {
             opacity: 1;
             transform: translateX(0);
         }
     }
     
-    /* Enhanced touch targets for accessibility */
-    .nav-link {
-        min-height: 44px !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        padding: 18px 20px !important;
-        margin: 0 !important;
-    }
-    
-    /* Swipe gesture support */
+    /* Touch optimization */
     .navbar-nav {
-        touch-action: pan-y !important;
-        user-select: none !important;
-        -webkit-user-select: none !important;
+        touch-action: pan-y;
+        user-select: none;
+        -webkit-user-select: none;
     }
     
-    /* Haptic feedback simulation with visual feedback */
-    .nav-link:active,
-    .navbar-toggler:active {
-        background: rgba(255,255,255,0.2) !important;
-        box-shadow: inset 0 2px 4px rgba(0,0,0,0.2) !important;
+    /* Backdrop for mobile menu */
+    .navbar-collapse.show::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: -1;
+        opacity: 0;
+        animation: fadeIn 0.3s ease forwards;
     }
     
-    /* Improved accessibility focus states */
-    .nav-link:focus,
-    .navbar-toggler:focus {
-        outline: 2px solid var(--tech-focus) !important;
-        outline-offset: 2px !important;
+    @keyframes fadeIn {
+        to { opacity: 1; }
     }
     
-    /* Smooth transitions for menu close */
-    .navbar-collapse:not(.show) .navbar-nav {
-        animation: menuFadeOut 0.3s ease-in forwards;
+    /* Hide backdrop when menu closes */
+    .navbar-collapse:not(.show)::before {
+        display: none;
     }
     
-    @keyframes menuFadeOut {
-        from {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-        to {
-            opacity: 0;
-            transform: translateY(-20px) scale(0.95);
-        }
-    }
-    
-    .navbar-collapse.collapse {
-        display: none !important;
+    /* Collapse display states */
+    .navbar-collapse {
+        display: none;
     }
     
     .navbar-collapse.show {
-        display: block !important;
+        display: block;
     }
 }
 
+/* Smaller mobile screens */
 @media (max-width: 480px) {
     .island-nav-wrapper {
-        top: 10px !important;
-        left: 10px !important;
-        right: 10px !important;
-        width: calc(100% - 20px) !important;
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        width: calc(100% - 20px);
     }
     
     .island-navbar {
@@ -327,7 +259,7 @@
     }
     
     .navbar-brand {
-        font-size: 0.9rem !important;
+        font-size: 0.9rem;
     }
     
     .navbar-toggler {
@@ -336,7 +268,30 @@
     }
     
     .nav-link {
-        font-size: 0.9rem !important;
-        padding: 10px 0 !important;
+        font-size: 0.9rem;
+        padding: 12px 20px;
+    }
+}
+
+/* Focus visible for keyboard navigation */
+.nav-link:focus-visible,
+.navbar-toggler:focus-visible {
+    outline: 2px solid var(--tech-primary);
+    outline-offset: 2px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .island-navbar,
+    .navbar-nav,
+    .nav-link,
+    .navbar-toggler {
+        transition: none;
+        animation: none;
+    }
+    
+    .navbar-collapse.show .nav-item {
+        animation: none;
+        opacity: 1;
     }
 }
