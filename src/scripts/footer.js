@@ -8,15 +8,6 @@ function initBackToTop() {
   
   if (!backToTopButton) return;
   
-  // Show/hide button based on scroll position
-  window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 300) {
-      backToTopButton.classList.add('visible');
-    } else {
-      backToTopButton.classList.remove('visible');
-    }
-  });
-  
   // Smooth scroll to top when clicked
   backToTopButton.addEventListener('click', () => {
     window.scrollTo({
@@ -126,34 +117,6 @@ function updateCopyrightYear() {
   }
 }
 
-// Footer link active state
-function updateFooterActiveLink() {
-  const sections = document.querySelectorAll('section[id]');
-  const footerLinks = document.querySelectorAll('.footer-link[href^="#"]');
-  
-  function updateActiveLink() {
-    const scrollY = window.pageYOffset;
-    
-    sections.forEach(section => {
-      const sectionHeight = section.offsetHeight;
-      const sectionTop = section.offsetTop - 100;
-      const sectionId = section.getAttribute('id');
-      
-      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-        footerLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === `#${sectionId}`) {
-            link.classList.add('active');
-          }
-        });
-      }
-    });
-  }
-  
-  window.addEventListener('scroll', updateActiveLink);
-  updateActiveLink(); // Initial call
-}
-
 // Initialize footer functionality
 document.addEventListener('DOMContentLoaded', function() {
   initBackToTop();
@@ -161,7 +124,6 @@ document.addEventListener('DOMContentLoaded', function() {
   initFooterAnimations();
   initFooterSocialLinks();
   updateCopyrightYear();
-  updateFooterActiveLink();
 });
 
 // Add ripple effect styles

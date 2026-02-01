@@ -462,14 +462,9 @@
   100% { background-position: -200% 0; }
 }
 
-/* Enhanced mobile scrolling */
+/* Optimized mobile scrolling */
 .projects-grid {
   -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-}
-
-.project-card {
-  scroll-snap-align: start;
 }
 
 /* Mobile focus improvements */
@@ -550,7 +545,6 @@
   .projects-grid {
     grid-template-columns: 1fr;
     gap: 25px;
-    scroll-snap-type: y mandatory;
   }
   
   #projects .section-title {

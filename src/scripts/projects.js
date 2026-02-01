@@ -423,8 +423,9 @@ features: [
         currentPullY = e.touches[0].screenY;
         const pullDistance = currentPullY - pullStartY;
         
-        if (pullDistance > 0 && pullDistance < 200) {
-            e.preventDefault();
+        // Only prevent default and transform when actively pulling down at top
+        if (pullDistance > 0 && pullDistance < 200 && window.scrollY === 0) {
+            // Use CSS touch-action instead of preventDefault for better performance
             document.body.style.transform = `translateY(${pullDistance * 0.5}px)`;
         }
     }
@@ -475,9 +476,9 @@ features: [
             projectsContainer.addEventListener('touchend', handleTouchEnd, { passive: true });
         }
         
-        // Add pull-to-refresh
+        // Add pull-to-refresh with passive listeners for better scroll performance
         document.addEventListener('touchstart', handlePullStart, { passive: true });
-        document.addEventListener('touchmove', handlePullMove, { passive: false });
+        document.addEventListener('touchmove', handlePullMove, { passive: true });
         document.addEventListener('touchend', handlePullEnd, { passive: true });
     }
     

@@ -26,9 +26,10 @@ button, .btn, [role="button"] {
   text-rendering: optimizeLegibility;
 }
 
-/* Smooth scrolling for anchor links */
+/* Smooth scrolling - single declaration */
 html {
   scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* * HERO SECTION */ 
@@ -195,13 +196,13 @@ html {
     /* Mobile-specific global improvements */
     @media (max-width: 768px) {
       html {
-        scroll-behavior: smooth;
         -webkit-text-size-adjust: 100%;
       }
       
       body {
         -webkit-overflow-scrolling: touch;
-        overscroll-behavior-y: contain;
+        overscroll-behavior-y: none;
+        touch-action: pan-y;
       }
       
       /* Prevent zoom on input focus */
@@ -256,9 +257,9 @@ html {
       image-rendering: pixelated;
     }
     
-    /* Smooth scrolling everywhere */
-    html {
-      scroll-behavior: smooth;
+    /* Touch action optimization for better scroll performance */
+    body {
+      touch-action: pan-y;
     }
     
     /* Better focus states for accessibility */
