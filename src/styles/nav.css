@@ -20,28 +20,29 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.nav-link, .navbar-brand {
+.island-navbar .nav-link,
+.island-navbar .navbar-brand {
     color: white;
     font-weight: 500;
 }
 
-.nav-link:hover {
+.island-navbar .nav-link:hover {
     color: var(--tech-primary);
 }
 
 /* Click/tap state - must be red */
-.nav-link:active {
+.island-navbar .nav-link:active {
     color: var(--tech-primary);
 }
 
 /* Active link state (current section) */
-.nav-link.active {
+.island-navbar .nav-link.active {
     color: var(--tech-primary);
     font-weight: 600;
 }
 
 /* Ensure active link stays red even when clicked */
-.nav-link.active:active {
+.island-navbar .nav-link.active:active {
     color: var(--tech-primary);
 }
 
@@ -143,7 +144,7 @@
         z-index: 999;
     }
     
-    .nav-link {
+    .island-navbar .nav-link {
         padding: 15px 20px;
         font-size: 1rem;
         display: flex;
@@ -157,23 +158,23 @@
         margin: 0;
     }
     
-    .nav-link:last-child {
+    .island-navbar .nav-link:last-child {
         border-bottom: none;
     }
     
-    .nav-link:hover,
-    .nav-link:focus {
+    .island-navbar .nav-link:hover,
+    .island-navbar .nav-link:focus {
         color: var(--tech-primary);
         background: rgba(255,255,255,0.05);
     }
     
-    .nav-link:active {
+    .island-navbar .nav-link:active {
         color: var(--tech-primary);
         background: rgba(255,255,255,0.1);
     }
     
     /* Active indicator for mobile */
-    .nav-link.active::before {
+    .island-navbar .nav-link.active::before {
         content: '';
         position: absolute;
         left: 0;
