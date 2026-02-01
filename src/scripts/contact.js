@@ -58,7 +58,7 @@ function initContactForm() {
       if (response.ok) {
         // Success!
         form.style.display = 'none';
-        successMessage.style.display = 'block';
+        successMessage.style.display = 'flex';
         
         // Add confetti effect
         createConfetti();
@@ -79,7 +79,7 @@ function initContactForm() {
       }
     } catch (error) {
       console.error('Form error:', error);
-      errorMessage.style.display = 'block';
+      errorMessage.style.display = 'flex';
       submitBtn.disabled = false;
       btnText.style.display = 'inline';
       btnIcon.style.display = 'inline';
