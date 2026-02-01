@@ -50,10 +50,12 @@ typeEffect();
 
 /***************************
  * BACKGROUND VIDEO PLAYER
+ * Double Buffering - No Black Screen
  ***************************/
-const video = document.getElementById("bgVideo");
+const videoA = document.getElementById("bgVideo");
+const videoB = document.getElementById("bgVideo2");
 
-if (video) {
+if (videoA && videoB) {
   // Check for mobile and data saver mode
   const isMobile = window.innerWidth <= 768;
   const isDataSaver = navigator.connection && navigator.connection.saveData;
@@ -77,77 +79,157 @@ if (video) {
 
   let currentIndex = 0;
   let isTransitioning = false;
+  let activeVideo = videoA;  // Currently visible video
+  let nextVideo = videoB;    // Video loading next clip
 
-  function playCurrentVideo() {
+  // Initialize videos
+  videoA.style.zIndex = '-2';
+  videoA.style.opacity = '1';
+  videoB.style.zIndex = '-3';
+  videoB.style.opacity = '0';
+  videoA.muted = true;
+  videoB.muted = true;
+  videoA.playsInline = true;
+  videoB.playsInline = true;
+
+  function loadVideo(video, index) {
+    return new Promise((resolve, reject) => {
+      const v = playlist[index];
+      
+      const onLoaded = () => {
+        video.currentTime = v.start;
+        video.playbackRate = isMobile ? 0.9 : 1.0;
+        video.removeEventListener("loadedmetadata", onLoaded);
+        video.removeEventListener("error", onError);
+        resolve();
+      };
+      
+      const onError = (e) => {
+        video.removeEventListener("loadedmetadata", onLoaded);
+        video.removeEventListener("error", onError);
+        reject(e);
+      };
+      
+      video.addEventListener("loadedmetadata", onLoaded);
+      video.addEventListener("error", onError);
+      video.src = v.src;
+      video.load();
+    });
+  }
+
+  async function startPlayback() {
+    // Load first video into active video
+    await loadVideo(activeVideo, 0);
+    await activeVideo.play().catch(() => {});
+    
+    // Preload second video into next video
+    const nextIndex = (currentIndex + 1) % playlist.length;
+    loadVideo(nextVideo, nextIndex).catch(() => {});
+    
+    // Start monitoring time
+    monitorPlayback();
+  }
+
+  function monitorPlayback() {
+    const checkTime = () => {
+      if (isTransitioning) {
+        requestAnimationFrame(checkTime);
+        return;
+      }
+      
+      const v = playlist[currentIndex];
+      if (activeVideo.currentTime >= v.end) {
+        // Time to switch - next video should already be loaded
+        performTransition();
+      }
+      
+      requestAnimationFrame(checkTime);
+    };
+    
+    requestAnimationFrame(checkTime);
+  }
+
+  async function performTransition() {
     if (isTransitioning) return;
     isTransitioning = true;
     
-    const v = playlist[currentIndex];
-
-    // Fade out current video
-    video.style.transition = 'opacity 0.3s ease';
-    video.style.opacity = '0.7';
-
-    setTimeout(() => {
-      video.pause();
-      video.removeAttribute("src");
-      video.load();
-      video.src = v.src;
-
-      const onLoaded = () => {
-        video.currentTime = v.start;
-        video.style.opacity = '0';
-        
-        // Mobile optimizations
-        if (isMobile) {
-          video.playbackRate = 0.9;
-          video.setAttribute('playsinline', '');
-        }
-        
-        video.play().then(() => {
-          // Fade in after play starts
-          setTimeout(() => {
-            video.style.opacity = '1';
-            isTransitioning = false;
-          }, 100);
-        }).catch(() => {
-          isTransitioning = false;
-        });
-        
-        video.removeEventListener("loadedmetadata", onLoaded);
-      };
-
-      video.addEventListener("loadedmetadata", onLoaded);
-    }, 300);
+    // Ensure next video is ready to play
+    const nextIndex = (currentIndex + 1) % playlist.length;
+    
+    try {
+      // If next video not loaded yet, load it now
+      if (!nextVideo.src || nextVideo.src.indexOf(playlist[nextIndex].src) === -1) {
+        await loadVideo(nextVideo, nextIndex);
+      }
+      
+      // Start playing next video (still invisible)
+      await nextVideo.play().catch(() => {});
+      
+      // Crossfade: bring next video to front while active is still playing
+      nextVideo.style.zIndex = '-2';
+      activeVideo.style.zIndex = '-3';
+      
+      // Fade transition over 300ms
+      nextVideo.style.transition = 'opacity 0.3s ease';
+      activeVideo.style.transition = 'opacity 0.3s ease';
+      
+      nextVideo.style.opacity = '1';
+      activeVideo.style.opacity = '0';
+      
+      // Wait for transition to complete
+      await new Promise(resolve => setTimeout(resolve, 300));
+      
+      // Pause the old active video
+      activeVideo.pause();
+      
+      // Swap roles
+      const temp = activeVideo;
+      activeVideo = nextVideo;
+      nextVideo = temp;
+      
+      currentIndex = nextIndex;
+      isTransitioning = false;
+      
+      // Preload the next video in the background
+      const preloadIndex = (currentIndex + 1) % playlist.length;
+      loadVideo(nextVideo, preloadIndex).catch(() => {});
+      
+    } catch (err) {
+      console.warn('Transition failed:', err);
+      isTransitioning = false;
+      // Skip to next video
+      currentIndex = (currentIndex + 1) % playlist.length;
+      performTransition();
+    }
   }
 
-  video.addEventListener("timeupdate", () => {
-    if (!isTransitioning && video.currentTime >= playlist[currentIndex].end) {
+  // Handle errors on both videos
+  videoA.addEventListener("error", (e) => {
+    console.warn("Video A failed:", e);
+    if (activeVideo === videoA) {
       currentIndex = (currentIndex + 1) % playlist.length;
-      playCurrentVideo();
+      performTransition();
+    }
+  });
+  
+  videoB.addEventListener("error", (e) => {
+    console.warn("Video B failed:", e);
+    if (activeVideo === videoB) {
+      currentIndex = (currentIndex + 1) % playlist.length;
+      performTransition();
     }
   });
 
-  video.addEventListener("error", (e) => {
-    console.warn("Video failed to load:", video.src, e);
-    // Skip to next video on error
-    currentIndex = (currentIndex + 1) % playlist.length;
-    if (currentIndex !== 0) {
-      playCurrentVideo();
-    } else {
-      // All videos failed - hide video element gracefully
-      video.style.display = 'none';
-    }
-  });
-
-  // Handle visibility changes (pause when tab hidden)
+  // Handle visibility changes
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
-      video.pause();
+      videoA.pause();
+      videoB.pause();
     } else {
-      video.play().catch(() => {});
+      activeVideo.play().catch(() => {});
     }
   });
 
-  playCurrentVideo();
+  // Start the player
+  startPlayback();
 }
