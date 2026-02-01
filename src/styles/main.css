@@ -26,6 +26,11 @@ button, .btn, [role="button"] {
   text-rendering: optimizeLegibility;
 }
 
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
 /* * HERO SECTION */ 
     body {
       margin: 0;
@@ -109,6 +114,22 @@ button, .btn, [role="button"] {
         padding: 6px 16px;
         margin-top: 20px !important;
       }
+    }
+
+    /* Explore My Work Button - Custom Red Theme Styling */
+    .hero .btn-outline-danger {
+      border-color: var(--tech-primary);
+      color: var(--tech-primary);
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .hero .btn-outline-danger:hover {
+      background-color: var(--tech-primary);
+      border-color: var(--tech-primary);
+      color: #fff;
+      box-shadow: 0 0 20px var(--tech-glow);
+      transform: translateY(-2px);
     }
 
     /* Normal sections */
