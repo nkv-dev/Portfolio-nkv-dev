@@ -34,10 +34,28 @@ document.addEventListener('DOMContentLoaded', function() {
     toggleMenu();
   });
   
-  // Close on link click
+  // Close menu + smooth scroll when clicking nav links
   navLinks.forEach(function(link) {
-    link.addEventListener('click', function() {
-      closeMenu();
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const href = this.getAttribute('href');
+      if (!href || href === '#') return;
+      
+      const target = document.querySelector(href);
+      if (target) {
+        // Close menu first
+        closeMenu();
+        
+        // Then smooth scroll
+        const offset = 80;
+        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        
+        window.scrollTo({
+          top: top,
+          behavior: 'smooth'
+        });
+      }
     });
   });
   

@@ -1,111 +1,42 @@
-// Mobile-Optimized Smooth Scroll - Uses Native API
+// Simple Smooth Scroll - Works on ALL devices
 (function() {
-  // Check if mobile (touch device)
-  const isMobile = window.matchMedia('(pointer: coarse)').matches;
-  const isTouch = 'ontouchstart' in window;
+  'use strict';
   
-  // Skip heavy Lenis on mobile - use native smooth scroll
-  if (isMobile || isTouch) {
-    console.log('Mobile detected: Using native smooth scroll');
+  function initSmoothScroll() {
+    // Get all anchor links
+    const links = document.querySelectorAll('a[href^="#"]');
     
-    // Simple smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+    links.forEach(function(link) {
       link.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
-        if (href === '#') return;
+        
+        // Skip empty anchors
+        if (!href || href === '#' || href === '') return;
         
         const target = document.querySelector(href);
-        if (target) {
-          e.preventDefault();
-          
-          // Calculate offset for fixed navbar
-          const offset = 80;
-          const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-          
-          // Native smooth scroll
-          window.scrollTo({
-            top: top,
-            behavior: 'smooth'
-          });
-        }
+        if (!target) return;
+        
+        e.preventDefault();
+        
+        // Calculate position with offset for fixed navbar
+        const navbarHeight = 80;
+        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+        
+        // Smooth scroll
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
       });
     });
     
-    return; // Don't load Lenis
+    console.log('Smooth scroll initialized');
   }
   
-  // Desktop: Use Lenis for buttery smooth scroll
-  let lenis;
-  
-  function initLenis() {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    
-    if (prefersReducedMotion) return;
-    
-    try {
-      lenis = new Lenis({
-        duration: 1.2,
-        easing: function(t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
-        orientation: 'vertical',
-        gestureOrientation: 'vertical',
-        smoothWheel: true,
-        wheelMultiplier: 1,
-        touchMultiplier: 2,
-        infinite: false
-      });
-      
-      function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-      }
-      
-      requestAnimationFrame(raf);
-      
-      // Handle anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-        anchor.addEventListener('click', function(e) {
-          const targetId = this.getAttribute('href');
-          if (targetId === '#') return;
-          
-          const target = document.querySelector(targetId);
-          if (target && lenis) {
-            e.preventDefault();
-            
-            const offset = 80;
-            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
-            
-            lenis.scrollTo(targetPosition, {
-              offset: 0,
-              duration: 1.5
-            });
-          }
-        });
-      });
-      
-      console.log('Lenis initialized (desktop)');
-    } catch (err) {
-      console.log('Lenis not available, using native scroll');
-    }
-  }
-  
-  // Init after DOM ready
+  // Initialize when DOM is ready
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initLenis);
+    document.addEventListener('DOMContentLoaded', initSmoothScroll);
   } else {
-    setTimeout(initLenis, 100);
+    initSmoothScroll();
   }
-  
-  // Export
-  window.SmoothScroll = {
-    scrollTo: function(selector) {
-      const el = document.querySelector(selector);
-      if (el) {
-        if (lenis) {
-          lenis.scrollTo(el, { offset: -80 });
-        } else {
-          el.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
-    }
-  };
 })();
