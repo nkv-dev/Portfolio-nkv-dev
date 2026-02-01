@@ -29,10 +29,20 @@
     color: var(--tech-primary);
 }
 
-/* Active link state */
+/* Click/tap state - must be red */
+.nav-link:active {
+    color: var(--tech-primary);
+}
+
+/* Active link state (current section) */
 .nav-link.active {
     color: var(--tech-primary);
     font-weight: 600;
+}
+
+/* Ensure active link stays red even when clicked */
+.nav-link.active:active {
+    color: var(--tech-primary);
 }
 
 /* Skip link for accessibility */
@@ -158,6 +168,7 @@
     }
     
     .nav-link:active {
+        color: var(--tech-primary);
         background: rgba(255,255,255,0.1);
     }
     
