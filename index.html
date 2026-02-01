@@ -53,10 +53,9 @@
   <!-- HERO SECTION -->
   <section class="hero-section" id="hero">
 
-    <!-- Background Video -->
-    <video id="bgVideo" class="bg-video" autoplay muted playsinline>
-      <!-- <source src="assets/drifting.mp4" type="video/mp4"> -->
-    </video>
+    <!-- Background Videos (Double Buffering for Seamless Transitions) -->
+    <video id="bgVideo" class="bg-video active" autoplay muted playsinline preload="auto"></video>
+    <video id="bgVideo2" class="bg-video inactive" autoplay muted playsinline preload="auto" style="opacity: 0;"></video>
 
     <!-- Hero Content -->
     <div class="container hero text-center">
