@@ -501,109 +501,226 @@
   </section>
 
   <!-- CONTACT -->
-  <section class="section" id="contact">
+  <section class="section contact-section" id="contact">
+    <!-- Floating Particles Background -->
+    <div class="contact-particles" id="contactParticles">
+      <div class="particle particle-1"></div>
+      <div class="particle particle-2"></div>
+      <div class="particle particle-3"></div>
+      <div class="particle particle-4"></div>
+      <div class="particle particle-5"></div>
+      <div class="particle particle-6"></div>
+      <div class="particle particle-7"></div>
+      <div class="particle particle-8"></div>
+      <div class="particle particle-9"></div>
+      <div class="particle particle-10"></div>
+    </div>
+
     <div class="container">
-      <!-- Section Header -->
+      <!-- Section Header with Typing Effect -->
       <div class="text-center mb-5">
-        <span class="section-tag">CONTACT</span>
-        <h2 class="section-title">Get In Touch</h2>
-        <p class="section-subtitle">
-          Feel free to reach out for collaborations, opportunities, or just to say hello!
+        <span class="section-tag" id="contactTag">CONTACT</span>
+        <h2 class="section-title contact-title" id="contactTitle">Let's Work Together</h2>
+        <p class="section-subtitle contact-subtitle" id="contactSubtitle">
+          Have a project in mind? Let's create something amazing.
         </p>
       </div>
 
       <!-- Contact Container -->
       <div class="contact-container">
         
-        <!-- Contact Info Panel -->
-        <div class="contact-info">
+        <!-- Left: Contact Info Card -->
+        <div class="contact-info-card" data-tilt>
+          <div class="contact-glow"></div>
+          
           <div class="contact-header">
-            <h3>Let's Connect</h3>
-            <p>I'm always interested in hearing about new projects and opportunities.</p>
-          </div>
-
-          <!-- Email Section -->
-          <div class="email-section">
-            <span class="email-label">Email</span>
-            <div class="email-container" onclick="copyEmail()">
-              <span class="email-address" id="personalEmail">nitesh@example.com</span>
-              <i class="bi bi-clipboard copy-icon"></i>
+            <div class="contact-avatar">
+              <i class="bi bi-person-circle"></i>
             </div>
+            <h3>Nitesh Kumar Verma</h3>
+            <p>Software Engineering Student</p>
           </div>
 
-          <!-- Availability Status -->
-          <div class="status-section">
-            <span class="status-label">Availability</span>
-            <div class="status-container">
-              <div class="status-dot" id="statusDot"></div>
-              <span class="status-text" id="statusText">Open to opportunities</span>
+          <!-- Availability Badge -->
+          <div class="availability-badge" id="availabilityBadge">
+            <span class="pulse-dot"></span>
+            <span class="availability-text">Open to Work</span>
+          </div>
+
+          <!-- Contact Methods -->
+          <div class="contact-methods">
+            <!-- Email -->
+            <div class="contact-method" onclick="copyContactEmail('nitesh.kumar@email.com', this)">
+              <div class="method-icon">
+                <i class="bi bi-envelope-fill"></i>
+              </div>
+              <div class="method-info">
+                <span class="method-label">Email</span>
+                <span class="method-value" id="contactEmail">nitesh.kumar@email.com</span>
+              </div>
+              <div class="method-action">
+                <i class="bi bi-clipboard" id="copyIcon"></i>
+              </div>
+            </div>
+
+            <!-- Location -->
+            <div class="contact-method">
+              <div class="method-icon">
+                <i class="bi bi-geo-alt-fill"></i>
+              </div>
+              <div class="method-info">
+                <span class="method-label">Location</span>
+                <span class="method-value">Bangalore, India</span>
+              </div>
+            </div>
+
+            <!-- Response Time -->
+            <div class="contact-method">
+              <div class="method-icon">
+                <i class="bi bi-clock-fill"></i>
+              </div>
+              <div class="method-info">
+                <span class="method-label">Response Time</span>
+                <span class="method-value">Usually within 24 hours</span>
+              </div>
             </div>
           </div>
 
           <!-- Social Links -->
-          <div class="social-section">
-            <span class="social-label">Connect</span>
-            <div class="social-links" id="socialLinks">
-              <a href="https://github.com" target="_blank" class="social-link" title="GitHub" data-social="github">
+          <div class="contact-social-section">
+            <span class="social-label">Connect With Me</span>
+             <div class="contact-social-links" id="contactSocialLinks">
+              <a href="https://github.com/niteshdev" target="_blank" class="contact-social-link github" data-social="github" title="GitHub">
                 <i class="bi bi-github"></i>
+                <span class="tooltip">GitHub</span>
               </a>
-              <a href="https://linkedin.com" target="_blank" class="social-link" title="LinkedIn" data-social="linkedin">
+              <a href="https://linkedin.com/in/niteshkumar" target="_blank" class="contact-social-link linkedin" data-social="linkedin" title="LinkedIn">
                 <i class="bi bi-linkedin"></i>
+                <span class="tooltip">LinkedIn</span>
               </a>
-              <a href="https://twitter.com" target="_blank" class="social-link" title="Twitter" data-social="twitter">
+              <a href="https://twitter.com/nitesh_dev" target="_blank" class="contact-social-link twitter" data-social="twitter" title="Twitter">
                 <i class="bi bi-twitter-x"></i>
+                <span class="tooltip">Twitter</span>
               </a>
-              <a href="mailto:nitesh@example.com" class="social-link" title="Email" data-social="email">
-                <i class="bi bi-envelope"></i>
+              <a href="mailto:nitesh.kumar@email.com" class="contact-social-link email" data-social="email" title="Email">
+                <i class="bi bi-envelope-fill"></i>
+                <span class="tooltip">Email</span>
               </a>
             </div>
           </div>
         </div>
 
-        <!-- Quick Info Panel -->
-        <div class="contact-info">
-          <div class="contact-header">
-            <h3>Quick Info</h3>
-            <p>Here's how you can reach me for different purposes.</p>
+        <!-- Right: Contact Form -->
+        <div class="contact-form-card" data-tilt>
+          <div class="form-glow"></div>
+          
+          <div class="form-header">
+            <h3>Send Me a Message</h3>
+            <p>Fill out the form below and I'll get back to you as soon as possible.</p>
           </div>
 
-          <!-- Professional Inquiries -->
-          <div class="email-section">
-            <span class="email-label">Professional</span>
-            <div class="email-container" onclick="copyEmail()">
-              <span class="email-address" id="professionalEmail">work.nitesh@example.com</span>
-              <i class="bi bi-briefcase copy-icon"></i>
+          <form id="contactForm" action="https://formspree.io/f/mykpzlag" method="POST" class="contact-form">
+            <!-- Hidden fields for Formspree -->
+            <input type="hidden" name="_subject" value="New message from portfolio!">
+            <input type="hidden" name="_next" value="https://yourdomain.com/thanks.html">
+
+            <!-- Name Field -->
+            <div class="form-group">
+              <label class="form-label" for="name">
+                Your Name <span class="required">*</span>
+              </label>
+              <div class="input-wrapper">
+                <i class="bi bi-person input-icon"></i>
+                <input type="text" id="name" name="name" class="form-input" placeholder="John Doe" required>
+              </div>
+              <span class="error-message">Please enter your name</span>
+            </div>
+
+            <!-- Email Field -->
+            <div class="form-group">
+              <label class="form-label" for="email">
+                Your Email <span class="required">*</span>
+              </label>
+              <div class="input-wrapper">
+                <i class="bi bi-envelope input-icon"></i>
+                <input type="email" id="email" name="email" class="form-input" placeholder="john@example.com" required>
+              </div>
+              <span class="error-message">Please enter a valid email</span>
+            </div>
+
+            <!-- Subject Field -->
+            <div class="form-group">
+              <label class="form-label" for="subject">
+                Subject <span class="required">*</span>
+              </label>
+              <div class="input-wrapper">
+                <i class="bi bi-chat-left-text input-icon"></i>
+                <select id="subject" name="subject" class="form-input form-select" required>
+                  <option value="" disabled selected>Select a subject...</option>
+                  <option value="project">Project Collaboration</option>
+                  <option value="job">Job Opportunity</option>
+                  <option value="freelance">Freelance Work</option>
+                  <option value="mentorship">Mentorship</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <span class="error-message">Please select a subject</span>
+            </div>
+
+            <!-- Message Field -->
+            <div class="form-group">
+              <label class="form-label" for="message">
+                Your Message <span class="required">*</span>
+              </label>
+              <div class="input-wrapper textarea-wrapper">
+                <textarea id="message" name="message" class="form-textarea" placeholder="Tell me about your project, idea, or opportunity..." rows="4" maxlength="1000" required></textarea>
+                <div class="char-counter">
+                  <span id="charCount">0</span> / 1000
+                </div>
+              </div>
+              <span class="error-message">Please enter your message</span>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-btn" id="submitBtn">
+              <span class="btn-text">Send Message</span>
+              <i class="bi bi-send-fill btn-icon"></i>
+              <span class="btn-loader" style="display: none;">
+                <span class="spinner"></span>
+                <span>Sending...</span>
+              </span>
+            </button>
+          </form>
+
+          <!-- Success Message -->
+          <div class="form-message success" id="successMessage" style="display: none;">
+            <div class="message-icon">
+              <i class="bi bi-check-circle-fill"></i>
+            </div>
+            <div class="message-content">
+              <h4>Message Sent!</h4>
+              <p>Thank you for reaching out. I'll get back to you within 24 hours.</p>
             </div>
           </div>
 
-          <!-- Academic Inquiries -->
-          <div class="email-section">
-            <span class="email-label">Academic</span>
-            <div class="email-container" onclick="copyEmail()">
-              <span class="email-address" id="academicEmail">student.nitesh@example.com</span>
-              <i class="bi bi-mortarboard copy-icon"></i>
+          <!-- Error Message -->
+          <div class="form-message error" id="errorMessage" style="display: none;">
+            <div class="message-icon">
+              <i class="bi bi-x-circle-fill"></i>
             </div>
-          </div>
-
-          <!-- Response Time -->
-          <div class="status-section">
-            <span class="status-label">Response Time</span>
-            <div class="status-container">
-              <div class="status-dot"></div>
-              <span class="status-text" id="responseTime">Usually within 24-48 hours</span>
-            </div>
-          </div>
-
-          <!-- Location -->
-          <div class="status-section">
-            <span class="status-label">Location</span>
-            <div class="status-container">
-              <i class="bi bi-geo-alt" style="color: var(--tech-primary); margin-right: 8px;"></i>
-              <span class="status-text" id="location">Bangalore, India</span>
+            <div class="message-content">
+              <h4>Oops!</h4>
+              <p>Something went wrong. Please try again or email me directly.</p>
             </div>
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-notification" id="toastNotification">
+      <i class="bi bi-check-circle-fill"></i>
+      <span id="toastMessage">Email copied to clipboard!</span>
     </div>
   </section>
 
