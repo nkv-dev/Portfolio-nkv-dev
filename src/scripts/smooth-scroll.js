@@ -1,191 +1,111 @@
-/***************************
- * LENIS SMOOTH SCROLL
- ***************************/
-
-// Initialize Lenis smooth scroll with performance optimizations
-let lenis;
-
-function initLenis() {
-    // Check for reduced motion preference
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const isMobile = window.matchMedia('(pointer: coarse)').matches;
+// Mobile-Optimized Smooth Scroll - Uses Native API
+(function() {
+  // Check if mobile (touch device)
+  const isMobile = window.matchMedia('(pointer: coarse)').matches;
+  const isTouch = 'ontouchstart' in window;
+  
+  // Skip heavy Lenis on mobile - use native smooth scroll
+  if (isMobile || isTouch) {
+    console.log('Mobile detected: Using native smooth scroll');
     
-    // Skip smooth scroll if user prefers reduced motion or is on mobile with data saver
-    if (prefersReducedMotion) {
-        console.log('Smooth scroll disabled: reduced motion preference');
-        return;
-    }
-    
-    // Initialize Lenis with optimized settings
-    lenis = new Lenis({
-        duration: 1.2,              // Animation duration (seconds) - slightly longer for smoother feel
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Exponential easing
-        orientation: 'vertical',     // Only vertical scroll
-        gestureOrientation: 'vertical',
-        smoothWheel: true,           // Enable smooth wheel scrolling
-        wheelMultiplier: 1,          // Wheel scroll speed
-        touchMultiplier: 2,          // Touch scroll speed (faster for mobile)
-        infinite: false,             // No infinite scroll
-        syncTouch: true,             // Sync with native touch scroll
+    // Simple smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          
+          // Calculate offset for fixed navbar
+          const offset = 80;
+          const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+          
+          // Native smooth scroll
+          window.scrollTo({
+            top: top,
+            behavior: 'smooth'
+          });
+        }
+      });
     });
     
-    // Connect Lenis to our RAF loop for optimal performance
-    function raf(time) {
+    return; // Don't load Lenis
+  }
+  
+  // Desktop: Use Lenis for buttery smooth scroll
+  let lenis;
+  
+  function initLenis() {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (prefersReducedMotion) return;
+    
+    try {
+      lenis = new Lenis({
+        duration: 1.2,
+        easing: function(t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+        orientation: 'vertical',
+        gestureOrientation: 'vertical',
+        smoothWheel: true,
+        wheelMultiplier: 1,
+        touchMultiplier: 2,
+        infinite: false
+      });
+      
+      function raf(time) {
         lenis.raf(time);
         requestAnimationFrame(raf);
-    }
-    
-    requestAnimationFrame(raf);
-    
-    // Integrate with ScrollManager if available
-    integrateWithScrollManager();
-    
-    // Handle anchor links for smooth scroll to sections
-    handleAnchorLinks();
-    
-    // Update CSS to work with Lenis
-    updateCSSForLenis();
-    
-    console.log('Lenis smooth scroll initialized');
-}
-
-// Integrate Lenis with our ScrollManager
-function integrateWithScrollManager() {
-    // If ScrollManager exists, sync scroll position
-    if (window.PerformanceUtils && window.PerformanceUtils.ScrollManager) {
-        const originalHandleScroll = window.PerformanceUtils.ScrollManager.handleScroll.bind(window.PerformanceUtils.ScrollManager);
-        
-        // Override to use Lenis scroll position
-        window.PerformanceUtils.ScrollManager.handleScroll = function() {
-            const scrollY = lenis ? lenis.scroll : window.pageYOffset;
-            const lastScrollY = this.lastScrollY;
-            
-            // Determine scroll direction
-            this.scrollDirection = scrollY > lastScrollY ? 'down' : 'up';
-            
-            // Update all scroll effects
-            this.updateProgressBar(scrollY);
-            this.updateNavbarEffects(scrollY);
-            this.updateActiveSection(scrollY);
-            this.updateBackToTop(scrollY);
-            
-            this.lastScrollY = scrollY;
-            this.ticking = false;
-        };
-        
-        // Listen to Lenis scroll events
-        lenis.on('scroll', ({ scroll, limit, velocity, direction, progress }) => {
-            if (!window.PerformanceUtils.ScrollManager.ticking) {
-                requestAnimationFrame(() => {
-                    window.PerformanceUtils.ScrollManager.handleScroll();
-                });
-                window.PerformanceUtils.ScrollManager.ticking = true;
-            }
-        });
-    }
-}
-
-// Handle anchor links with Lenis
-function handleAnchorLinks() {
-    // Override all anchor link clicks to use Lenis
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      }
+      
+      requestAnimationFrame(raf);
+      
+      // Handle anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
         anchor.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return; // Skip empty anchors
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const target = document.querySelector(targetId);
+          if (target && lenis) {
+            e.preventDefault();
             
-            const target = document.querySelector(targetId);
-            if (target && lenis) {
-                e.preventDefault();
-                
-                // Calculate offset (account for fixed navbar)
-                const offset = 80;
-                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
-                
-                // Smooth scroll to target
-                lenis.scrollTo(targetPosition, {
-                    offset: 0,
-                    duration: 1.5,
-                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
-                });
-            }
+            const offset = 80;
+            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+            
+            lenis.scrollTo(targetPosition, {
+              offset: 0,
+              duration: 1.5
+            });
+          }
         });
-    });
-}
-
-// Update CSS for Lenis compatibility
-function updateCSSForLenis() {
-    // Add Lenis-specific styles
-    const lenisStyles = `
-        html.lenis, html.lenis body {
-            height: auto;
-        }
-        
-        .lenis.lenis-smooth {
-            scroll-behavior: auto !important;
-        }
-        
-        .lenis.lenis-smooth [data-lenis-prevent] {
-            overscroll-behavior: contain;
-        }
-        
-        .lenis.lenis-stopped {
-            overflow: hidden;
-        }
-        
-        .lenis.lenis-scrolling iframe {
-            pointer-events: none;
-        }
-    `;
-    
-    const styleSheet = document.createElement('style');
-    styleSheet.textContent = lenisStyles;
-    document.head.appendChild(styleSheet);
-}
-
-// Stop Lenis (for modals, overlays, etc.)
-function stopLenis() {
-    if (lenis) {
-        lenis.stop();
-        document.body.classList.add('lenis-stopped');
+      });
+      
+      console.log('Lenis initialized (desktop)');
+    } catch (err) {
+      console.log('Lenis not available, using native scroll');
     }
-}
-
-// Start Lenis
-function startLenis() {
-    if (lenis) {
-        lenis.start();
-        document.body.classList.remove('lenis-stopped');
-    }
-}
-
-// Scroll to a specific element
-function scrollToElement(selector, options = {}) {
-    const element = document.querySelector(selector);
-    if (element && lenis) {
-        const offset = options.offset || 80;
-        const duration = options.duration || 1.5;
-        
-        lenis.scrollTo(element, {
-            offset: -offset,
-            duration: duration,
-            easing: options.easing || ((t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)))
-        });
-    } else if (element) {
-        // Fallback if Lenis not available
-        element.scrollIntoView({ behavior: 'smooth' });
-    }
-}
-
-// Initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-    // Small delay to ensure other scripts are loaded
+  }
+  
+  // Init after DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLenis);
+  } else {
     setTimeout(initLenis, 100);
-});
-
-// Export for global use
-window.SmoothScroll = {
-    lenis: () => lenis,
-    scrollTo: scrollToElement,
-    stop: stopLenis,
-    start: startLenis
-};
+  }
+  
+  // Export
+  window.SmoothScroll = {
+    scrollTo: function(selector) {
+      const el = document.querySelector(selector);
+      if (el) {
+        if (lenis) {
+          lenis.scrollTo(el, { offset: -80 });
+        } else {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+  };
+})();

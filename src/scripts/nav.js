@@ -1,4 +1,4 @@
-// Pure Vanilla Navbar - Simple & Reliable
+// Mobile-Optimized Navbar - Fast & Simple
 document.addEventListener('DOMContentLoaded', function() {
   const navToggle = document.getElementById('navToggle');
   const navMenu = document.getElementById('navMenu');
@@ -6,83 +6,82 @@ document.addEventListener('DOMContentLoaded', function() {
   
   if (!navToggle || !navMenu) return;
   
-  // Toggle menu on hamburger click
-  navToggle.addEventListener('click', function() {
-    const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+  let isMenuOpen = false;
+  
+  // Toggle menu
+  function toggleMenu() {
+    isMenuOpen = !isMenuOpen;
+    navToggle.setAttribute('aria-expanded', isMenuOpen);
+    navMenu.classList.toggle('active', isMenuOpen);
     
-    if (isExpanded) {
-      closeMenu();
-    } else {
-      openMenu();
+    // Simple haptic
+    if (isMenuOpen && navigator.vibrate) {
+      navigator.vibrate(8);
     }
+  }
+  
+  function closeMenu() {
+    if (isMenuOpen) {
+      isMenuOpen = false;
+      navToggle.setAttribute('aria-expanded', 'false');
+      navMenu.classList.remove('active');
+    }
+  }
+  
+  // Toggle click
+  navToggle.addEventListener('click', function(e) {
+    e.preventDefault();
+    toggleMenu();
   });
   
-  // Close menu when clicking a link
+  // Close on link click
   navLinks.forEach(function(link) {
     link.addEventListener('click', function() {
       closeMenu();
     });
   });
   
-  // Close menu when clicking outside
+  // Close on outside click
   document.addEventListener('click', function(e) {
-    if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+    if (isMenuOpen && !navToggle.contains(e.target) && !navMenu.contains(e.target)) {
       closeMenu();
     }
   });
   
-  // Close on Escape key
+  // Close on Escape
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true') {
+    if (e.key === 'Escape' && isMenuOpen) {
       closeMenu();
     }
   });
   
-  function openMenu() {
-    navToggle.setAttribute('aria-expanded', 'true');
-    navMenu.classList.add('active');
-    
-    // Haptic feedback on mobile
-    if (navigator.vibrate) {
-      navigator.vibrate(10);
-    }
-  }
-  
-  function closeMenu() {
-    navToggle.setAttribute('aria-expanded', 'false');
-    navMenu.classList.remove('active');
-  }
-  
-  // Active link highlighting based on scroll
+  // Active link on scroll - OPTIMIZED
   function updateActiveLink() {
     const sections = document.querySelectorAll('section[id]');
-    const scrollY = window.pageYOffset;
+    const scrollY = window.pageYOffset + 100;
     
     let current = '';
     
     sections.forEach(function(section) {
-      const sectionTop = section.offsetTop - 100;
-      const sectionHeight = section.offsetHeight;
+      const top = section.offsetTop;
+      const height = section.offsetHeight;
       
-      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+      if (scrollY >= top && scrollY < top + height) {
         current = section.getAttribute('id');
       }
     });
     
-    // Default to hero at top
-    if (!current && scrollY < 100) {
+    if (!current && scrollY < 200) {
       current = 'hero';
     }
     
     navLinks.forEach(function(link) {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === '#' + current) {
-        link.classList.add('active');
-      }
+      const isActive = link.getAttribute('href') === '#' + current;
+      link.classList.toggle('active', isActive);
     });
   }
   
-  // Update active link on scroll (throttled)
+  // Throttled scroll - RAF
   let ticking = false;
   window.addEventListener('scroll', function() {
     if (!ticking) {
@@ -94,20 +93,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }, { passive: true });
   
-  // Initial active state
+  // Initial
   updateActiveLink();
 });
 
-// Smooth scroll for skip link
+// Skip link
 document.addEventListener('DOMContentLoaded', function() {
   const skipLink = document.querySelector('.skip-link');
   if (skipLink) {
     skipLink.addEventListener('click', function(e) {
-      const target = document.getElementById('main-content');
-      if (target) {
-        e.preventDefault();
-        target.focus();
-        target.scrollIntoView({ behavior: 'smooth' });
+      e.preventDefault();
+      const main = document.getElementById('main-content');
+      if (main) {
+        main.scrollIntoView({ behavior: 'smooth' });
       }
     });
   }

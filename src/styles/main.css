@@ -32,6 +32,31 @@ html {
   -webkit-overflow-scrolling: touch;
 }
 
+/* Mobile scroll optimizations */
+@media (max-width: 768px) {
+  html {
+    scroll-behavior: auto; /* Disable CSS smooth scroll on mobile - use JS instead */
+  }
+  
+  body {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: none; /* Prevent bounce */
+    touch-action: pan-y; /* Optimize for vertical scrolling */
+  }
+  
+  /* Disable complex animations on scroll for mobile */
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  /* Re-enable transitions for interactive elements */
+  a, button, .nav-link, .nav-toggle {
+    transition-duration: 0.15s !important;
+  }
+}
+
 /* * HERO SECTION */ 
     body {
       margin: 0;
