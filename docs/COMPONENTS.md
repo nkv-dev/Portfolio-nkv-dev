@@ -122,7 +122,7 @@ The about section presents your profile, education, interests, and quick facts t
     <img src="assets/images/avatar.jpg" alt="Avatar">
   </div>
   <h5>Nitesh Kumar Verma</h5>
-  <p class="role-text">Software Engineering Student</p>
+  <p class="role-text">BCA Student</p>
   <a href="#" class="btn btn-danger">Download CV</a>
   <div class="social-icons">
     <!-- GitHub, LinkedIn, Twitter -->
@@ -402,7 +402,7 @@ The contact section allows visitors to get in touch through a modern, interactiv
       <i class="bi bi-person-circle"></i>
     </div>
     <h3>Nitesh Kumar Verma</h3>
-    <p>Software Engineering Student</p>
+    <p>BCA Student</p>
   </div>
   
   <div class="availability-badge">
@@ -517,7 +517,7 @@ Professional footer with navigation, social links, and back-to-top functionality
       <!-- Brand -->
       <div class="footer-brand">
         <h3>Nitesh Kumar Verma</h3>
-        <p>Software Engineering Student</p>
+        <p>BCA Student</p>
       </div>
       
       <!-- Links -->
