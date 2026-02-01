@@ -127,25 +127,37 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Swipe down to close menu
+    // Swipe to close menu - works on both menu and backdrop
     function initSwipeToClose() {
         let touchStartY = 0;
-        const navbarNav = document.querySelector('.navbar-nav');
-        if (!navbarNav) return;
+        let touchStartTime = 0;
         
-        navbarNav.addEventListener('touchstart', function(e) {
+        // Listen on the entire collapse area (menu + backdrop)
+        navbarCollapse.addEventListener('touchstart', function(e) {
             touchStartY = e.changedTouches[0].screenY;
+            touchStartTime = Date.now();
         }, { passive: true });
         
-        navbarNav.addEventListener('touchend', function(e) {
+        navbarCollapse.addEventListener('touchend', function(e) {
             const touchEndY = e.changedTouches[0].screenY;
+            const touchEndTime = Date.now();
             const swipeDistance = touchEndY - touchStartY;
+            const swipeTime = touchEndTime - touchStartTime;
+            const swipeVelocity = swipeDistance / swipeTime;
             
-            // Swipe down more than 100px closes menu
-            if (swipeDistance > 100 && isMenuOpen) {
+            // Close if swiped down more than 80px OR fast swipe down (velocity > 0.5)
+            if (isMenuOpen && (swipeDistance > 80 || (swipeDistance > 40 && swipeVelocity > 0.5))) {
                 closeMenu();
             }
         }, { passive: true });
+        
+        // Also close when clicking on backdrop (the dark area behind menu)
+        navbarCollapse.addEventListener('click', function(e) {
+            // If click is directly on the collapse container (backdrop), not on menu items
+            if (isMenuOpen && e.target === navbarCollapse) {
+                closeMenu();
+            }
+        });
     }
     
     // Smooth scrolling with offset for fixed navbar
