@@ -119,7 +119,7 @@ The about section presents your profile, education, interests, and quick facts t
 ```html
 <div class="profile-card">
   <div class="avatar-wrapper">
-    <img src="assets/images/avatar.jpg" alt="Avatar">
+    <img src="assets/images/profile.png" alt="Nitesh Kumar Verma">
   </div>
   <h5>Nitesh Kumar Verma</h5>
   <p class="role-text">BCA Student</p>
@@ -168,7 +168,7 @@ The about section presents your profile, education, interests, and quick facts t
 ### Customization
 
 **Update Avatar:**
-Replace `assets/images/avatar.jpg` with your photo (recommended: 400x400px, square)
+Replace `assets/images/profile.png` with your photo (recommended: 400x400px, square)
 
 **Update Bio:**
 ```html
