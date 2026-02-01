@@ -717,6 +717,10 @@
 .message-icon {
   font-size: 2.5rem;
   margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .form-message.success .message-icon {
