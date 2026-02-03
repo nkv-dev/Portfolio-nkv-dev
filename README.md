@@ -539,10 +539,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND...
 
 **Nitesh Kumar Verma**
 
-- 📧 Email: [nitesh.kumar@email.com](mailto:nitesh.kumar@email.com)
-- 💼 LinkedIn: [linkedin.com/in/niteshkumar](https://linkedin.com/in/niteshkumar)
-- 🐙 GitHub: [github.com/niteshdev](https://github.com/niteshdev)
-- 🐦 Twitter: [twitter.com/nitesh_dev](https://twitter.com/nitesh_dev)
+- 📧 Email: [nitesh.techcollab@gmail.com](mailto:nitesh.techcollab@gmail.com)
+- 💼 LinkedIn: [linkedin.com/in/nitesh-kumar-verma-408249334](https://www.linkedin.com/in/nitesh-kumar-verma-408249334/)
+- 🐙 GitHub: [github.com/nkv-dev](https://github.com/nkv-dev)
+- 🐦 X (Twitter): [x.com/nkv_dev](https://x.com/nkv_dev)
 
 ## 🙏 Acknowledgments
 
