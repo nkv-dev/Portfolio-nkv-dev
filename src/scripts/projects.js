@@ -72,10 +72,10 @@
             date: "2026-01",
             status: {
                 type: "completed",
-                icon: "🔵",
-                text: "Complete",
-                fullText: "In Production",
-                color: "#2196F3"
+                icon: "✅",
+                text: "Completed",
+                fullText: "Project Complete",
+                color: "#4CAF50"
             }
         },
         {
