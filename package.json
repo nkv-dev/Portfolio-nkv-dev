@@ -1,8 +1,8 @@
 {
   "name": "nitesh-portfolio",
   "type": "module",
-  "version": "1.0.0",
-  "description": "Portfolio website for Nitesh Kumar Verma",
+  "version": "2.0.0",
+  "description": "Portfolio website for Nitesh Kumar Verma built with Astro",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",

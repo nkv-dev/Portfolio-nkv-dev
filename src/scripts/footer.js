@@ -50,11 +50,10 @@ function initFooterLinks() {
       const targetSection = document.querySelector(targetId);
       
       if (targetSection) {
-        const offset = getNavbarOffset();
-        const offsetTop = targetSection.offsetTop - offset;
-        window.scrollTo({
-          top: offsetTop,
-          behavior: 'smooth'
+        // No offset - section top aligns with window top
+        targetSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
         });
       }
     });

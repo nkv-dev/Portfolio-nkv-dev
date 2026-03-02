@@ -56,13 +56,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // Close menu first
         closeMenu();
         
-        // Then smooth scroll with dynamic offset
-        const offset = getNavbarOffset();
-        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-        
-        window.scrollTo({
-          top: top,
-          behavior: 'smooth'
+        // No offset - section top aligns with window top
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
         });
       }
     });

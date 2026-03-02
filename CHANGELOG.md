@@ -2,134 +2,118 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-
-## [Unreleased]
-
-### Added
-- Formspree form integration for contact section
-- Floating particle background animation in contact section
-- 3D tilt effect on contact cards
-- Real-time form validation with visual feedback
-- Character counter for contact form message field
-- Animated submit button with loading states
-- Success/error messages with confetti effect on form submission
-- Copy-to-clipboard functionality for email with toast notifications
-- Social links with hover effects and tooltips in contact section
-- Typing animation for contact section title
-- Feature branch `feature/contact-section` for contact improvements
+## [2.0.1] - 2026-03-02
 
 ### Changed
-- Redesigned contact section with modern two-column layout
-- Updated form messages to use flex display for proper centering
-- Enhanced CSS animations for smoother transitions
-- Improved responsive design for contact section on mobile devices
+- Fixed scroll offset issues for all screen sizes
+- Updated smooth scroll to use scrollIntoView
+- Removed all offset logic for section top alignment
+- Updated scripts: nav.js, footer.js, smooth-scroll.js
 
 ### Fixed
-- Fixed success message centering animation (removed left-to-center jump)
-- Fixed error message display alignment
-- Removed Formspree redirect to keep user on page with success message
+- Accessibility issues (aria-labels on social links)
+- Fixed invalid href attributes
+- Added Astro Image component for profile picture
+
+## [2.0.0] - 2026-03-02
+
+### Changed
+- Migrated from plain HTML/CSS/JS to Astro framework
+- Converted to component-based architecture
+- Added Cloudflare Pages adapter
+- Implemented View Transitions for smooth feel
+- Cleaned up old files (removed docs, LICENSE, etc.)
+- Updated version to 2.0.0
+
+### Technical Details
+- **Framework**: Astro 5 with TypeScript
+- **Deployment**: Cloudflare Pages
+- **Components**: Layout, Navbar, Hero, About, Achievements, Projects, Contact, Footer
+
+## [1.1.0] - 2026-02-01
+
+### Changed
+- Complete contact section redesign with modern UI
+- Added form integration with Formspree
+- Added 3D tilt effects on contact cards
+- Added real-time form validation
+- Added character counter for message field
+- Added confetti effect on form submission
+
+## [1.0.9] - 2026-01-20
+
+### Changed
+- Update social links and email
+- Update role to BCA Student
+- Update copyright year to 2026
+
+## [1.0.8] - 2025-01-15
+
+### Changed
+- Fix achievement dates and details
+- Update HackSphere-2024 hackathon win
+- Add Project Expo USB Macro Keyboard win
+- Add Git/GitHub seminar for 150+ students
+- Add Computer Assembly & Repair recognition
+
+## [1.0.7] - 2024-12-01
+
+### Changed
+- Optimize scroll performance
+- Consolidate scroll handlers
+- Fix touch events
+- Add Lenis smooth scroll library
+
+## [1.0.6] - 2024-10-01
+
+### Changed
+- Complete navbar rewrite: Pure vanilla, no Bootstrap
+- Mobile optimization for navbar
+- iOS-style full-screen mobile experience
+
+## [1.0.5] - 2024-08-01
+
+### Changed
+- Add Achievements section with card grid layout
+- Fix background video for Cloudflare Pages
+- Implement double buffering for seamless video transitions
+
+## [1.0.4] - 2024-06-01
+
+### Changed
+- Add project status indicators with color coding
+- Update project cards with compact design
+- Add View Live buttons for deployed projects
+
+## [1.0.3] - 2024-04-01
+
+### Changed
+- Add Projects section with dynamic loading
+- Add bubble physics engine with 30 interactive tech bubbles
+- Implement smooth scroll to sections
+
+## [1.0.2] - 2024-03-01
+
+### Changed
+- Add About section with education/interests panels
+- Add iOS-style button click effects
+- Add profile picture
+
+## [1.0.1] - 2024-02-15
+
+### Changed
+- Add Hero section with video background
+- Add typing effect for roles
+- Add smooth navigation with active section highlighting
 
 ## [1.0.0] - 2024-02-01
 
 ### Added
 - Initial portfolio website release
-- Hero section with video background and typing effect
-- About section with interactive education and interests panels
-- Projects showcase with dynamic loading and bubble physics engine
-- Contact section with copy-to-email functionality
-- Professional footer with navigation and back-to-top button
-- Smooth navigation with active section highlighting
 - Mobile responsive design with touch-friendly interactions
 - Performance optimizations with lazy loading and GPU acceleration
-- Accessibility compliance with keyboard navigation and screen reader support
 - Cloudflare Pages deployment configuration
-- Bootstrap 5 integration for styling and icons
-- Lenis smooth scrolling library integration
-- Bubble physics engine with 30 interactive tech bubbles
-- Intersection Observer for scroll animations
-- Debounced scroll and resize event handlers
-- Service worker support for caching
-- Core Web Vitals monitoring
-- Comprehensive documentation (README, CONTRIBUTING, etc.)
-
-### Technical Details
-- **Architecture**: Static HTML/CSS/JS with modular organization
-- **Dependencies**: Bootstrap 5.3.8, Lenis 1.1.18, Devicon (CDN)
-- **Performance**: Optimized for Core Web Vitals
-- **Accessibility**: WCAG 2.1 AA compliant
-- **Browser Support**: Chrome 80+, Firefox 75+, Safari 13+, Edge 80+
-- **Deployment**: Optimized for Cloudflare Pages, GitHub Pages, Netlify, Vercel
-
-### Project Structure
-```
-Portfolio/
-├── index.html (Main entry point)
-├── src/
-│   ├── styles/ (7 CSS files)
-│   └── scripts/ (9 JS modules)
-├── assets/ (Images and videos)
-└── docs/ (Documentation)
-```
-
-### File Organization
-- **HTML**: Semantic structure with accessibility features
-- **CSS**: Modular stylesheets (main, nav, about, projects, contact, footer)
-- **JS**: Feature-based modules (main, nav, about, projects, contact, bubble-physics, performance, smooth-scroll)
-
-### Security
-- No user data storage
-- HTTPS enforcement
-- Minimal external dependencies
-- Formspree for secure form handling
-
-### Documentation
-- Comprehensive README with features and setup
-- CONTRIBUTING guidelines
-- Cloudflare deployment guide
-- Inline code documentation
-
-## Release Notes Format
-
-### Types of Changes
-
-- **Added** - New features
-- **Changed** - Changes in existing functionality
-- **Deprecated** - Soon-to-be removed features
-- **Removed** - Now removed features
-- **Fixed** - Bug fixes
-- **Security** - Security improvements
-
-### Versioning Guide
-
-Given a version number **MAJOR.MINOR.PATCH**:
-
-1. **MAJOR** - Incompatible API changes
-2. **MINOR** - Added functionality (backwards compatible)
-3. **PATCH** - Bug fixes (backwards compatible)
-
-### Categories
-
-- **Features** - User-facing features
-- **Bug Fixes** - Fixed issues
-- **Performance** - Speed improvements
-- **Documentation** - Doc updates
-- **Refactoring** - Code restructuring
-- **Testing** - Test additions/changes
-- **Chores** - Build process, dependencies
-- **Styles** - CSS/styling changes
 
 ---
 
-## Contributors
-
-- **Nitesh Kumar Verma** - Initial work, core development
-
-## License
-
-This project is licensed under the MIT License - see [LICENSE](LICENSE) file for details.
-
----
-
-**Note**: This changelog is maintained manually. For detailed commit history, see `git log`.
+**Note**: For detailed commit history, see `git log`.
