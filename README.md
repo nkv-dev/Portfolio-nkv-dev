@@ -1,5 +1,14 @@
 # Nitesh Kumar Verma - Portfolio Website
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Cloudflare Pages](https://img.shields.io/badge/Cloudflare-Pages-blue.svg)](https://pages.dev)
+[![Astro](https://img.shields.io/badge/Astro-5.x-ff7f50?style=flat&logo=astro)](https://astro.build)
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES2022-f7df1e?style=flat&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![GitHub stars](https://img.shields.io/github/stars/nkv-dev/Portfolio-nkv-dev?style=social)](https://github.com/nkv-dev/Portfolio-nkv-dev/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/nkv-dev/Portfolio-nkv-dev?style=social)](https://github.com/nkv-dev/Portfolio-nkv-dev/network)
+
 License: MIT
 HTML5 CSS3 JavaScript Astro Cloudflare Pages
 
