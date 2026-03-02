@@ -1,20 +1,21 @@
 {
   "name": "nitesh-portfolio",
   "type": "module",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "description": "Portfolio website for Nitesh Kumar Verma built with Astro",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "deploy": "npm run build && wrangler pages deploy dist"
+    "astro": "astro"
   },
   "keywords": ["portfolio", "website", "astro", "cloudflare"],
   "author": "Nitesh Kumar Verma",
   "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "dependencies": {
-    "@astrojs/cloudflare": "^12.6.12",
-    "astro": "^5.17.1"
+    "astro": "^5.18.0"
   }
 }
