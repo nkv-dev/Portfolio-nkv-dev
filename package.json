@@ -13,7 +13,7 @@
   "author": "Nitesh Kumar Verma",
   "license": "MIT",
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=24.14.0"
   },
   "dependencies": {
     "astro": "^5.18.0"
