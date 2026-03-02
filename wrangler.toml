@@ -1,5 +1,4 @@
 name = "at"
 compatibility_date = "2026-03-02"
 
-[assets]
-directory = "./dist"
+pages_build_output_dir = "dist"
