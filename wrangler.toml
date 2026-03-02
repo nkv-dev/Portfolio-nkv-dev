@@ -1,9 +1,2 @@
 name = "nkv-dev-portfolio"
 compatibility_date = "2026-03-02"
-
-[site]
-bucket = "./dist"
-
-[build]
-command = "npm run build"
-cwd = "."
