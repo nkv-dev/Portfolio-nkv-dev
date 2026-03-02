@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.2] - 2026-03-02
+
+### Changed
+- Removed Cloudflare Pages adapter (switched to pure static output)
+- Simplified build configuration for Cloudflare Pages
+- Removed wrangler.toml (not needed for Pages auto-deploy)
+- Cleaned up unnecessary files (.wrangler/, .env, dist/.assetsignore)
+- Updated README with comprehensive documentation
+
+### Technical Details
+- **Output**: Static (no server-side rendering)
+- **Deployment**: Cloudflare Pages (auto-deploy from dist/)
+- **Build command**: npm run build
+- **Output directory**: dist
+
 ## [2.0.1] - 2026-03-02
 
 ### Changed
