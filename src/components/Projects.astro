@@ -1,0 +1,168 @@
+---
+const projectsData = [
+  {
+    id: 1,
+    title: "Portfolio Website",
+    category: "web",
+    description: "Modern portfolio with bubble physics engine, mobile-first design, and performance optimizations.",
+    problem: "Needed professional portfolio showcasing advanced frontend capabilities across multiple domains.",
+    solution: "Built responsive website with smooth animations, touch interactions, and Cloudflare Pages deployment.",
+    features: [
+      "Bubble physics engine with interactive tech bubbles",
+      "Mobile-first responsive design with touch gestures",
+      "Performance optimizations (lazy loading, GPU acceleration)",
+      "Cloudflare Pages hosting with global CDN deployment"
+    ],
+    techStack: ["HTML5", "CSS3", "JavaScript (ES6+)", "Bootstrap 5"],
+    githubUrl: "https://github.com/nkv-dev/Portfolio-nkv-dev",
+    date: "2026-01",
+    status: { type: "active", icon: "🟢", text: "Active", color: "#4CAF50" }
+  },
+  {
+    id: 2,
+    title: "USB Keyboard to Macro Keyboard Converter",
+    category: "hardware",
+    description: "Arduino-based converter that transforms USB keyboard into programmable macro keyboard.",
+    problem: "Needed hardware-level shortcuts for Linux desktop and development workflows.",
+    solution: "Built Arduino converter with custom firmware for Linux-optimized productivity macros.",
+    features: [
+      "USB keyboard input via Arduino USB Host Shield",
+      "Linux desktop integration with GNOME shortcuts",
+      "Developer tools with VSCode productivity macros",
+      "Non-blocking execution using millis() timing"
+    ],
+    techStack: ["Arduino Leonardo", "USB Host Shield", "C++"],
+    githubUrl: "https://github.com/nkv-dev/USB-to-USB-key-converter-",
+    date: "2026-01",
+    status: { type: "completed", icon: "🔵", text: "Complete", color: "#2196F3" }
+  },
+  {
+    id: 3,
+    title: "Password Entropy Tool",
+    category: "software",
+    description: "Web-based password security analyzer with entropy calculation and generator.",
+    problem: "Needed production-ready password security tool with live deployment.",
+    solution: "Built analyzer with Render hosting and performance optimizations.",
+    features: [
+      "Real-time entropy calculation using scoring algorithms",
+      "Password strength scoring with visual indicators",
+      "Brute force time estimation",
+      "Secure password generator with target entropy levels"
+    ],
+    techStack: ["Node.js", "Express.js", "HTML5", "CSS3", "JavaScript"],
+    githubUrl: "https://github.com/nkv-dev/password-entropy",
+    liveUrl: "https://nkvdevtool.onrender.com/",
+    date: "2026-01",
+    status: { type: "completed", icon: "✅", text: "Completed", color: "#4CAF50" }
+  },
+  {
+    id: 4,
+    title: "Lazerlight Security System",
+    category: "hardware",
+    description: "12th CBSE science exhibition project featuring laser security system with Bluetooth alerts.",
+    problem: "Needed interactive science demonstration project for 12th grade CBSE exhibition.",
+    solution: "Built interactive laser security system with working demonstrations.",
+    features: [
+      "Arduino-based LED laser control system",
+      "Bluetooth HC-05 module for wireless control",
+      "Interactive laser security demonstration",
+      "Mobile device integration for remote operation"
+    ],
+    techStack: ["Arduino", "Bluetooth HC-05", "Laser Module", "C++"],
+    githubUrl: "https://github.com/nkv-dev/Lazerlight_security_system_arduio",
+    date: "2022-11",
+    status: { type: "archived", icon: "📦", text: "Archived", color: "#607D8B" }
+  },
+  {
+    id: 5,
+    title: "Smart Plant Monitor",
+    category: "hardware",
+    description: "Automated plant monitoring system with soil moisture, temperature, and humidity sensors.",
+    problem: "Forgetful watering and lack of environmental monitoring for indoor plants.",
+    solution: "Built sensor-based system with automated watering and mobile notifications.",
+    features: [
+      "Soil moisture sensing",
+      "Automated watering system",
+      "Mobile notifications",
+      "Environmental data logging"
+    ],
+    techStack: ["Arduino", "ESP8266", "Sensors", "Blynk"],
+    githubUrl: "https://github.com/username/plant-monitor",
+    date: "2023-05",
+    status: { type: "planned", icon: "🟣", text: "Planned", color: "#9C27B0" }
+  },
+  {
+    id: 6,
+    title: "File Organizer",
+    category: "software",
+    description: "Automated file organization tool that sorts files by type, date, and custom rules.",
+    problem: "Downloads and documents folders became cluttered with unorganized files.",
+    solution: "Built smart organizer with customizable rules, duplicate detection, and batch processing.",
+    features: [
+      "Custom sorting rules",
+      "Duplicate file detection",
+      "Batch processing operations",
+      "File preview functionality"
+    ],
+    techStack: ["Python", "Tkinter", "OS Module", "Regex"],
+    githubUrl: "https://github.com/username/file-organizer",
+    date: "2023-03",
+    status: { type: "maintenance", icon: "🔧", text: "Maintenance", color: "#FF9800" }
+  }
+];
+
+const initialProjects = 3;
+---
+
+<section class="section projects-section" id="projects">
+  <div class="projects-background">
+    <div class="bubble bubble-1"><i class="devicon-python-plain colored"></i></div>
+    <div class="bubble bubble-2"><i class="devicon-javascript-plain colored"></i></div>
+    <div class="bubble bubble-3"><i class="devicon-c-plain colored"></i></div>
+    <div class="bubble bubble-4"><i class="devicon-php-plain colored"></i></div>
+    <div class="bubble bubble-5"><i class="devicon-cplusplus-plain colored"></i></div>
+    <div class="bubble bubble-6"><i class="devicon-git-plain colored"></i></div>
+    <div class="bubble bubble-7"><i class="devicon-mongodb-plain colored"></i></div>
+    <div class="bubble bubble-8"><i class="devicon-nano-plain colored"></i></div>
+    <div class="bubble bubble-9"><i class="devicon-arduino-plain colored"></i></div>
+    <div class="bubble bubble-10"><i class="devicon-raspberrypi-plain colored"></i></div>
+    <div class="bubble bubble-16"><i class="bi bi-github"></i></div>
+    <div class="bubble bubble-17"><i class="devicon-nodejs-plain colored"></i></div>
+    <div class="bubble bubble-18"><i class="devicon-docker-plain colored"></i></div>
+    <div class="bubble bubble-19"><i class="devicon-react-original colored"></i></div>
+    <div class="bubble bubble-20"><i class="devicon-vuejs-plain colored"></i></div>
+    <div class="bubble bubble-21"><i class="devicon-angularjs-plain colored"></i></div>
+    <div class="bubble bubble-22"><i class="devicon-swift-plain colored"></i></div>
+    <div class="bubble bubble-23"><i class="devicon-go-plain colored"></i></div>
+    <div class="bubble bubble-24"><i class="devicon-rust-plain colored"></i></div>
+    <div class="bubble bubble-25"><i class="devicon-typescript-plain colored"></i></div>
+    <div class="bubble bubble-26"><i class="devicon-tailwindcss-plain colored"></i></div>
+    <div class="bubble bubble-27"><i class="devicon-bootstrap-plain colored"></i></div>
+    <div class="bubble bubble-28"><i class="devicon-sass-plain colored"></i></div>
+    <div class="bubble bubble-29"><i class="devicon-kubernetes-plain colored"></i></div>
+    <div class="bubble bubble-30"><i class="devicon-amazonwebservices-original colored"></i></div>
+  </div>
+
+  <div class="container">
+    <div class="text-center">
+      <span class="section-tag">PROJECTS</span>
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-subtitle">
+        A collection of my work spanning web development, hardware projects, and software tools.
+      </p>
+    </div>
+
+    <div class="projects-grid" id="projectsContainer" data-projects={JSON.stringify(projectsData)}>
+    </div>
+
+    <div class="load-more-container">
+      <button class="load-more-btn" id="loadMoreBtn" data-initial={initialProjects} data-total={projectsData.length}>
+        Load More Projects
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  import '../scripts/projects.js';
+</script>

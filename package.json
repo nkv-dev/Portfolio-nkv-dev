@@ -1,13 +1,20 @@
 {
   "name": "nitesh-portfolio",
+  "type": "module",
   "version": "1.0.0",
   "description": "Portfolio website for Nitesh Kumar Verma",
   "scripts": {
-    "build": "echo 'Static site - no build needed'",
-    "dev": "python3 -m http.server 8000",
-    "preview": "python3 -m http.server 8000"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "deploy": "npm run build && wrangler pages deploy dist"
   },
-  "keywords": ["portfolio", "website", "static"],
+  "keywords": ["portfolio", "website", "astro", "cloudflare"],
   "author": "Nitesh Kumar Verma",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@astrojs/cloudflare": "^12.6.12",
+    "astro": "^5.17.1"
+  }
 }

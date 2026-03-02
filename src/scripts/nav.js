@@ -3,10 +3,19 @@ document.addEventListener('DOMContentLoaded', function() {
   const navToggle = document.getElementById('navToggle');
   const navMenu = document.getElementById('navMenu');
   const navLinks = document.querySelectorAll('.nav-link');
+  const header = document.querySelector('.site-header');
   
   if (!navToggle || !navMenu) return;
   
   let isMenuOpen = false;
+  
+  // Get dynamic navbar offset
+  function getNavbarOffset() {
+    const nav = document.querySelector('.main-nav');
+    if (!nav || !header) return 80;
+    const navRect = nav.getBoundingClientRect();
+    return Math.ceil(navRect.bottom);
+  }
   
   // Toggle menu
   function toggleMenu() {
@@ -47,8 +56,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Close menu first
         closeMenu();
         
-        // Then smooth scroll
-        const offset = 80;
+        // Then smooth scroll with dynamic offset
+        const offset = getNavbarOffset();
         const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
         
         window.scrollTo({
@@ -76,7 +85,8 @@ document.addEventListener('DOMContentLoaded', function() {
   // Active link on scroll - OPTIMIZED
   function updateActiveLink() {
     const sections = document.querySelectorAll('section[id]');
-    const scrollY = window.pageYOffset + 100;
+    const offset = getNavbarOffset();
+    const scrollY = window.pageYOffset + offset;
     
     let current = '';
     
@@ -111,6 +121,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }, { passive: true });
   
+  // Update on resize (navbar height may change)
+  let resizeTimeout;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(function() {
+      updateActiveLink();
+    }, 100);
+  });
+  
   // Initial
   updateActiveLink();
 });
@@ -123,7 +142,14 @@ document.addEventListener('DOMContentLoaded', function() {
       e.preventDefault();
       const main = document.getElementById('main-content');
       if (main) {
-        main.scrollIntoView({ behavior: 'smooth' });
+        const header = document.querySelector('.site-header');
+        const nav = document.querySelector('.main-nav');
+        const offset = nav ? Math.ceil(nav.getBoundingClientRect().bottom) : 80;
+        
+        window.scrollTo({
+          top: main.offsetTop - offset,
+          behavior: 'smooth'
+        });
       }
     });
   }

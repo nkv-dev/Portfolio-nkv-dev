@@ -1,0 +1,881 @@
+/* ================= PROJECTS SECTION ================= */
+
+/* Section Header */
+#projects .text-center {
+  margin-bottom: 60px;
+}
+
+#projects .section-tag {
+  color: var(--tech-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+#projects .section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 15px 0 20px 0;
+  color: #fff;
+}
+
+#projects .section-subtitle {
+  font-size: 1.1rem;
+  color: #aaa;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Project Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+/* Project Card */
+.project-card {
+  background: #1a1a1a;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #333;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.6s ease forwards;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 255, 213, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:nth-child(1) { animation-delay: 0.1s; }
+.project-card:nth-child(2) { animation-delay: 0.2s; }
+.project-card:nth-child(3) { animation-delay: 0.3s; }
+.project-card:nth-child(4) { animation-delay: 0.4s; }
+.project-card:nth-child(5) { animation-delay: 0.5s; }
+.project-card:nth-child(6) { animation-delay: 0.6s; }
+
+.project-card:active {
+  transform: translateY(-2px) scale(0.98);
+  transition: transform 0.1s ease;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(239, 68, 68, 0.3);
+  border-color: #ef4444;
+}
+
+/* Project Card Header */
+.project-header {
+  padding: 25px 25px 15px 25px;
+}
+
+.project-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.project-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+/* Shared base styles for both category and status badges */
+.project-category,
+.project-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+
+.project-category {
+  background: var(--tech-primary);
+  color: #000;
+}
+
+.project-status {
+  gap: 6px;
+  min-height: 32px;
+}
+
+.project-category.web { background: #4CAF50; color: #fff; }
+.project-category.hardware { background: #FF9800; color: #fff; }
+.project-category.software { background: #2196F3; color: #fff; }
+
+.status-icon {
+  font-size: 0.8rem;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.status-text {
+  font-size: 0.75rem; /* Match parent badge font size */
+  color: #fff;
+  line-height: 1;
+}
+
+/* Individual Status Colors with explicit text colors */
+.status-active { background: #4CAF50; color: #fff; }
+.status-completed { background: #2196F3; color: #fff; }
+.status-beta { background: #FF8F00; color: #fff; }
+.status-planned { background: #7B1FA2; color: #fff; }
+.status-onhold { background: #616161; color: #fff; }
+.status-maintenance { background: #EF6C00; color: #fff; }
+.status-archived { background: #455A64; color: #fff; }
+.status-deprecated { background: #D32F2F; color: #fff; }
+
+
+
+/* Mobile: Consistent scaling for both badges */
+@media (max-width: 768px) {
+  .project-badges {
+    gap: 6px;
+  }
+  
+  .project-category,
+  .project-status {
+    padding: 4px 10px;
+    font-size: 0.7rem;
+    min-height: 28px;
+    letter-spacing: 0.3px;
+  }
+  
+  .project-status {
+    gap: 0; /* Remove gap since icon is hidden */
+  }
+  
+  .status-icon {
+    display: none; /* Hide icon on mobile */
+  }
+  
+  .status-text {
+    font-size: 0.7rem; /* Match parent badge size */
+    line-height: 1;
+  }
+}
+
+.project-description {
+  color: #ccc;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* Project Content */
+.project-content {
+  padding: 0 25px 20px 25px;
+  margin-bottom: 0;
+}
+
+.project-problem {
+  margin-bottom: 15px;
+}
+
+.problem-label {
+  color: var(--tech-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.problem-text {
+  color: #aaa;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.project-features {
+  margin-bottom: 20px;
+}
+
+.features-label {
+  color: var(--tech-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.features-list li {
+  color: #bbb;
+  font-size: 0.85rem;
+  margin-bottom: 5px;
+  padding-left: 15px;
+  position: relative;
+}
+
+.features-list li:before {
+  content: "▸";
+  color: var(--tech-primary);
+  position: absolute;
+  left: 0;
+}
+
+/* Tech Stack */
+.project-tech {
+  margin-bottom: 0;
+}
+
+.tech-label {
+  color: var(--tech-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.tech-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tech-badge {
+  background: #2a2a2a;
+  color: #ddd;
+  padding: 8px 14px;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  border: 1px solid #444;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 255, 213, 0.1);
+}
+
+.tech-badge:hover {
+  background: #333;
+  color: #ef4444;
+  transform: scale(1.05);
+}
+
+.tech-badge:active {
+  transform: scale(0.95);
+  background: var(--tech-primary);
+  color: #000;
+}
+
+/* Project Footer */
+.project-footer {
+  padding: 20px 25px;
+  background: #222;
+  border-top: 1px solid #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  margin-top: auto;
+}
+
+.project-date {
+  color: #888;
+  font-size: 0.8rem;
+}
+
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #333;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  border: 1px solid #444;
+  min-height: 44px;
+  -webkit-tap-highlight-color: rgba(0, 255, 213, 0.1);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.github-link:hover {
+  background: #ef4444;
+  color: #fff;
+  transform: scale(1.05);
+  border-color: #ef4444;
+}
+
+.github-link:active {
+  transform: scale(0.95);
+  transition: transform 0.1s ease;
+}
+
+/* Live Link Button */
+.live-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: var(--tech-primary);
+  color: #000;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 1px solid var(--tech-glow-bright);
+  min-height: 44px;
+  -webkit-tap-highlight-color: rgba(0, 255, 213, 0.1);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.live-link:hover {
+  background: var(--tech-secondary);
+  transform: scale(1.05);
+  border-color: var(--tech-primary);
+}
+
+.live-link:active {
+  transform: scale(0.95);
+  transition: transform 0.1s ease;
+}
+
+.live-link i {
+  font-size: 1rem;
+}
+
+/* Enhanced GitHub Link for Live Button Support */
+.project-links {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.github-link {
+  padding: 12px 16px;
+}
+
+.github-link i {
+  font-size: 1rem;
+}
+
+/* Mobile Responsive Footer */
+@media (max-width: 768px) {
+  .project-footer {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .project-links {
+    width: 100%;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .live-link,
+  .github-link {
+    width: 100%;
+    justify-content: center;
+    min-height: 48px;
+  }
+}
+
+/* Load More Button */
+.load-more-container {
+  text-align: center;
+  margin-top: 40px;
+  padding: 0 15px;
+}
+
+/* Pull-to-refresh indicator */
+.pull-to-refresh {
+  position: relative;
+  padding-top: 20px;
+  margin-top: -20px;
+  height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.pull-to-refresh.active {
+  height: 60px;
+  padding-top: 40px;
+}
+
+.pull-to-refresh-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--tech-primary);
+  font-size: 0.9rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.pull-to-refresh.active .pull-to-refresh-indicator {
+  opacity: 1;
+}
+
+.pull-to-refresh-indicator i {
+  animation: spin 1s linear infinite;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Loading states */
+.loading-skeleton {
+  background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Optimized mobile scrolling */
+.projects-grid {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile focus improvements */
+@media (max-width: 768px) {
+  .github-link:focus,
+  .load-more-btn:focus {
+    outline: 3px solid var(--tech-primary);
+    outline-offset: 2px;
+  }
+}
+
+.load-more-btn {
+  padding: 15px 35px;
+  background: transparent;
+  color: #ef4444;
+  border: 2px solid #ef4444;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  min-height: 50px;
+  min-width: 200px;
+  -webkit-tap-highlight-color: rgba(239, 68, 68, 0.1);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.load-more-btn:hover {
+  background: #ef4444;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(239, 68, 68, 0.4);
+}
+
+.load-more-btn:active {
+  transform: translateY(0) scale(0.98);
+  transition: transform 0.1s ease;
+}
+
+.load-more-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-color: #666;
+  color: #666;
+  transform: none;
+}
+
+/* Hidden projects initially */
+.project-card.hidden {
+  display: none;
+}
+
+/* Enhanced Responsive Design */
+@media (max-width: 992px) {
+  .projects-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+  }
+  
+  #projects .section-title {
+    font-size: 2.2rem;
+  }
+}
+
+/* Additional intermediate breakpoint */
+@media (max-width: 850px) {
+  .projects-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  #projects .section-title {
+    font-size: 2rem;
+  }
+  
+  #projects .section-subtitle {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  
+  .project-header {
+    padding: 25px 20px 15px 20px;
+  }
+  
+  .project-content {
+    padding: 0 20px 20px 20px;
+  }
+  
+  .project-footer {
+    padding: 20px 20px;
+  }
+  
+  .project-title {
+    font-size: 1.3rem;
+  }
+  
+  /* Enhanced readability */
+  .project-description {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #ddd;
+  }
+  
+  .problem-text, .features-list li {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #bbb;
+  }
+  
+  .features-list li {
+    padding-left: 20px;
+    margin-bottom: 8px;
+  }
+  
+  /* Better visual hierarchy */
+  .problem-label, .features-label, .tech-label {
+    font-size: 1rem;
+    margin-top: 20px;
+    margin-bottom: 12px;
+  }
+  
+  /* Tech badges optimization */
+  .tech-badge {
+    font-size: 0.8rem;
+    padding: 10px 16px;
+  }
+  
+  /* Prevent horizontal scrolling */
+  .projects-grid {
+    overflow-x: hidden;
+  }
+}
+
+@media (max-width: 650px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .project-description {
+    font-size: 1rem;
+  }
+  
+  .problem-text, .features-list li {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #projects .text-center {
+    margin-bottom: 35px;
+  }
+  
+  #projects .section-title {
+    font-size: 1.8rem;
+  }
+  
+  #projects .section-subtitle {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  
+  .projects-grid {
+    gap: 20px;
+  }
+  
+  .project-header {
+    padding: 20px 15px 12px 15px;
+  }
+  
+  .project-content {
+    padding: 0 15px 18px 15px;
+  }
+  
+  .project-footer {
+    padding: 18px 15px;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .github-link {
+    width: 100%;
+    justify-content: center;
+    padding: 15px 20px;
+    font-size: 0.9rem;
+  }
+  
+  .load-more-btn {
+    padding: 15px 30px;
+    font-size: 0.95rem;
+    min-height: 50px;
+  }
+  
+  /* Enhanced mobile spacing */
+  .project-title {
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+  }
+  
+  .project-category {
+    font-size: 0.7rem;
+    padding: 4px 10px;
+    margin-bottom: 18px;
+  }
+  
+  .project-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 18px;
+  }
+  
+  /* Better mobile spacing for sections */
+  .project-problem, .project-features, .project-tech {
+    margin-bottom: 22px;
+  }
+}
+
+/* Landscape mobile handling */
+@media (max-height: 500px) and (orientation: landscape) {
+  .section {
+    padding: 40px 15px;
+  }
+  
+  .projects-grid {
+    gap: 15px;
+  }
+  
+  .project-card {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  
+  #projects .text-center {
+    margin-bottom: 25px;
+  }
+}
+
+/* ================= RANDOM FLOATING BUBBLES ================= */
+
+.projects-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.projects-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bubble {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 77, 77, 0.2);
+  border: 2px solid rgba(255, 77, 77, 0.4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  will-change: transform;
+  backface-visibility: hidden;
+  font-size: 22px;
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.3);
+  z-index: 1;
+}
+
+.bubble:hover {
+  background: rgba(255, 77, 77, 0.25);
+  transform: scale(1.15);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.5);
+  border-color: var(--tech-primary);
+}
+
+.bubble i {
+  font-size: 20px;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+  display: block;
+  line-height: 1;
+}
+
+.bubble:hover i {
+  opacity: 1;
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* Remove static animations - bubbles will be controlled by JavaScript */
+
+/* Bubble Physics Styles - Controlled by JavaScript */
+.bubble {
+  position: absolute !important;
+  width: 50px !important;
+  height: 50px !important;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+  transform: translate3d(0, 0, 0); /* Hardware acceleration */
+  backface-visibility: hidden;
+  /* Ensure smooth sub-pixel rendering */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  /* Touch optimization */
+  -webkit-tap-highlight-color: transparent;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Mobile Project Cards Optimization */
+@media (max-width: 768px) {
+  /* Compact project cards on mobile */
+  .project-description {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+  }
+  
+  .project-problem {
+    margin-bottom: 12px;
+  }
+  
+  .project-features {
+    margin-bottom: 15px;
+  }
+  
+  .features-list li {
+    margin-bottom: 4px;
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+  
+  .problem-text {
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+  
+  /* Reduce padding for more compact mobile view */
+  .project-header {
+    padding: 20px 20px 12px 20px;
+  }
+  
+  .project-content {
+    padding: 0 20px 18px 20px;
+  }
+  
+  .project-footer {
+    padding: 18px 20px;
+  }
+  
+  /* Mobile-specific bubble optimizations */
+  .bubble {
+    width: 40px !important;
+    height: 40px !important;
+    /* Reduce visual effects on mobile */
+    transition-duration: 0.2s !important;
+    /* Prevent scrolling issues */
+    position: absolute !important;
+    pointer-events: auto !important;
+  }
+  
+  .bubble i {
+    font-size: 16px !important; /* Smaller icons on mobile */
+  }
+}
+
+/* Hide extra bubbles on mobile */
+@media (max-width: 768px) {
+  .bubble:nth-child(n+13) {
+    display: none !important;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .project-card {
+    animation: none;
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+  
+  .tech-badge, .github-link, .load-more-btn {
+    transition: none;
+  }
+  
+  .project-card:hover, .tech-badge:hover, .github-link:hover {
+    transform: none;
+  }
+  
+  .bubble {
+    /* Bubbles will still move with reduced motion preferences */
+    transform: none !important;
+  }
+}

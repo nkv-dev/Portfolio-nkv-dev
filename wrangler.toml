@@ -1,10 +1,9 @@
-name = "nkv-dev"
-compatibility_date = "2026-01-20"
+name = "nkv-dev-portfolio"
+compatibility_date = "2026-03-02"
 
-[assets]
-directory = "."
-exclude = ["assets/*.mp4"]
+[site]
+bucket = "./dist"
 
 [build]
-command = ""
+command = "npm run build"
 cwd = "."

@@ -63,11 +63,11 @@ if (videoA && videoB) {
   // Available videos: pc.mp4, drifting.mp4, army.mp4, coding_website.mp4, eletronics.mp4
   // Shorter clips for continuous seamless looping (2-3 seconds each)
   const playlist = [
-    { src: "assets/pc.mp4", start: 0, end: 3 },
-    { src: "assets/drifting.mp4", start: 0, end: 2 },
-    { src: "assets/coding_website.mp4", start: 0, end: 2 },
-    { src: "assets/eletronics.mp4", start: 0, end: 2 },
-    { src: "assets/army.mp4", start: 0, end: 2 }
+    { src: "/videos/pc.mp4", start: 0, end: 3 },
+    { src: "/videos/drifting.mp4", start: 0, end: 2 },
+    { src: "/videos/coding_website.mp4", start: 0, end: 2 },
+    { src: "/videos/eletronics.mp4", start: 0, end: 2 },
+    { src: "/videos/army.mp4", start: 0, end: 2 }
   ];
 
   let currentIndex = 0;

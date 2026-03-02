@@ -1,0 +1,311 @@
+/* ================= RED THEME VARIABLES ================= */
+:root {
+  /* Primary Red Theme Colors */
+  --tech-primary: #ff4d4d;     /* Neon red (main accent) */
+  --tech-secondary: #ff6666;    /* Lighter red */
+  --tech-accent: #ff3333;       /* Darker red */
+  --tech-glow: rgba(255, 77, 77, 0.3);  /* Red glow effect */
+  --tech-success: #ff6666;      /* Light red for success states */
+  --tech-warning: #ffa500;      /* Orange for warnings */
+  --tech-glow-primary: #ff4d4d;           /* Main red glow */
+  --tech-glow-secondary: rgba(255, 77, 77, 0.8);  /* Red shadow */
+  --tech-glow-subtle: rgba(255, 77, 77, 0.3);    /* Subtle red */
+  --tech-glow-bright: rgba(255, 102, 102, 0.8); /* Light red */
+  --tech-bg-primary: #000000;    /* Pure black */
+  --tech-bg-secondary: #111111;   /* Dark gray */
+  --tech-card: rgba(255, 77, 77, 0.06);  /* Red-tinted card bg */
+  --tech-border: rgba(255, 77, 77, 0.12); /* Red-tinted borders */
+  --tech-focus: rgba(255, 77, 77, 0.5);  /* Red focus outline */
+  --tech-hover: rgba(255, 77, 77, 0.1);   /* Red hover background */
+}
+
+/* Global button text smoothing */
+button, .btn, [role="button"] {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Smooth scrolling - works on all devices */
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  body {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: none;
+    touch-action: pan-y;
+  }
+}
+
+/* * HERO SECTION */ 
+    body {
+      margin: 0;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+      background: #000;
+    }
+    .hero-section {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Background Video */
+    .bg-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      transition: opacity 0.3s ease;
+      will-change: transform, opacity;
+    }
+
+    /* Overlay */
+    .hero-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: -1;
+    }
+
+    /* Hero content */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+    }
+
+    /* Mobile hero optimizations */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem !important;
+      }
+      
+      .hero h3 {
+        font-size: 1.2rem !important;
+      }
+      
+      .hero p {
+        font-size: 0.9rem !important;
+      }
+      
+      .hero .btn {
+        font-size: 0.9rem;
+        padding: 8px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.5rem !important;
+      }
+      
+      .hero h3 {
+        font-size: 1rem !important;
+      }
+      
+      .hero p {
+        font-size: 0.8rem !important;
+        margin-top: 15px !important;
+      }
+      
+      .hero .btn {
+        font-size: 0.8rem;
+        padding: 6px 16px;
+        margin-top: 20px !important;
+      }
+    }
+
+    /* Explore My Work Button - Custom Red Theme Styling */
+    .hero .btn-outline-danger {
+      border-color: var(--tech-primary);
+      color: var(--tech-primary);
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .hero .btn-outline-danger:hover {
+      background-color: var(--tech-primary);
+      border-color: var(--tech-primary);
+      color: #fff;
+      box-shadow: 0 0 20px var(--tech-glow);
+      transform: translateY(-2px);
+    }
+
+    /* Normal sections */
+    .section {
+      min-height: 100vh;
+      padding: 120px 20px;
+      background: #111;
+    }
+
+    /* Mobile sections */
+    @media (max-width: 768px) {
+      .section {
+        padding: 80px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .section {
+        padding: 60px 15px;
+      }
+    }
+
+    .section:nth-child(even) {
+      background: #1a1a1a;
+    }
+
+    /* Typing text */
+    .typing {
+      color: var(--tech-primary);
+      font-weight: 600;
+    }
+
+    /* Cursor animation */
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.2em;
+      background-color: var(--tech-primary);
+      margin-left: 5px;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0; }
+    }
+
+    /* iOS Interactive Effect */
+    .ios-interactive {
+      transition: all 0.3s ease;
+      cursor: pointer;
+      -webkit-tap-highlight-color: var(--tech-hover);
+    }
+
+    .ios-interactive:hover {
+      transform: scale(1.05);
+    }
+
+    .ios-interactive:active {
+      transform: scale(0.95);
+    }
+    
+    /* Mobile-specific global improvements */
+    @media (max-width: 768px) {
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      
+      body {
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-y: none;
+        touch-action: pan-y;
+      }
+      
+      /* Prevent zoom on input focus */
+      input, textarea, select {
+        font-size: 16px;
+      }
+      
+      /* Better mobile focus states */
+      button, a, .ios-interactive {
+        -webkit-tap-highlight-color: var(--tech-hover);
+      }
+      
+      button:focus, a:focus {
+        outline: 2px solid var(--tech-primary);
+        outline-offset: 2px;
+      }
+    }
+    
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+    
+    /* Performance optimizations */
+    .ios-interactive,
+    .social-link,
+    .footer-social-link,
+    .contact-info,
+    .contact-form {
+      will-change: transform;
+      backface-visibility: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    /* GPU acceleration for smooth animations */
+    .hero-section,
+    .section,
+    .island-navbar {
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+    }
+    
+    /* Optimize images */
+    img {
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+      image-rendering: pixelated;
+    }
+    
+    /* Touch action optimization for better scroll performance */
+    body {
+      touch-action: pan-y;
+    }
+    
+    /* Better focus states for accessibility */
+    *:focus {
+      outline: 2px solid var(--tech-primary);
+      outline-offset: 2px;
+    }
+    
+    *:focus:not(:focus-visible) {
+      outline: none;
+    }
+    
+    *:focus-visible {
+      outline: 2px solid var(--tech-primary);
+      outline-offset: 2px;
+    }
+    
+    /* Loading states */
+    .loading {
+      opacity: 0.6;
+      pointer-events: none;
+    }
+    
+    .loading::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      margin: -10px 0 0 -10px;
+      border: 2px solid var(--tech-primary);
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }

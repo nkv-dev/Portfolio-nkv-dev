@@ -2,6 +2,17 @@
  * FOOTER FUNCTIONALITY
  ***************************/
 
+// Get dynamic navbar offset
+function getNavbarOffset() {
+  const header = document.querySelector('.site-header');
+  const nav = document.querySelector('.main-nav');
+  
+  if (!header || !nav) return 80;
+  
+  const navRect = nav.getBoundingClientRect();
+  return Math.ceil(navRect.bottom);
+}
+
 // Back to top button functionality
 function initBackToTop() {
   const backToTopButton = document.getElementById('backToTop');
@@ -39,7 +50,8 @@ function initFooterLinks() {
       const targetSection = document.querySelector(targetId);
       
       if (targetSection) {
-        const offsetTop = targetSection.offsetTop - 80; // Account for fixed navbar
+        const offset = getNavbarOffset();
+        const offsetTop = targetSection.offsetTop - offset;
         window.scrollTo({
           top: offsetTop,
           behavior: 'smooth'
